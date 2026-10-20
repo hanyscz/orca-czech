@@ -1,0 +1,10 @@
+# Pracovní soubory překladu: anglický katalog-zdroj, překladové bloky, koncepty.
+# Do jazykového balíčku nepatří — Orca načítá pouze manifest a locales/.
+# Sestavení a kontroly jsou v tools/ a patří do gitu.
+.i18n-work/
+
+# Osobní poznámky k úkolu
+task.md
+
+# macOS
+.DS_Store

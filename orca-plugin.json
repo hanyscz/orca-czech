@@ -1,0 +1,22 @@
+{
+  "manifestVersion": 1,
+  "id": "czech",
+  "publisher": "Hanys",
+  "name": "Čeština",
+  "version": "0.1.0",
+  "description": "Česká lokalizace Orca IDE",
+  "repository": "https://github.com/hanyscz",
+  "engines": {
+    "orca": ">=1.4.169"
+  },
+  "pluginApi": 1,
+  "contributes": {
+    "languagePacks": [
+      {
+        "locale": "cs-CZ",
+        "path": "locales/cs-CZ.json"
+      }
+    ]
+  },
+  "capabilities": []
+}
