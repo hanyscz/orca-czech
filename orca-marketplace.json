@@ -1,0 +1,16 @@
+{
+  "name": "Orca Hanys Plugins",
+  "owner": "hanyscz",
+  "plugins": [
+    {
+      "id": "hanyscz.czech",
+      "source": {
+        "kind": "git",
+        "url": "https://github.com/hanyscz/orca-czech.git",
+        "ref": "v0.1.0"
+      },
+      "description": "Česká lokalizace Orca IDE",
+      "categories": ["languages"]
+    }
+  ]
+}
