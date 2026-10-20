@@ -25,7 +25,7 @@ python3 tools/audit-pack.py --list               # všechny chybějící a zasta
 ```
 Orca v1.4.232: 16476 catalog keys, 16296 a pack may translate (180 protected, 0 over 8192 characters, 34 allow-listed).
 
-Hanys.czech v0.1.0 — cs-CZ, locales/cs-CZ.json, engines >=1.4.169
+hanys.czech v0.1.0 — cs-CZ, locales/cs-CZ.json, engines >=1.4.169
   engine verdict: ACCEPTED
   size: 18485/20000 entries, depth 12/16, 1191198 bytes
   coverage: 16296/16296 = 100.00 % of what a pack may translate; 0 missing

@@ -1,11 +1,11 @@
 {
   "manifestVersion": 1,
   "id": "czech",
-  "publisher": "Hanys",
+  "publisher": "hanys",
   "name": "Čeština",
   "version": "0.1.0",
   "description": "Česká lokalizace Orca IDE",
-  "repository": "https://github.com/hanyscz",
+  "repository": "https://github.com/hanyscz/orca-czech",
   "engines": {
     "orca": ">=1.4.169"
   },
