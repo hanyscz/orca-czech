@@ -7,7 +7,7 @@
       "source": {
         "kind": "git",
         "url": "https://github.com/hanyscz/orca-czech.git",
-        "ref": "0.1.0"
+        "ref": "main"
       },
       "description": "Česká lokalizace Orca IDE",
       "categories": ["languages"]
