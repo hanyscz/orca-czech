@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "hanyscz.czech",
-  "publisher": "hanys",
+  "publisher": "hanyscz",
   "name": "Čeština",
   "version": "0.1.0",
   "description": "Česká lokalizace Orca IDE",
