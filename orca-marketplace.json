@@ -3,7 +3,7 @@
   "owner": "hanyscz",
   "plugins": [
     {
-      "id": "hanyscz.czech",
+      "id": "czech",
       "source": {
         "kind": "git",
         "url": "https://github.com/hanyscz/orca-czech.git",
