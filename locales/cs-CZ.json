@@ -145,6 +145,7 @@
     "antigravityReferenceDescription": "Pokračuje v nové konverzaci Antigravity CLI s využitím tohoto záznamu jako reference.",
     "continueInCli": "Pokračovat v CLI",
     "continueInCliNewTab": "Pokračovat v CLI v nové kartě",
+    "searchHitSourceHost": "Nalezeno na {{value0}}",
     "subagents": {
       "empty": "Nebyli nalezeni žádní dílčí agenti.",
       "loadError": "Nepodařilo se načíst všechny dílčí agenty.",
@@ -3156,7 +3157,9 @@
           "7c41e90d12": "Tento soubor se na disku změnil, zatímco máte neuložené úpravy. Uložením přepíšete novější obsah na disku.",
           "90b2ce7d43": "Porovnat",
           "a95d02c644": "Ponechat mé úpravy",
-          "d1e830fa22": "Vrátit zpět"
+          "d1e830fa22": "Vrátit zpět",
+          "keepHint": "Ponechá vaši verzi. Vaše příští uložení nahradí verzi na disku.",
+          "overwrite": "Přepsat"
         },
         "ExternalFileChangeCompareDialog": {
           "2c8f1e07b9": "Načítání porovnání…",
@@ -3557,6 +3560,12 @@
               "notice": {
                 "8c59ce5075": "Soubor se nepodařilo uložit. Zkuste to znovu."
               }
+            },
+            "sectionStale": {
+              "notice": "Tento soubor se na disku změnil od načtení této sekce."
+            },
+            "stale": {
+              "notice": "Tento soubor se na disku změnil od vašich úprav. Pomocí banneru můžete soubor porovnat, znovu načíst nebo přepsat."
             }
           }
         },
@@ -4634,6 +4643,12 @@
             }
           }
         }
+      },
+      "hostPicker": {
+        "moreHosts_one": "Ještě {{count}} hostitel. Vyhledejte jej podle názvu.",
+        "moreHosts_other": "Dalších hostitelů: {{count}}. Vyhledejte některého podle názvu.",
+        "noHostsMatch": "Žádný hostitel neodpovídá.",
+        "searchHosts": "Hledat hostitele…"
       },
       "jira": {
         "connect": {
@@ -7650,9 +7665,12 @@
           "windowsPathUnknown": "Nepodařilo se zkontrolovat proměnnou PATH pro příkaz shellu WSL"
         },
         "CloudVmSetupGuide": {
+          "cardDescription": "Vytváří se pro každý pracovní prostor z předpisu prostředí.",
+          "cardTitle": "Cloudové virtuální stroje (VM)",
           "createWorkspace": "Vytvořte pracovní prostor a v poli „Spustit na“ vyberte tento předpis.",
           "description": "Cloudové virtuální stroje (VM) se vytvářejí z předpisů prostředí při vytvoření pracovního prostoru.",
           "openSetup": "Nastavit předpisy prostředí",
+          "setUpRecipes": "Nastavit předpisy",
           "setupRecipe": "Nastavte předpis prostředí pro svého poskytovatele cloudu.",
           "title": "Vytvořit cloudový virtuální stroj (VM)"
         },
@@ -7890,6 +7908,7 @@
           "cloudVmLoading": "Kontrola běhových prostředí cloudových virtuálních strojů…",
           "cloudVmMarkedCleaned": "Běhové prostředí cloudového virtuálního stroje bylo označeno jako vyčištěné.",
           "cloudVmRefresh": "Obnovit běhová prostředí cloudových virtuálních strojů",
+          "cloudVmRefreshLabel": "Obnovit cloudové virtuální stroje (VM)",
           "cloudVmTitle": "Běhová prostředí cloudových virtuálních strojů",
           "copiedCleanupCommand": "Příkaz pro vyčištění byl zkopírován.",
           "copiedCleanupPayload": "Datový obsah pro vyčištění byl zkopírován.",
@@ -9186,10 +9205,15 @@
           "6f6d5188ed": "Odvolat {{value0}}",
           "87b16cd11d": "Vytvořeno",
           "8b82879581": "Každý s aktivním oprávněním se může připojit, dokud přístup neodvoláte. Odvolání sdíleného přístupu okamžitě odpojí aktivní klienty.",
+          "activeLinks": "Aktivní odkazy",
           "b18d1764ef": "Naposledy použito: {{value0}}",
+          "createdAt": "Vytvořeno {{value0}}",
           "df142657a5": "Zatím nepoužito",
           "f031182867": "Sdílený přístup k serveru",
           "fd83b94095": "Zatím žádný sdílený přístup k serveru.",
+          "linkName": "Odkaz · {{value0}}",
+          "noActiveLinks": "Žádné aktivní odkazy.",
+          "revoke": "Odvolat",
           "sshAccessCaveat": "Odvolání přístupu zde nezabrání osobě s přístupem přes SSH k tomuto počítači v opětovném spárování. Chcete-li jí přístup zcela zamezit, odeberte její přístup přes SSH."
         },
         "RuntimeEnvironmentsPane": {
@@ -9206,7 +9230,6 @@
           "54dee18f5c": "Skrýt formulář",
           "54ebacc600": "Název serveru",
           "55fcc964cd": "na serveru a vložte vytištěnou párovací URL.",
-          "5ef712f407": "Server s názvem „{{value0}}“ již existuje.",
           "62ac182a27": "Aktualizovat klienta",
           "64b6bea541": "Výchozí hostitel pro nové projekty",
           "6cb6eae14f": "Nepodařilo se uložit běhové prostředí.",
@@ -9247,6 +9270,7 @@
           "connectToRemoteServersHelp": "Spárujte jiné běhové prostředí Orca a poté jej zde připojte nebo odpojte.",
           "connectWorkflow": "Připojit se k hostiteli",
           "connectWorkflowHelp": "Tato aplikace se připojuje k jinému počítači",
+          "connectedNewProjectsHint": "Připojeno k {{value0}}. Chcete-li nové projekty ve výchozím nastavení vytvářet zde, zvolte tento server v části „Nové projekty otevírat na“.",
           "d25f0688b1": "Odebrat",
           "d2e00809e4": "Přepnout",
           "d570c35a99": "Přepnout server",
@@ -9266,12 +9290,16 @@
           "managedAccessRevoked": "{{value0}} již nepřijímá tento počítač a Orca se s ním nedokázala znovu spárovat přes SSH. Zkuste se připojit znovu.",
           "orcaVersion": "Orca v{{value0}}",
           "orcaVersionLastSeen": "Orca v{{value0}} (naposledy viděno)",
+          "pairedTwice": "Stejný server jako {{value0}}, spárovaný dvakrát. Jeden odeberte, aby bylo možné upravovat jeho projekty.",
           "removeActiveServerBlocked": "Tento server je výchozím hostitelem pro nové projekty. Než jej odeberete, zvolte v části Pokročilé jiný.",
           "removeActiveServerDescription": "Tento server je výchozím hostitelem pro nové projekty. Než jej odeberete, zvolte v části Pokročilé jiný. Stávající relace na hostiteli zůstanou nedotčeny.",
+          "removeDefaultServerBlocked": "Tento server je výchozím hostitelem pro nové projekty. Než jej odeberete, zvolte jiný v části „Nové projekty otevírat na“.",
+          "removeDefaultServerDescription": "Tento server je výchozím hostitelem pro nové projekty. Než jej odeberete, zvolte jiný v části „Nové projekty otevírat na“. Stávající relace na hostiteli zůstanou nedotčeny.",
           "repair": "Spárovat znovu…",
           "reviewServerUpdates": "Zkontrolovat aktualizace serverů",
           "runtimeReachable": "{{value0}} je dostupný.",
           "serverAccessRevoked": "Přístup odvolán",
+          "serverAlreadyPaired": "Tento server je již spárován jako {{value0}}; jeho připojení bylo aktualizováno.",
           "serverChecking": "Kontrola…",
           "serverConnected": "Připojeno",
           "serverDetails": "Podrobnosti o serveru",
@@ -9302,6 +9330,8 @@
           "accessLinkHelp": "Orca před připojením zobrazí cíl. Přihlašovací údaje zůstanou skryté.",
           "accessLinkPlaceholder": "orca://pair?code=...",
           "addHost": "Přidat hostitele",
+          "addServer": "Přidat server",
+          "addServerWithTunnel": "Přidat server pomocí tunelu",
           "addWithTunnel": "Přidat hostitele přes tunel",
           "advanced": "Pokročilé",
           "cancel": "Zrušit",
@@ -9312,6 +9342,7 @@
           "endpointKind": "Typ koncového bodu",
           "getLink": "Získejte přístupový odkaz z jiného hostitele",
           "headlessHelp": "Používáte orca serve bez grafického rozhraní? Spusťte na jiném počítači příkaz orca serve --pairing-address <reachable-host>.",
+          "headlessHelpPrefix": "Používáte Orca bez okna? Na daném počítači spusťte",
           "identityMismatch": "Dosažený hostitel Orca neodpovídá tomuto přístupovému odkazu",
           "identityMismatchHelp": "Orca se dostala na {{endpoint}}, ale tento hostitel neodpovídá odkazu. Vytvořte nový odkaz na jiném hostiteli.",
           "incompatible": "Verze Orca nejsou kompatibilní",
@@ -9322,16 +9353,20 @@
           "invalidLinkHelp": "Vytvořte na jiném hostiteli nový přístupový odkaz a zkuste to znovu.",
           "loopbackDescription": "Používá {{endpoint}}, který odkazuje zpět na zařízení otevírající odkaz — nikoli na jiný počítač, který jej vytvořil.",
           "loopbackRecovery": "Na jiném počítači vytvořte nový odkaz pomocí možnosti „Jiné zařízení“ a zvolte jeho adresu v Tailscale nebo místní síti.",
+          "loopbackRecoveryTunnel": "Na druhém počítači otevřete „Sdílet tento počítač“ a vytvořte odkaz pro „Jiné zařízení“ s jeho adresou v síti Tailscale nebo LAN. Pokud se k němu připojujete přes SSH tunel, zapněte níže uvedenou možnost.",
           "loopbackTitle": "Tento odkaz odkazuje zpět na toto zařízení",
           "name": "Název v Orca",
           "nameHelp": "Tímto se změní pouze to, jak se počítač zobrazuje v Orca.",
+          "nameLabel": "Název",
           "namePlaceholder": "Pracovní stanice Linux",
           "networkConnection": "Síťové připojení",
           "notAttempted": "Neprovedeno",
+          "optional": "(volitelné)",
           "saveFailed": "Hostitele se nepodařilo uložit",
           "saveFailedHelp": "Hostitel byl ověřen, ale Orca jej nedokázala uložit. Zkontrolujte název a místní úložiště nastavení a zkuste to znovu.",
           "sshTunnel": "Používám tunel SSH k této místní adrese",
           "sshTunnelHelp": "Ponechte tunel aktivní, dokud toto připojení používáte.",
+          "sshTunnelReach": "K této adrese přistupuji přes SSH tunel",
           "stepChooseAddress": "Vyberte „Jiné zařízení“ a zvolte dostupnou adresu.",
           "stepCopyLink": "Vytvořte odkaz a poté zkopírujte odkaz „Spárovat jiného klienta Orca“.",
           "stepOpenShare": "Otevřete Nastavení → Vzdálené servery Orca → Sdílet tohoto hostitele.",
@@ -9359,10 +9394,15 @@
           "8de0f84fff": "Vytvořit přístupový odkaz",
           "95b8be4cea": "Nepodařilo se obnovit síťová rozhraní.",
           "9f8e037c4a": "Sdílený přístup odvolán.",
+          "accessLinkHelp": "Vložte tento odkaz do pole „Přidat server“ v druhé aplikaci Orca.",
+          "accessLinkLabel": "Přístupový odkaz",
           "add-custom": "Přidat vlastní adresu…",
+          "addressLabel": "Adresa",
           "anotherDevice": "Jiné zařízení",
           "anotherDeviceHelp": "Tailscale, místní síť nebo jiná dostupná adresa",
           "b91e36a986": "web",
+          "browserLinkLabel": "Odkaz pro prohlížeč",
+          "createLink": "Vytvořit odkaz",
           "custom-cancel": "Zrušit",
           "custom-description": "Nabídněte adresu, na kterou se jiné zařízení dokáže dostat — hostitele v místní síti nebo Tailscale, případně úplnou URL ws(s)://.",
           "custom-hint": "Zadejte host, host:port nebo URL ws(s)://.",
@@ -9389,10 +9429,14 @@
           "noExternalAddress": "Nebyla nalezena adresa pro jiné zařízení. Připojte tento počítač k místní síti nebo Tailscale, obnovte seznam nebo zvolte „Vlastní adresa“.",
           "pairedRunsAsYou": "Spárovaný klient může na tomto počítači spouštět příkazy vaším jménem.",
           "recommended": "Doporučeno",
-          "staleAddress": "Adresa připojení se změnila. Vytvořte nový odkaz pro {{address}}."
+          "staleAddress": "Adresa připojení se změnila. Vytvořte nový odkaz pro {{address}}.",
+          "staleAddressCreate": "Adresa připojení se změnila. Vytvořte nový odkaz pro {{address}}.",
+          "thisComputer": "Tento počítač",
+          "whoOpens": "Kdo odkaz otevře"
         },
         "RuntimeRepairDialog": {
           "description": "{{name}} již nepřijímá tento počítač. Na hostiteli {{name}} otevřete Nastavení → Vzdálené servery Orca → Sdílet tohoto hostitele, vytvořte odkaz pro jiného klienta Orca a vložte jej sem.",
+          "descriptionShareComputer": "{{name}} již nepřijímá tento počítač. Na hostiteli {{name}} otevřete Nastavení → Vzdálené servery Orca → Sdílet tento počítač, vytvořte odkaz pro jinou aplikaci Orca a vložte jej sem.",
           "failed": "Opětovné spárování selhalo",
           "submit": "Spárovat znovu",
           "success": "Znovu spárováno s {{name}}",
@@ -9474,6 +9518,7 @@
           "linearDescription": "Jak Linear v Orca funguje, kontrolní seznam nastavení, dovednost agenta a ukázkové prompty.",
           "linearTitle": "Linear",
           "mobile_group": "Mobilní zařízení",
+          "remoteServersDescription": "Spusťte Orca na jiném počítači a pracujte na něm odsud.",
           "tasksDescription": "Připojte poskytovatele, nainstalujte dovednost Linear a zvolte, co se zobrazuje v části Úkoly."
         },
         "SettingsFormControls": {
@@ -9656,7 +9701,8 @@
           "fe1f2c6572": "Upravit {{value0}}"
         },
         "SshDestructiveActionDialog": {
-          "895b216267": "Zrušit"
+          "895b216267": "Zrušit",
+          "moreTargets": "+{{count}} dalších"
         },
         "SshPane": {
           "0cda732f43": "Test připojení selhal",
@@ -9671,6 +9717,8 @@
           "a0237eb1ca": "Cíl odebrán",
           "a43de1d3ee": "Odpojení selhalo",
           "a7d28dff81": "Přidejte vzdáleného hostitele, abyste se k němu mohli v Orca připojit.",
+          "addHost": "Přidat hostitele",
+          "alreadyInSync": "~/.ssh/config je již synchronizován",
           "b4ba0ce33d": "Cíl aktualizován",
           "c0f1c80166": "Nejsou nakonfigurovány žádné SSH cíle.",
           "c2a69510e3": "Cíl se nepodařilo odebrat",
@@ -9678,11 +9726,31 @@
           "f1fc50dad2": "Nepodařilo se načíst SSH cíle",
           "f495689b82": "Import selhal",
           "f602009125": "Cíl přidán",
+          "noFilterMatch": "Žádný hostitel neodpovídá.",
           "syncedServerPlural": "Synchronizováno serverů: {{count}}",
           "syncedServerPlural_few": "Synchronizovány {{count}} servery",
           "syncedServerPlural_many": "Synchronizováno {{count}} serverů",
           "syncedServerPlural_one": "Synchronizován {{count}} server",
           "syncedServerSingular": "Synchronizován {{count}} server"
+        },
+        "SshPaneToolbar": {
+          "clear": "Vymazat",
+          "clearFilter": "Vymazat filtr",
+          "filter": "Filtrovat hostitele",
+          "hiddenDeselectedPlural": "Zrušen výběr skrytých hostitelů: {{count}}",
+          "hiddenDeselectedSingular": "Zrušen výběr {{count}} skrytého hostitele",
+          "hostCount": "Hostitelů: {{count}}",
+          "more": "Další akce pro SSH hostitele",
+          "removeSelected": "Odebrat {{count}}",
+          "restoreRemoved": "Obnovit odebrané hostitele…",
+          "restoreRemovedCount": "Obnovit odebrané hostitele ({{count}})…",
+          "restoreRemovedLoading": "Obnovit odebrané hostitele",
+          "restoreRemovedNone": "Žádní odebraní hostitelé k obnovení",
+          "selectAll": "Vybrat všech {{count}}",
+          "selectMatching": "Vybrat všech {{count}} odpovídajících",
+          "selected": "Vybráno: {{count}}",
+          "sync": "Synchronizovat ~/.ssh/config",
+          "testSelected": "Testovat"
         },
         "SshPassphraseDialog": {
           "106bd57f4a": "Heslo SSH",
@@ -9703,6 +9771,12 @@
           "d5a234456f": "Zrušit",
           "dbf9b6f2d0": "Zadejte heslo pro"
         },
+        "SshRestoreRemovedHosts": {
+          "confirm": "Obnovit",
+          "description": "Hostitelé ze souboru ~/.ssh/config, které jste v aplikaci Orca odebrali, se znovu objeví v Nastavení a ve všech výběrech hostitelů.",
+          "none": "Žádní odebraní hostitelé ze souboru ~/.ssh/config.",
+          "title": "Obnovit odebrané hostitele?"
+        },
         "SshTargetCard": {
           "0e53e9f8e8": "Otestovat",
           "1810b51482": "Připojování",
@@ -9713,11 +9787,26 @@
           "4c86f30877": "Odpojit",
           "7f7b3d7ab4": "Odebrat cíl",
           "ec6543cee9": "Připojit",
-          "f0871e6bfb": "connect"
+          "edit": "Upravit…",
+          "f0871e6bfb": "connect",
+          "moreActions": "Další akce pro {{label}}",
+          "orcaServer": "Server Orca",
+          "remove": "Odebrat…",
+          "removing": "Odebírání…",
+          "select": "Vybrat {{label}}",
+          "testConnection": "Testovat připojení",
+          "testing": "Testování…"
         },
         "SshTargetDestructiveActions": {
           "3bb0cf0ee4": "Tímto se cíl odebere a ukončí se všechny aktivní vzdálené terminály.",
-          "4808966c41": "Odebrat SSH cíl"
+          "4808966c41": "Odebrat SSH cíl",
+          "bulkAction": "Odebrat {{count}}",
+          "bulkConnectedPlural": "Připojených hostitelů: {{count}}. Jejich vzdálené terminály budou ukončeny.",
+          "bulkConnectedSingular": "Je připojen {{count}} hostitel. Jeho vzdálené terminály budou ukončeny.",
+          "bulkDescription": "Odebraní hostitelé zmizí z výběrů hostitelů v pracovních prostorech, automatizacích a v postranním panelu. Váš soubor ~/.ssh/config se nezmění a pozdější synchronizace je nevrátí zpět.",
+          "bulkProgress": "Odebírání: {{done}} z {{count}}…",
+          "bulkTitlePlural": "Odebrat SSH hostitelů: {{count}}?",
+          "bulkTitleSingular": "Odebrat {{count}} SSH hostitele?"
         },
         "SshTargetForm": {
           "11bcb4507a": "bastion.example.com",
@@ -9735,6 +9824,7 @@
           "9518545cb6": "Přidat cíl",
           "a62b4cb39a": "Uložit změny",
           "addDescription": "Přidejte trvalý počítač, na který se můžete přihlásit přes SSH.",
+          "addHost": "Přidat hostitele",
           "addTitle": "Přidat SSH hostitele",
           "allowRemoteCliControl": "Povolit orca CLI tohoto hostitele ovládat Orca",
           "allowRemoteCliControlHelp": "U nových hostitelů je ve výchozím nastavení zapnuto. Umožňuje příkazům orca spuštěným na tomto hostiteli otevírat a ovládat karty prohlížeče Orca na tomto počítači, a to pouze v pracovních prostorech tohoto hostitele a pouze po dobu jeho připojení; terminálům spuštěným starší verzí Orca na tomto hostiteli pak umožňuje spouštět příkazy orchestrace (check, inbox, send, ask, reply) pro svou vlastní práci pod dohledem. Vaše soubory, schránku ani soubory cookie číst nemohou. Pokud je vypnuto, mají přístup pouze k vlastnímu serveru Orca tohoto hostitele.",
@@ -9754,6 +9844,14 @@
           "f42d844544": "např. cloudflared access ssh --hostname %h",
           "fea9cb402e": "Zrušit",
           "feae1d1e69": "Volitelné. Ekvivalent k ProxyJump / ssh -J."
+        },
+        "SshTargetList": {
+          "addedInOrca": "Přidáno v Orca",
+          "filteredCount": "{{count}} z {{total}}",
+          "fromConfig": "Ze souboru ~/.ssh/config",
+          "selectConfigGroup": "Vybrat všechny hostitele ze souboru ~/.ssh/config",
+          "selectGroup": "Vybrat vše v této skupině",
+          "selectManualGroup": "Vybrat všechny hostitele přidané v Orca"
         },
         "TaskSourceLinearSetup": {
           "addAccess": "Přidat přístup k Linear",
@@ -11662,8 +11760,11 @@
         "managedServers": {
           "access": {
             "cancelLink": "Zrušit",
+            "chooseHost": "Vyberte hostitele",
+            "connect": "Připojit",
             "link": "Použít SSH",
             "linked": "{{name}} přes SSH",
+            "linkedRoute": "Připojeno přes {{host}}, port serveru {{port}}.",
             "linking": "Připojování…",
             "pendingLink": "Připojení přes SSH se nedokončilo.",
             "pendingUnlink": "Zastavení přístupu přes SSH se nedokončilo.",
@@ -11708,6 +11809,7 @@
           "loadFailed": "Orca nedokázala načíst SSH hostitele a nedokončené přesuny. Znovu otevřete Nastavení a zkuste to znovu.",
           "outcome": {
             "activeServer": "Nedokončeno: tento server je výchozím hostitelem pro nové projekty. Než jej zastavíte, zvolte jiný v části Pokročilé.",
+            "defaultServer": "Nedokončeno: tento server je výchozím hostitelem pro nové projekty. Než jej zastavíte, zvolte jiný v části „Nové projekty otevírat na“.",
             "deferred": "Zatím nedokončeno: server na to není připraven. Zkuste to později.",
             "failed": "Orca to na serveru nedokázala dokončit. Zkuste to znovu.",
             "live": "Nedokončeno: na tomto serveru stále běží terminály. Zavřete je a zkuste to znovu.",
@@ -11723,6 +11825,7 @@
             "retired": "Dokončeno",
             "staged": "Kopie připravena"
           },
+          "reassurance": "Běží na každém hostiteli, připojení probíhá přes vaše vlastní SSH spojení. Váš kód a soubory zůstávají na svém místě. Na hostitele se přesouvá pouze seznam projektů, karet a terminálů v aplikaci Orca.",
           "recovery": {
             "activate": "Aktualizace byla přerušena",
             "decommission": "Zastavení bylo přerušeno",
@@ -11742,14 +11845,18 @@
             "keepState": "Ponechat stav",
             "migration": "Přesun: {{phase}}",
             "notRunning": "Neběží",
+            "orcaVersion": "Orca na tomto hostiteli: {{version}}",
             "recover": "Obnovit",
             "refresh": "Obnovit stav",
             "rollback": "Vrátit změny",
             "statusUnknown": "Stav neznámý",
             "stop": "Zastavit…",
-            "update": "Aktualizovat"
+            "stopOrcaDescription": "Zastaví Orca na SSH hostiteli a odebere jej z tohoto seznamu.",
+            "update": "Aktualizovat",
+            "updateOrcaOnHost": "Aktualizovat Orca na tomto hostiteli"
           },
           "search": {
+            "keywordFormerName": "spravované servery",
             "keywordSsh": "ssh",
             "title": "Spravované servery"
           },
@@ -11876,6 +11983,30 @@
           "confirm": "Přesto přesunout",
           "description": "Orca přesune tohoto hostitele na jeho spravovaný server bez níže uvedených uložených položek. Ty zůstanou na tomto počítači a na spravovaném serveru se neobjeví. Neuložené úpravy zůstanou zachovány a nikdy se neodstraní.",
           "title": "Přesto přesunout tohoto hostitele"
+        },
+        "networkAddress": {
+          "lan": "Místní síť · {{address}}",
+          "loopback": "Tento počítač · {{address}}",
+          "tailscale": "Tailscale · {{address}}"
+        },
+        "nodeDistMirrorDialog": {
+          "action": "Použít zrcadlo Node.js…",
+          "cancel": "Zrušit",
+          "checksum": "Každé stažení je stále kontrolováno proti kontrolnímu součtu, který Orca pro toto vydání Node.js vyžaduje. Uloženo do Nastavení > Pokročilé > Síť.",
+          "description": "Server Orca vyžaduje Node.js a tento počítač ani tento hostitel jej nedokázaly stáhnout z nodejs.org. Zrcadlo je kopie nodejs.org/dist, kterou Orca na obou počítačích vyzkouší přednostně.",
+          "openSetting": "Otevřít nastavení zrcadla",
+          "refusal": {
+            "credentials": "URL zrcadla nesmí obsahovat uživatelské jméno ani heslo.",
+            "invalid": "Zadejte platnou URL adresu zrcadla.",
+            "protocol": "Použijte URL adresu zrcadla s protokolem http nebo https.",
+            "query": "URL zrcadla nesmí obsahovat dotaz ani fragment.",
+            "tooLong": "URL zrcadla je příliš dlouhá."
+          },
+          "retryFailed": "Připojení selhalo",
+          "save": "Uložit a zkusit znovu",
+          "saveFailed": "Aplikaci Orca se nepodařilo zrcadlo uložit.",
+          "title": "Použít zrcadlo Node.js",
+          "urlLabel": "URL zrcadla"
         },
         "notifications": {
           "search": {
@@ -12021,10 +12152,12 @@
         },
         "providerAccountScope": {
           "localCredentials": "Přihlašovací údaje a kontroly účtů tohoto poskytovatele patří tomuto desktopovému klientovi. Chcete-li používat server, změňte Nastavení > Vzdálené servery Orca > Pokročilé > Výchozí hostitel pro nové projekty.",
+          "localCredentialsNewProjects": "Přihlašovací údaje a kontroly účtů tohoto poskytovatele patří tomuto desktopovému klientovi. Chcete-li používat server, změňte Nastavení > Vzdálené servery Orca > Nové projekty otevírat na.",
           "localMac": "Místní Mac",
           "localRateLimit": "Rozpočet API {{value0}} se načítá z CLI na tomto desktopovém klientovi. Chcete-li zobrazit rozpočet serveru, zvolte jej v nabídce Hostitel v horní části Nastavení.",
           "remoteServer": "Vzdálený server: {{value0}}",
           "remoteServerCredentials": "Přihlašovací údaje a kontroly účtů tohoto poskytovatele patří tomuto vzdálenému serveru. Chcete-li používat jiného hostitele, změňte Nastavení > Vzdálené servery Orca > Pokročilé > Výchozí hostitel pro nové projekty.",
+          "remoteServerCredentialsNewProjects": "Přihlašovací údaje a kontroly účtů tohoto poskytovatele patří tomuto vzdálenému serveru. Chcete-li používat jiného hostitele, změňte Nastavení > Vzdálené servery Orca > Nové projekty otevírat na.",
           "remoteServerRateLimit": "Rozpočet API {{value0}} se načítá z CLI na tomto vzdáleném serveru. Chcete-li zobrazit rozpočet jiného hostitele, zvolte jej v nabídce Hostitel v horní části Nastavení."
         },
         "quick": {
@@ -12219,7 +12352,9 @@
               "5cd7dca3b8": "vzdálený",
               "772e3b4753": "vm",
               "81444c4102": "párovací URL",
+              "accessLinkKeyword": "přístupový odkaz",
               "activeServerKeyword": "aktivní server",
+              "addShareDefault": "Přidejte vzdálený server Orca, sdílejte tento počítač nebo zvolte, kde se otevírají nové projekty.",
               "baec27aa8f": "Připojte tento prohlížeč k uloženému serveru Orca.",
               "c6e5a03aa0": "vývojový stroj",
               "d198440ce3": "běhové prostředí",
@@ -12227,9 +12362,88 @@
               "defaultHostKeyword": "výchozí hostitel",
               "ebd5369acf": "prostředí",
               "f1575f1e09": "webový klient",
-              "newProjectsKeyword": "nové projekty"
+              "installKeyword": "instalovat server",
+              "newProjectsKeyword": "nové projekty",
+              "shareComputerKeyword": "sdílet tento počítač"
             }
           }
+        },
+        "serverList": {
+          "activeLinks": "Aktivních odkazů: {{value0}}",
+          "addDescriptionShort": "Vložte přístupový odkaz ze sekce „Sdílet tento počítač“ na druhém počítači.",
+          "addServer": "Přidat server",
+          "addSshHost": "Přidat SSH hostitele",
+          "addTitle": "Přidat server",
+          "address": "Adresa",
+          "cancel": "Zrušit",
+          "capabilities": "Schopnosti",
+          "checkForUpdates": "Zkontrolovat aktualizace",
+          "close": "Zavřít",
+          "cloudVm": "Cloudový virtuální stroj (VM)",
+          "cloudVmHelp": "Vytváří se pro každý pracovní prostor z předpisu prostředí.",
+          "connecting": "Připojování…",
+          "copied": "Chyba zkopírována",
+          "copyError": "Kopírovat chybu",
+          "copyFailed": "Chybu se nepodařilo zkopírovat.",
+          "defaultChip": "Výchozí",
+          "defaultHostEmptyLine": "Dokud nepřidáte server, nové projekty se otevírají na tomto počítači.",
+          "defaultHostHelp": "Stávající projekty zůstanou tam, kde jsou.",
+          "defaultHostLabel": "Nové projekty otevírat na",
+          "defaultHostWebHelp": "Tento prohlížeč otevírá nové projekty na vybraném serveru.",
+          "details": "Podrobnosti",
+          "disconnecting": "Odpojování…",
+          "done": "Hotovo",
+          "editName": "Upravit",
+          "emptyDescription": "Spárujte vývojový server, cloudový stroj nebo domácí počítač. Jeho relace na něm poběží dál, i když tento počítač přejde do režimu spánku.",
+          "hideDetails": "Skrýt podrobnosti",
+          "hideError": "Skrýt chybu",
+          "installHostHelp": "Pouze hostitelé bez serveru Orca.",
+          "installHostPlaceholder": "Vyberte SSH hostitele bez Orca",
+          "installNamePlaceholder": "Stejný jako SSH hostitel",
+          "installNoHosts": "Žádní SSH hostitelé bez serveru Orca.",
+          "lastSeen": "Naposledy viděno {{when}}",
+          "loopbackTip": "Adresa 127.0.0.1 funguje pouze přes SSH tunel.",
+          "makeDefault": "Otevírat zde nové projekty",
+          "manualUpdate": "Aktualizovat Orca na hostiteli serveru",
+          "moreActions": "Další akce pro {{name}}",
+          "moreActionsTooltip": "Další akce",
+          "moreWaysToAdd": "Další způsoby přidání serveru",
+          "movePaused": "Přesun pozastaven",
+          "needsUpdate": "Vyžaduje aktualizaci",
+          "neverConnected": "Nikdy nepřipojeno",
+          "noSavedServers": "Žádné uložené servery",
+          "oneActiveLink": "1 aktivní odkaz",
+          "overYourSsh": "Přes vaše SSH spojení",
+          "pasteAccessLink": "Vložit přístupový odkaz",
+          "pasteAccessLinkHelp": "Spárovat s aplikací Orca již běžící na jiném počítači.",
+          "protocol": "Protokol",
+          "remove": "Odebrat…",
+          "retry": "Opakovat",
+          "route": "Trasa",
+          "setUp": "Nastavit",
+          "setUpDone": "Orca je na {{name}} nastavena.",
+          "setUpOnSshHost": "Nastavit Orca na SSH hostiteli",
+          "settingUpInBackground": "Nastavování aplikace Orca na {{name}} probíhá na pozadí. Jakmile bude připravena, objeví se v seznamu.",
+          "shareDialogDescriptionRuns": "Kdokoli s tímto odkazem může na tomto počítači spouštět příkazy vaším jménem, dokud odkaz neodvoláte.",
+          "shareTitle": "Sdílet tento počítač",
+          "showError": "Zobrazit chybu",
+          "shownAs": "Ostatním se zobrazuje jako {{name}}",
+          "sshAccess": "Připojit přes SSH…",
+          "sshAccessLinked": "Trasa SSH…",
+          "sshDialogDescription": "Použijte, pokud server není dostupný přímo. Orca otevře tunel přes SSH hostitele.",
+          "sshDialogTitle": "Připojit {{name}} přes SSH",
+          "sshTunnelChip": "SSH tunel",
+          "tailscaleTip": "Toto je adresa Tailscale, takže oba počítače musí být přihlášeny ke stejné síti tailnet.",
+          "thisComputer": "Tento počítač",
+          "throughSsh": "Přes {{host}} → port {{port}}",
+          "unreachable": "Nedostupný",
+          "unreachableHint": "Zkontrolujte, zda Orca na serveru běží a zda se tento počítač dokáže připojit na jeho adresu.",
+          "unreachableLead": "Aplikaci Orca se nepodařilo s tímto serverem spojit.",
+          "updateAll": "Aktualizovat vše ({{count}})",
+          "updateAvailable": "Dostupná v{{version}}",
+          "updateFailedLead": "Poslední aktualizace nebyla dokončena.",
+          "updateMenu": "Aktualizovat…",
+          "version": "v{{version}}"
         },
         "settingOwnership": {
           "agentLaunchDefaults": "Výchozí agent, přepsání příkazů, argumenty CLI a prostředí spuštění se ukládají na vybraném hostiteli.",
@@ -12359,6 +12573,19 @@
             "f9493b80c0": "server"
           }
         },
+        "sshBulkRemove": {
+          "failedCount": "Selhalo: {{count}}",
+          "removedCount": "Odebráno: {{count}}",
+          "skippedCount": "Přeskočeno: {{count}}",
+          "skippedHint": "Chcete-li zvolit, co se s přeskočenými hostiteli stane, odebírejte je po jednom.",
+          "skippedManaged": "{{label}} má server Orca.",
+          "skippedWorkspaces": "{{label}} má pracovní prostory."
+        },
+        "sshBulkTest": {
+          "alreadyConnected": "Již připojeno: {{count}}",
+          "failed": "Selhalo: {{count}}",
+          "passed": "Dostupných: {{count}}"
+        },
         "sshHostServer": {
           "behindCheckFailed": "Používá spravovaný server Orca; Orca nemohla ověřit, zda nezaostává za touto aplikací.",
           "behindMigrating": "Používá spravovaný server Orca, který se aktualizuje po dokončení přesunu jeho projektů.",
@@ -12385,6 +12612,9 @@
           "linkedProjects_one": "Server Orca tohoto hostitele už obsahoval {{paths}}, takže tento počítač nyní používá kopii na serveru. Karty tohoto počítače a jeho {{count}} automatizace tam nebyly přesunuty a pracovní stromy, které tam vytvořil, se zobrazují jako externí.",
           "linkedProjects_other": "Server Orca tohoto hostitele už obsahoval {{paths}}, takže tento počítač nyní používá kopii na serveru. Karty tohoto počítače a jeho {{count}} automatizací tam nebyly přesunuty a pracovní stromy, které tam vytvořil, se zobrazují jako externí.",
           "moveHeld": "Orca pozastavila přesun projektů tohoto hostitele na jeho spravovaný server, protože nemohla ověřit kopii na serveru. Nic se neztratilo: hostitel si projekty ponechá a zůstane uzamčen, dokud přesun neskončí. Pro pokračování se připojte znovu. Pokud se server nemůže vrátit, zastavte jej nebo na něj zapomeňte v Nastavení > Spravované servery.",
+          "nodeDownloadBlocked": "Tento počítač ani tento hostitel nedokázaly stáhnout Node.js, který server Orca potřebuje. Použijte zrcadlo Node.js nebo zkontrolujte síť na obou počítačích.",
+          "nodeDownloadBlockedMirrorTried": "Tento počítač ani tento hostitel nedokázaly stáhnout Node.js, a to ani ze zrcadla pro stažení Node.js. Zkontrolujte nastavení zrcadla a poté se připojte znovu.",
+          "nodeDownloadBlockedNoMirror": "Tento počítač ani tento hostitel nedokázaly stáhnout Node.js, který server Orca potřebuje. Zkontrolujte síť nebo proxy na obou počítačích a poté se připojte znovu.",
           "notServing": "Orca nemohla ověřit, zda spravovaný server odpovídá.",
           "olderTerminals": "Na tomto hostiteli stále běží terminály ({{count}}) spuštěné starší verzí Orca a samy se nezastaví. Zavřete je v oné verzi Orca nebo je ukončete na hostiteli a poté se připojte znovu.",
           "olderTerminalsBridged": "Zatím nepřesunuto na spravovaný server: v projektech tohoto hostitele stále běží terminály spuštěné starší verzí Orca. Tady dál fungují. Zavřete je nebo je ukončete na hostiteli a poté se připojte znovu.",
@@ -12394,6 +12624,7 @@
           "olderTerminals_many": "Na tomto hostiteli stále běží {{count}} terminálů spuštěných starší verzí Orca a samy se nezastaví. Zavřete je v oné verzi Orca nebo je ukončete na hostiteli a poté se připojte znovu.",
           "olderTerminals_one": "Na tomto hostiteli stále běží {{count}} terminál spuštěný starší verzí Orca a sám se nezastaví. Zavřete jej v oné verzi Orca nebo jej ukončete na hostiteli a poté se připojte znovu.",
           "olderTerminals_other": "Na tomto hostiteli stále běží terminály ({{count}}) spuštěné starší verzí Orca a samy se nezastaví. Zavřete je v oné verzi Orca nebo je ukončete na hostiteli a poté se připojte znovu.",
+          "reassurance": "Běží na {{host}}, připojení probíhá přes vaše vlastní SSH spojení. Váš kód a soubory zůstávají na svém místě. Na {{host}} se přesouvá pouze seznam projektů, karet a terminálů v aplikaci Orca.",
           "refusedBlocked": "Nepřesunuto na spravovaný server: něco na tomto hostiteli přesunu brání.",
           "runtimeNoexec": "Tento hostitel nepovoluje spouštění programů z ~/.orca-remote, takže tam Orca nemůže spustit svůj server. Obvykle to znamená, že domovská složka je připojena s volbou noexec. Požádejte správce hostitele o povolení spouštění programů a poté se připojte znovu.",
           "setupContactLost": "Orca ztratila kontakt s tímto hostitelem během nastavování jeho serveru. Na hostiteli nebylo nic zastaveno. Pro pokračování se připojte znovu.",
@@ -12409,7 +12640,9 @@
         },
         "sshManagedHostRemove": {
           "description": "Na {{label}} běží spravovaný server Orca. V části Spravované servery použijte Zastavit… k odstranění serveru z hostitele, nebo Zapomenout… pokud hostitel zmizel. Poté můžete tento SSH hostitel odebrat.",
-          "open": "Otevřít Spravované servery"
+          "descriptionServerHost": "Orca běží na {{label}}. V části Vzdálené servery Orca otevřete nabídku ⋯ u {{label}} a zvolte Zastavit…, chcete-li Orca z hostitele odebrat, nebo Zapomenout…, pokud hostitel již neexistuje. Poté můžete tohoto SSH hostitele odebrat.",
+          "open": "Otevřít Spravované servery",
+          "openServers": "Otevřít Vzdálené servery Orca"
         },
         "task": {
           "tracker": {
@@ -12878,6 +13111,7 @@
         },
         "wslHosts": {
           "add": "Přidat distribuci WSL",
+          "chip": "WSL",
           "connect": "Připojit",
           "description": "Orca spouští server v každé distribuci. Zastavená distribuce se spustí, až když otevřete některý z jejích projektů, nebo ji zde připojíte.",
           "experimental": "Experimentální",
@@ -12984,10 +13218,12 @@
           "pairingCodePlaceholder": "orca://pair?code=...",
           "pairingCommand": "orca serve --pairing-address <host>",
           "pairingHelpPrefix": "Spusťte",
+          "pairingHelpShareComputer": "Vytvořte jej v části Nastavení → Vzdálené servery Orca → Sdílet tento počítač na druhém počítači.",
           "pairingHelpSuffix": "na serveru a vložte vytištěnou párovací URL.",
           "port": "Port",
           "save": "Uložit",
           "saving": "Ukládání…",
+          "serverAlreadyPaired": "Tento server je již spárován jako {{value0}}; jeho připojení bylo aktualizováno.",
           "serverDescription": "Spárovat s Orca spuštěnou na jiném počítači.",
           "serverFieldsRequired": "Název serveru a párovací kód jsou povinné.",
           "serverName": "Název serveru",
@@ -13411,7 +13647,8 @@
         },
         "PendingWorktreeRow": {
           "188f6922a0": "Zrušit",
-          "af21e953d1": "Zrušit vytváření pracovního stromu"
+          "af21e953d1": "Zrušit vytváření pracovního stromu",
+          "creatingWorkspace": "Vytváření pracovního prostoru…"
         },
         "PreservedBranchBatchReviewDialog": {
           "285e1e4882": "Zrušit",
@@ -15609,6 +15846,11 @@
             "fbb3f9f05e": "konflikt",
             "fd9a3c600e": "chyba",
             "fdc57e9970": "Stav připojení ke vzdálenému hostiteli",
+            "moreSshHostMatches_one": "Ještě {{count}} shoda. Pokračujte v psaní pro upřesnění.",
+            "moreSshHostMatches_other": "Dalších shod: {{count}}. Pokračujte v psaní pro upřesnění.",
+            "moreSshHosts_one": "Najít ještě {{count}} SSH hostitele…",
+            "moreSshHosts_other": "Hledat mezi dalšími SSH hostiteli ({{count}})…",
+            "noMatchingSshHosts": "Žádný SSH hostitel neodpovídá.",
             "remote_server": "Vzdálený server",
             "runtime_checking": "Kontrola",
             "runtime_connect_unavailable": "Vzdálený hostitel není dostupný",
@@ -15619,7 +15861,8 @@
             "runtime_reconnecting": "Opětovné připojování",
             "runtime_unavailable": "Odpojeno",
             "runtime_unavailable_transport_up": "Orca není dostupná",
-            "runtime_workspace_window_closed": "Okno pracovního prostoru zavřeno"
+            "runtime_workspace_window_closed": "Okno pracovního prostoru zavřeno",
+            "searchSshHosts": "Hledat SSH hostitele…"
           },
           "SshTargetStatusRow": {
             "sshHost": "SSH hostitel"
@@ -17246,6 +17489,9 @@
         "timedOut": "Kopírování trvalo příliš dlouho. Zkuste přetažení znovu.",
         "tooLarge": "Příliš velké pro zkopírování, proto to Orca nemohla předat agentovi."
       },
+      "duplicatePairedServers": {
+        "ambiguousSameServer": "{{value0}} a {{value1}} jsou stejný server spárovaný dvakrát. Jeden odeberte v Nastavení > Vzdálené servery Orca."
+      },
       "ensure": {
         "simulator": {
           "tab": {
@@ -18319,6 +18565,8 @@
         "searchModels": "Hledat modely…",
         "send": "Odeslat",
         "sentNotConfirmed": "Odesláno agentu — bez potvrzení",
+        "sessionAttachmentsFailed": "Chat {{agent}} se nepodařilo otevřít. Použijte možnost Opakovat v chatu a poté soubory přiložte znovu.",
+        "sessionAttachmentsStarting": "Chat {{agent}} se stále otevírá. Počkejte na jeho otevření a poté soubory přiložte znovu.",
         "sessionOptions": "Parametry relace",
         "setWhenSessionStarts": "Nastaví se při spuštění relace.",
         "skillCommandCollision": "Je to také název dovednosti — rozhodne agent",
@@ -18337,6 +18585,7 @@
         "thinking": "Přemýšlení",
         "toggleOption": "Přepnout {{value0}}",
         "tooManyAttachments": "Připojte najednou nejvýše {{value0}} souborů.",
+        "tooManySkills": "Vaše zpráva nebyla odeslána agentovi {{agent}}. Ponechte vybráno nejvýše {{limit}} souborů dovedností a zkuste to znovu.",
         "uploadingFile": "Nahrávání {{name}}…",
         "viewAttachment": "Zobrazit obrázek",
         "workspaceAttachmentMismatch": "Soubory lze připojit jen k pracovnímu prostoru, ze kterého pocházejí.",
@@ -18371,6 +18620,7 @@
       "disableLineWrap": "Vypnout zalamování řádků",
       "dismissDeliveryNotice": "Skrýt",
       "drop": {
+        "messageTitle": "Přetažením připojit k této zprávě",
         "subtitle": "Soubory se přidají do zprávy jako cesty, které agent dokáže přečíst.",
         "title": "Přetáhněte sem pro připojení k tomuto chatu"
       },
@@ -18517,6 +18767,7 @@
         "reconnecting": "{{hostName}} se znovu připojuje…"
       },
       "hostPermission": {
+        "checkAgain": "Zkontrolovat znovu",
         "checking": "Kontrola oprávnění chatu tohoto hostitele…",
         "launchRefused": "Orca nespustila chat {{value0}}",
         "outdatedHost": "Tento hostitel používá starší Orca, která ignoruje oprávnění chatu, takže {{value0}} by se zde spustil bez dotazu. Chcete-li používat {{value1}}, aktualizujte Orca na tomto hostiteli.",
@@ -18583,6 +18834,7 @@
         "collapse": "Sbalit",
         "delete": "Smazat",
         "editChanged": "Tato zpráva se během úprav změnila. Vaše úprava je v poli chatu.",
+        "editChangedNotSaved": "Tato zpráva se během vaší úpravy změnila. Vaše úprava nebyla uložena.",
         "editChangedPrompt": "Tato zpráva se během úprav změnila. Vaše úprava bude v poli chatu poté, co odpovíte agentovi.",
         "editFailed": "Tuto zprávu nelze upravit.",
         "editGone": "Tato zpráva již byla odeslána nebo odebrána. Vaše úprava je v poli chatu.",
@@ -18598,12 +18850,14 @@
         "imageCount_other": "{{count}} obrázků",
         "listLabel": "Zprávy ve frontě",
         "moreActions": "Další akce",
+        "pasteOrDropImages": "Vložte nebo přetáhněte obrázky",
         "paused": "Pozastaveno",
         "pausedSendFailed": "Odeslání se nezdařilo — stisknutím Odeslat zkuste znovu.",
         "pausedSendFailedWaiting": "Odeslání se nezdařilo — až agent skončí, stisknutím Odeslat zkuste znovu.",
         "queued": "Ve frontě",
         "resume": "Obnovit",
         "save": "Uložit",
+        "saveNeedsContent": "Pro uložení přidejte text nebo obrázek",
         "send": "Odeslat",
         "sendHint": "Odeslat tuto zprávu nyní",
         "showFullMessage": "Zobrazit celou zprávu",
@@ -18699,6 +18953,7 @@
       "structuredSessionHostDeclinedDescription": "Tento server nemůže v tomto pracovním prostoru spustit chat {{value0}}.",
       "structuredSessionHostUnreachable": "K {{value0}} se nepodařilo připojit",
       "structuredSessionHostUnreachableDescription": "Orca neotevřela chat {{value0}}. Zkontrolujte připojení k serveru a zkuste to znovu.",
+      "structuredSessionTerminalNotVisible": "Orca otevřela {{value0}} v terminálu, ale po dokončení spuštění jej zde nemohla zobrazit. Váš koncept chatu byl zachován.",
       "subagents": {
         "ranN": "Spuštěno dílčích agentů: {{value0}}",
         "ranOne": "Spuštěn 1 dílčí agent",
@@ -18750,6 +19005,8 @@
         "exitCode": "ukončit {{value0}}",
         "failedCallsLabel": "Neúspěšná volání nástrojů: {{value0}}",
         "failedCount": "{{value0}} se nezdařilo",
+        "fullOutputFailed": "Úplný výstup se nepodařilo načíst.",
+        "fullOutputPartial": "Zobrazeno {{shown}} z {{total}}.",
         "interruptedCallsLabel": "Přerušená volání nástrojů: {{value0}}",
         "interruptedCount": "{{value0}} přerušeno",
         "milliseconds": "{{value0}} ms",
@@ -18832,6 +19089,7 @@
         "runningNamed": "Spouštění {{toolName}}",
         "runningNamedPreview": "Spouštění {{toolName}} {{preview}}",
         "runningPreview": "Spouštění {{preview}}",
+        "showFullOutput": "Zobrazit úplný výstup",
         "usedManySummary": "Použity nástroje: {{toolCount}}",
         "usedOneSummary": "Použit 1 nástroj"
       },
@@ -18888,6 +19146,7 @@
         "notDoneCommand": "Příkaz se nespustil.",
         "notDoneGoal": "Cíl nebyl změněn.",
         "notDoneOption": "Nastavení nebylo změněno.",
+        "notDoneQueuedEdit": "Vaše úprava nebyla uložena.",
         "notDoneReadHistory": "Historii tohoto chatu se nepodařilo načíst.",
         "notDoneSend": "Vaše zpráva nebyla odeslána.",
         "notDoneStop": "Agent nebyl zastaven.",
@@ -20142,6 +20401,16 @@
   "tabHoverCard": {
     "browser": "Prohlížeč",
     "editor": "Editor",
+    "namingFailure": {
+      "description": "Agent pro pojmenování chatu skončil s chybou, takže si chat jako svůj název ponechává svou první zprávu.",
+      "dialogDescriptionEnd": "z jeho první zprávy.",
+      "dialogDescriptionStart": "Orca nemohla vygenerovat název pro",
+      "dialogTitle": "Automatické pojmenování chatu selhalo",
+      "regenerate": "Znovu vygenerovat název",
+      "regenerating": "Opětovné generování…",
+      "title": "Tento chat se nepodařilo pojmenovat",
+      "viewError": "zobrazit chybu"
+    },
     "terminal": "Terminál"
   },
   "terminal": {
@@ -20266,7 +20535,9 @@
   },
   "updates": {
     "installBlock": {
+      "browserGuidance": "Ukončete níže uvedený proces a zkuste to znovu: jeho server poběží dál i bez prohlížeče. Pokud jiný počítač používá tento Mac jako SSH hostitele, aktualizace aplikace Orca na něm umožní prohlížeči samostatně se pozastavit před aktualizací.",
       "browserLabel": "Prohlížeč na pozadí",
+      "browserSummary": "Tuto aplikaci stále používá prohlížeč serveru aplikace Orca na pozadí.",
       "busyGuidance": "Chvíli počkejte a zkuste to znovu. Stažená aktualizace je připravena.",
       "busySummary": "Aktualizaci již instaluje jiná instance aplikace Orca.",
       "busyTitle": "Probíhá aktualizace jiné instance Orca",

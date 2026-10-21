@@ -4,6 +4,8 @@ Skripty, které sestavují a kontrolují tento balíček. Orca je nenačítá: m
 
 | Skript | Co dělá |
 |---|---|
+| [`translation-menu.py`](translation-menu.py) | Interaktivní menu: kontrola aktuálnosti, příprava, prompt do schránky, dokončení překladu a výběr pracovní složky. Spouští se také přes kořenový `prepare-translation.bat`. |
+| [`prepare-update.py`](prepare-update.py) | Jedním příkazem stáhne katalog a pravidla konkrétního vydání, uloží audit a vytvoří novou pracovní složku s bloky, promptem pro agenta a pokyny po překladu. |
 | [`audit-pack.py`](audit-pack.py) | Audituje libovolný jazykový balíček Orca vůči konkrétnímu vydání Orca: zda engine katalog přijme, pokrytí, nepřeložené a zastaralé klíče, posun zástupných symbolů (placeholders). |
 | [`prepare-waves.py`](prepare-waves.py) | Převede anglický katalog `en.json` na dílčí ploché překladové bloky (podle vln či po dávkách), odfiltruje chráněné klíče a připraví podklady pro překlad. |
 | [`build.py`](build.py) | Sestavuje `locales/cs-CZ.json` z bloků překladu a ověřuje jej podle pravidel nejnovějšího stabilního vydání Orca. |
@@ -12,6 +14,17 @@ Skripty, které sestavují a kontrolují tento balíček. Orca je nenačítá: m
 Vyžadují `python3` verze 3.8 nebo novější a autentizované CLI [`gh`](https://cli.github.com/). Spouštějte je z kořenového adresáře repozitáře.
 
 Všechny skripty `audit-pack.py`, `prepare-waves.py`, `build.py` a `release-check.py` mají výstupy i komentáře v češtině, stejně jako glosář: představují vlastní pracovní postup (workflow) tohoto českého balíčku.
+
+## Příprava aktualizace překladu
+
+Pro celý postup spusťte `prepare-translation.bat` v kořeni repozitáře nebo `python tools/translation-menu.py`. Menu si pamatuje pracovní složku, zkopíruje prompt do schránky a po překladu nastaví prostředí, sestaví katalog a provede audit. Ruční příkazy pro jednotlivé kroky zůstávají dostupné:
+
+```powershell
+python tools/prepare-update.py                    # nejnovější stabilní vydání
+python tools/prepare-update.py --release v1.4.237 # konkrétní vydání
+```
+
+Výstup patří do nové složky `.i18n-work/update-…/`. Agentovi předejte tamní `PROMPT.txt`; po překladu zvolte v menu dokončení. Zdrojové bloky zůstávají v `source/`, hotové překlady se ukládají přímo do pracovní složky. Katalog `locales/cs-CZ.json` se při přípravě nemění. Podrobný postup je v hlavním [README](../README.md#postup-překladu-po-vydání-nové-orcy).
 
 ## Audit balíčku
 

@@ -109,6 +109,8 @@ def assign_domain(key):
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--en', default=None, help='Cesta k en.json (výchozí: .i18n-work/en.json)')
+    parser.add_argument('--release', help='Značka vydání pro katalog a pravidla ochrany (výchozí: nejnovější stabilní)')
+    parser.add_argument('--chrome', help='Lokální plugin-translatable-chrome.ts daného vydání')
     parser.add_argument('--chunk-size', type=int, default=500, help='Počet klíčů v jednom souboru (výchozí: 500)')
     parser.add_argument('--by-domain', action='store_true', help='Rozdělit do vln podle funkčních oblastí rozhraní')
     parser.add_argument('--untranslated', action='store_true', help='Generovat pouze klíče, které v cs-CZ.json obsahují azbuku nebo chybí')
@@ -121,7 +123,7 @@ def main():
     en_file = args.en or os.path.join(SCRATCH, 'en.json')
     if not os.path.exists(en_file):
         print(f'Soubor {en_file} nebyl nalezen. Zkouším stáhnout z GitHubu...')
-        stable_tag = fetch_stable_tag() or 'main'
+        stable_tag = args.release or fetch_stable_tag() or 'main'
         r = subprocess.run(
             ['gh', 'api', *RAW, f'repos/{REPO}/contents/{EN_PATH}?ref={stable_tag}'],
             capture_output=True, text=True, encoding='utf-8', errors='replace'
@@ -146,8 +148,12 @@ def main():
         print(f'Načten referenční {os.path.basename(TARGET)}: {len(cs_flat)} klíčů')
 
     # 3. Zjištění povolených výjimek z Orca release
-    stable_tag = fetch_stable_tag()
-    chrome_set = fetch_chrome_allowlist(stable_tag)
+    stable_tag = args.release or (None if args.chrome else fetch_stable_tag())
+    if args.chrome:
+        with open(args.chrome, encoding='utf-8') as f:
+            chrome_set = set(re.findall(r"'(auto\.components\.settings\.[^']+)'", f.read()))
+    else:
+        chrome_set = fetch_chrome_allowlist(stable_tag)
     print(f'Pravidlo ochrany pro {stable_tag or "neznámé vydání"}: {len(chrome_set)} povolených výjimek v allow-listu')
 
     # 4. Filtrace translatabilních klíčů
