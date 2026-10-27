@@ -70,6 +70,9 @@
         "busy": "Pracuje",
         "dontAskAgain": "Znovu se neptat (restartovat automaticky)",
         "dontAskAgainHint": "Toto můžete vypnout v Nastavení → Účty AI poskytovatelů.",
+        "groupCantMove": "Nelze přesunout",
+        "groupElsewhere": "Není na účtu {{account}}",
+        "groupOnAccount": "Běží na účtu {{account}}",
         "idle": "Nečinný",
         "keep": "Ponechat beze změny",
         "keyword": {
@@ -77,6 +80,12 @@
           "running": "běžící"
         },
         "listLabel": "Relace Claude k restartování",
+        "notMovedOne": "1 další relace nebyla přesunuta.",
+        "notMovedOther": "Nebylo přesunuto dalších relací: {{count}}.",
+        "reasonNoSession": "Nelze pokračovat",
+        "reasonOwnFolder": "Používá vlastní složku Claude",
+        "reasonUnknownAccount": "Neznámý účet",
+        "reasonWsl": "Terminál WSL",
         "restartOne": "Restartovat relaci",
         "restartOther": "Restartovat relace: {{count}}",
         "restartOther_few": "Restartovat {{count}} relace",
@@ -87,10 +96,10 @@
         "restartingOther_few": "Restartují se {{count}} relace Claude na účtu {{account}}",
         "restartingOther_many": "Restartuje se {{count}} relací Claude na účtu {{account}}",
         "restartingOther_one": "Restartuje se {{count}} relace Claude na účtu {{account}}",
-        "selectAll": "Vybrat vše",
-        "selectAllSessions": "Vybrat všechny relace",
-        "selectWorkspace": "Vybrat všechny relace v pracovním prostoru {{workspace}}",
-        "selectedCount": "Vybráno {{selected}} z {{total}}",
+        "review": "Revize",
+        "reviewBodyOne": "1 další relace Claude nebyla přesunuta na účet {{next}}.",
+        "reviewBodyOther": "Na účet {{next}} nebyly přesunuty další relace Claude: {{count}}.",
+        "selectGroup": "Vybrat všechny relace ve skupině {{group}}",
         "session": "Relace Claude",
         "settingAsk": "Dotázat se",
         "settingDescription": "Restartování bude pokračovat v každé běžící konverzaci pod novým účtem.",
@@ -251,6 +260,11 @@
         "streamConnectionUnreachable": "Vzdálený server není dostupný.",
         "streamRestartFailed": "Streamování vzdáleného prohlížeče se nepodařilo restartovat."
       },
+      "ClaudeAgentViewIndicator": {
+        "returnHint": "Kliknutím na nadřazený řádek se vrátíte. Esc tohoto dílčího agenta zastaví. Enter odešle váš koncept tomuto dílčímu agentovi.",
+        "viewing": "Aktuálně zobrazeno",
+        "viewingChild": "Zobrazen dílčí agent {{name}}"
+      },
       "CodexRestartChip": {
         "6133594b12": "Ponechat starý účet",
         "9263e75f49": "Codex používá předchozí účet",
@@ -279,7 +293,6 @@
         "00ccdf9b5a": "Stav",
         "00f55cc17b": "Přístup k repozitáři pro tento pull request není k dispozici.",
         "038b3d39b1": "Zkopírováno",
-        "03d7216d62": "{{value0}} PR #{{value1}}?",
         "03e542fcfe": "Nepodařilo se spustit AI agenta pro neúspěšné kontroly: {{value0}}",
         "04539beb48": "issue",
         "06482d6190": "Nepodařilo se automaticky vytvořit opravný pracovní prostor.",
@@ -928,6 +941,16 @@
         "signingIn": "Přihlašování…",
         "waiting": "Čekání na přihlášení v prohlížeči"
       },
+      "PullRequestConfirmation": {
+        "closeTitle": "Zavřít PR #{{number}}?",
+        "mergeLabel": "Vytvořit slučovací commit",
+        "mergeTitle": "Sloučit PR #{{number}} vytvořením slučovacího commitu?",
+        "rebaseLabel": "Sloučit pomocí rebase",
+        "rebaseTitle": "Sloučit PR #{{number}} pomocí rebase?",
+        "reopenTitle": "Znovu otevřít PR #{{number}}?",
+        "squashLabel": "Sloučit se sloučením commitů (squash)",
+        "squashTitle": "Sloučit PR #{{number}} se sloučením commitů (squash)?"
+      },
       "PullRequestPage": {
         "000f90afcf": "Dokončeno",
         "00b7b82329": "zdrojová větev",
@@ -1096,7 +1119,6 @@
         "e6996f4024": "· aktualizováno",
         "eb722a5a8c": "Rozbalit vše",
         "eca289e593": "Sloučení vyžaduje registrovaný lokální repozitář",
-        "eec3706a6a": "{{value0}} PR #{{value1}}?",
         "eff839f438": "Komentář k revizi byl přidán.",
         "f01bf79a79": "kontrola #",
         "f119e5f5ef": "Odpovědět",
@@ -1291,7 +1313,6 @@
         "837bb901ec": "Posuzovatelé odebráni",
         "8396825a14": "Akce",
         "83bce6be5c": "Připojit Jira",
-        "844dc193c7": "{{value0}} PR #{{value1}}?",
         "851017590d": "Přidat přístup k Linear",
         "8675cd6188": "Linear",
         "887efe9140": "Připojit",
@@ -1525,7 +1546,8 @@
         "e57db40c11": "Pro {{value0}} se nepodařilo sestavit příkaz spuštění.",
         "f0600556b3": "Nepodařilo se vytvořit nepojmenovaný soubor Markdown.",
         "f82e9f02df": "Zrušit",
-        "quitSnapshotSaveFailed": "Ukončení zrušeno: snímek relace se nepodařilo uložit ({{value0}})."
+        "quitSnapshotSaveFailed": "Ukončení zrušeno: snímek relace se nepodařilo uložit ({{value0}}).",
+        "reloadSnapshotSaveFailed": "Opětovné načtení zrušeno: nepodařilo se uložit snímek relace ({{value0}})."
       },
       "TerminalSearch": {
         "0f3066256e": "Předchozí shoda",
@@ -5571,6 +5593,7 @@
             "resumeInNewCliUnavailable": "Tuto relaci nelze otevřít v CLI.",
             "resumePastSessions": "Pokračovat v minulých relacích",
             "searchSessions": "Hledat relace",
+            "sessionDeleteCheckingHost": "Kontrola: {{value0}}…",
             "sessionDeleteFailed": "Relaci se nepodařilo smazat",
             "sessionDeleted": "Relace smazána",
             "sessionHistory": "Historie relací agentů",
@@ -5635,6 +5658,7 @@
           "AiVaultSessionDeleteDialog": {
             "confirm": "Smazat",
             "description": "Relace „{{value0}}“ bude smazána. Po smazání v ní již nebude možné pokračovat ani z vlastní příkazové řádky {{value1}}.",
+            "remoteDescription": "Relace „{{value0}}“ bude smazána z {{value2}}. Po smazání v ní již nebude možné pokračovat ani z vlastní příkazové řádky {{value1}}.",
             "title": "Smazat tuto relaci?"
           },
           "AiVaultSessionDetails": {
@@ -5723,6 +5747,7 @@
             "copyResumeCommand": "Kopírovat příkaz pro obnovení",
             "copySessionId": "Kopírovat ID relace",
             "delete": "Smazat",
+            "deleteReasonHostUpdateRequired": "Chcete-li odsud mazat relace, aktualizujte {{value0}}.",
             "deleteReasonNonLocalHost": "Smazat lze pouze relace na tomto zařízení.",
             "deleteReasonSyntheticPath": "Tuto relaci nelze z aplikace Orca smazat.",
             "deleteReasonUnsupportedAgent": "Relace agenta {{value0}} nelze z aplikace Orca smazat.",
@@ -7022,7 +7047,32 @@
                   "2b8e6595fd": "Commit",
                   "323bb614aa": "Commit a synchronizace",
                   "7aad2c0240": "Probíhá operace hostovaného review…",
-                  "9e779995dd": "Vytvořit {{value0}}"
+                  "9e779995dd": "Vytvořit {{value0}}",
+                  "blockedAuthRequired": "{{authInstruction}} v tomto prostředí",
+                  "blockedBaseNotOnRemote": "Výchozí větev není na vzdáleném repozitáři",
+                  "blockedBranchNotReady": "Větev není připravena",
+                  "blockedCheckOutBranchFirst": "Nejprve proveďte checkout větve",
+                  "blockedCommitFirst": "Nejprve proveďte commit změn",
+                  "blockedExistingReview": "Položka {{reviewLabel}} již existuje",
+                  "blockedForcePushFirst": "Nejprve vynuťte odeslání (force push)",
+                  "blockedForkHeadUnsupported": "Větev forku není podporována",
+                  "blockedPublishBranch": "Publikovat větev",
+                  "blockedPushFirst": "Nejprve odešlete commity",
+                  "blockedSwitchToFeatureBranch": "Přepněte na větev s funkcí",
+                  "blockedSyncFirst": "Nejprve synchronizujte",
+                  "blockedUnsupportedProvider": "Nepodporovaný poskytovatel",
+                  "checkingBranchStatus": "Kontrola stavu větve…",
+                  "rebaseChooseRemoteBase": "Zvolte vzdálenou výchozí větev, ze které provést rebase",
+                  "rebaseDirtyHint": "Zkuste rebase; git může nejprve vyžadovat commit nebo odložení místních změn do stashe",
+                  "rebaseFromBase": "Rebase z výchozí větve",
+                  "rebaseFromNamedBase": "Rebase z {{baseRef}}",
+                  "rebaseWithLatestFrom": "Provést rebase aktuální větve na nejnovější commity z {{baseRef}}",
+                  "titleCheckOutBranchToSync": "Před synchronizací commitů proveďte checkout větve",
+                  "titleCheckingPrStatus": "Kontrola stavu PR…",
+                  "titleCommitThenPullPush": "Proveďte commit, poté pull a push",
+                  "titlePrAlreadyMerged": "PR je již sloučen",
+                  "titlePublishBranchFirst": "Chcete-li synchronizovat commity, nejprve publikujte větev",
+                  "titleUseForcePush": "Použijte Commit a vynucené odeslání (force push) — ve vzdáleném repozitáři jsou jen starší kopie místních commitů"
                 }
               },
               "primary": {
@@ -9992,7 +10042,9 @@
           "fea9cb402e": "Zrušit",
           "feae1d1e69": "Volitelné. Ekvivalent k ProxyJump / ssh -J.",
           "proxyConnectionReuse": "Opakovaně používat jedno proxy připojení",
-          "proxyConnectionReuseHelp": "Rychlejší připojování přes pomalé hostitele ProxyCommand nebo ProxyJump. Zapněte jen tehdy, pokud váš ssh_config nespoléhá na pravidla Match nebo %h specifická pro jednotlivé hostitele."
+          "proxyConnectionReuseHelp": "Rychlejší připojování přes pomalé hostitele ProxyCommand nebo ProxyJump. Zapněte jen tehdy, pokud váš ssh_config nespoléhá na pravidla Match nebo %h specifická pro jednotlivé hostitele.",
+          "reconnectOnLaunch": "Znovu připojit při spuštění",
+          "reconnectOnLaunchHelp": "Pokud je vypnuto, ponechá Orca tento hostitel a jakýkoli server Orca, který je přes něj dostupný, při spuštění odpojený, dokud je nepřipojíte."
         },
         "SshTargetList": {
           "addedInOrca": "Přidáno v Orca",
@@ -11218,6 +11270,17 @@
           "replacedWithBackup": "Nahrazeno · Vaše kopie byla uložena jako záloha",
           "resultUpdateSkippedAgent": "{{result}} · Aktualizace přeskočena v {{agent}}: {{reason}}",
           "resultUpdateSkippedPlaces": "{{result}} · Aktualizace přeskočena na místech ({{places}}): {{reason}}"
+        },
+        "claudeSubagentNavigation": {
+          "description": "Otevírejte dílčí agenty Claude z postranního panelu. Přidá zkratku do souboru keybindings.json v Claude a načte mod Orca do nových panelů Orca. Vyžaduje Claude 2.1.300+ a stavové hooky. Vypnutím se zkratka Orca odebere; zkratky, které smažete, zůstanou smazané.",
+          "search": {
+            "mod": "mod",
+            "navigation": "navigace",
+            "plugin": "plugin",
+            "shortcut": "zkratka",
+            "subagent": "dílčí agent"
+          },
+          "title": "Navigace dílčích agentů Claude"
         },
         "cli": {
           "source": {
@@ -12828,7 +12891,9 @@
           "unsupportedUnknown": "Tuto verzi Orca tento hostitel nepodporuje. Chcete-li jej dál používat, nainstalujte starší verzi Orca.",
           "updateDeferredLater": "Používá spravovaný server Orca; aktualizuje se při některém z dalších připojení.",
           "updateFailedPrevious": "Používá spravovaný server Orca v předchozí verzi; jeho aktualizace se nezdařila.",
-          "updating": "Aktualizace spravovaného serveru…"
+          "updating": "Aktualizace spravovaného serveru…",
+          "windowsBuildUnsupported": "Tento hostitel používá starší verzi Windows než Windows 10 a Windows Server 2016, takže na něm server Orca nemůže běžet. Použijte hostitele s novější verzí Windows nebo hostitele s Linuxem či macOS.",
+          "windowsNoExtractor": "Tento hostitel s Windows nemá tar.exe ani rutinu Expand-Archive v PowerShellu, takže na něm Orca nemůže rozbalit svůj server. Nainstalujte na hostiteli Windows PowerShell 5.1 a poté se připojte znovu."
         },
         "sshManagedHostRemove": {
           "description": "Na {{label}} běží spravovaný server Orca. V části Spravované servery použijte Zastavit… k odstranění serveru z hostitele, nebo Zapomenout… pokud hostitel zmizel. Poté můžete tento SSH hostitel odebrat.",
@@ -13886,7 +13951,9 @@
           "51001182e3": "Prázdný adresář",
           "971d85cc84": "Otevře se jako projekt na tomto hostiteli · {{value0}}",
           "9e060f5815": "Vybrat složku",
+          "entriesLabel": "Položky složky",
           "f8b1deb1a4": "Zrušit",
+          "inputLabel": "Filtr nebo cesta",
           "largeInputNoMatches": "Pro tento dlouhý vstup nebyly nalezeny žádné shody"
         },
         "RemoveFolderDialog": {
@@ -16292,6 +16359,7 @@
             },
             "memory": {
               "metric": {
+                "footprintDescription": "Součet paměťové stopy (footprint): stejný údaj, jaký ukazuje Sledování aktivity — paměť, kterou každý proces vlastní, včetně grafické paměti. Stránky sdílené mezi procesy se nezapočítávají dvakrát.",
                 "privateBytesDescription": "Součet privátních bajtů: paměť, kterou tyto procesy vyhradily, započítává se bez ohledu na to, zda je v operační paměti, nebo odložena do stránkovacího souboru. Právě to hostitel započítává do limitu vyhrazené paměti, proto tato hodnota dál roste, zatímco se pracovní sada výše kvůli stránkování zmenšuje.",
                 "rssDescription": "Součet rezidentní paměti (RSS). Sdílené nebo aliasované stránky se mohou objevovat ve více procesech.",
                 "workingSetDescription": "Součet pracovní sady (WS): stránky právě přítomné v operační paměti. Sdílené stránky se mohou objevovat ve více procesech a paměť, kterou Windows odložil do stránkovacího souboru, se zde nezapočítává."
@@ -17663,6 +17731,13 @@
           }
         }
       },
+      "claudeAgentRowView": {
+        "agentUnavailable": "Claude tohoto agenta nemůže otevřít. Možná již není dostupný.",
+        "closeDialog": "Claude nepřepnul zobrazení. Zavřete případný otevřený dialog a zkuste to znovu.",
+        "hostUnavailable": "Navigace dílčích agentů není na tomto hostiteli dostupná. Aktualizujte Orca a restartujte Claude v tomto panelu.",
+        "permissionPrompt": "Před přepnutím agentů odpovězte na žádost Claude o oprávnění.",
+        "restartRequired": "Chcete-li povolit navigaci dílčích agentů, restartujte Claude v tomto panelu. Jsou vyžadovány novější verze Claude s hooky Orca."
+      },
       "clipboardWriteFailure": {
         "tooLarge": "Text je pro zkopírování příliš velký."
       },
@@ -17678,6 +17753,15 @@
         "needsInput": "Pracovní strom nebyl vytvořen, protože je potřeba dalších údajů.",
         "preparationTimedOut": "Příprava pracovního stromu vypršela.",
         "reopen": "Znovu otevřít"
+      },
+      "dropFailureReason": {
+        "changed": "Soubor se během nahrávání změnil. Zkuste to znovu.",
+        "disconnected": "Hostitel je odpojen.",
+        "hostUnreachable": "Připojení k hostiteli se změnilo nebo bylo přerušeno. Zkuste to znovu.",
+        "noSpace": "Hostiteli došlo místo na disku.",
+        "tooLarge": "Příliš velké pro nahrání na tohoto hostitele.",
+        "unknownMany": "Tyto soubory se nepodařilo nahrát.",
+        "unknownOne": "Tento soubor se nepodařilo nahrát."
       },
       "dropSkipReason": {
         "missing": "Již není na původní cestě.",
@@ -18836,7 +18920,6 @@
         "permissionAcceptEditsAntigravityDescription": "Schvaluje úpravy souborů; na ostatní se dotazuje",
         "permissionAcceptEditsDescription": "Schvaluje úpravy souborů a příkazy pro práci se soubory; na ostatní se dotazuje",
         "permissionAsk": "Žádat o schválení",
-        "permissionAskCodexDescription": "Upravuje soubory a spouští příkazy v tomto pracovním prostoru; na vše ostatní se dotazuje",
         "permissionAskDescription": "Dotazuje se před úpravami a příkazy, které vaše nastavení nepovolují",
         "permissionAskSharedDescription": "Dotazuje se před úpravami nebo příkazy, ke kterým ještě nemá oprávnění",
         "permissionAuto": "Schvalovat za mě",
@@ -18971,6 +19054,7 @@
         "couldNotStopTheAgent": "Agenta se nepodařilo zastavit.",
         "editSavedArguments": "Upravte je v části Nastavení → Agenti → Argumenty.",
         "emptyMessage": "Tato zpráva je prázdná, proto nebyla odeslána.",
+        "fullAccessAsRoot": "{{agent}} nepoužije Úplný přístup, když běží jako root. V části Nastavení → Agenti zvolte pro {{agent}} jiné oprávnění na počítači, kde tento chat běží, a poté spusťte nový chat.",
         "historyInOtherAccount": "Historie tohoto chatu je v jiném účtu Claude. Chcete-li v tomto chatu pokračovat, přepněte zpět na onen účet.",
         "historyTooLarge": "Historie této konverzace je příliš velká, než aby zde mohla být obnovena.",
         "hostFault": "V Orca došlo k problému, proto se akce neprovedla.",
@@ -19053,6 +19137,12 @@
         "sentAsGoal": "Odesláno jako cíl",
         "set": "Cíl nastaven"
       },
+      "goalControl": {
+        "pauseUnconfirmed": "Codex přestal běžet, ale pozastavení cíle nebylo potvrzeno. Před pokračováním zkontrolujte cíl.",
+        "settingsRejected": "Codex nemohl použít vybraný model a úroveň úsilí. Tato změna cíle nebyla odeslána. Zkontrolujte výběr a zkuste to znovu.",
+        "settingsUnconfirmed": "Codex nepotvrdil vybraný model a úroveň úsilí. Tato změna cíle nebyla odeslána. Zkontrolujte chat a zkuste to znovu.",
+        "stopUnconfirmed": "Codex nemohl potvrdit zastavení. Před pokračováním zkontrolujte chat."
+      },
       "hostOutage": {
         "offline": "{{hostName}} je offline",
         "reconnect": "Znovu připojit",
@@ -19076,8 +19166,7 @@
         "continue": "Pokračovat",
         "explanation": "Pokračovat; agent nejprve zkontroluje, zda jeho poslední krok skončil.",
         "failed": "V tomto chatu se nepodařilo pokračovat. Zkuste to znovu nebo odešlete zprávu.",
-        "unconfirmed": "Nepodařilo se ověřit, zda {{agent}} obdržel Pokračovat. Před dalším pokusem zkontrolujte chat.",
-        "usageLimitExplanation": "Požádá agenta, aby pokračoval tam, kde skončil. Použijte po obnovení limitu."
+        "unconfirmed": "Nepodařilo se ověřit, zda {{agent}} obdržel Pokračovat. Před dalším pokusem zkontrolujte chat."
       },
       "jumpToLatest": "Přejít na nejnovější",
       "launchPromptNotDelivered": "Nedoručeno — zkontrolujte terminál",
@@ -19191,6 +19280,7 @@
         "cannotResume": "V této konverzaci {{agent}} nelze pokračovat v nativním chatu.",
         "exitUnconfirmed": "Orca nemůže ověřit, zda {{agent}} v terminálu skončil. Zastavte, co tam běží, nebo zavřete terminál a zkuste to znovu.",
         "exitUnconfirmedFromTerminal": "Orca nemůže ověřit, zda {{agent}} v terminálu skončil. Zastavte, co tam běží, nebo zavřete terminál a poté otevřete tuto konverzaci z historie relací.",
+        "hostUpdateRequired": "Chcete-li pokračovat v rozhraní chatu, aktualizujte Orca na tomto hostiteli.",
         "notSavedYet": "{{agent}} tuto konverzaci ještě neuložil. Zkuste to znovu po jeho odpovědi."
       },
       "rewind": {
@@ -20018,7 +20108,8 @@
   },
   "editor": {
     "fileLoad": {
-      "hostUnresolved": "Hostitel nemohl najít pracovní prostor tohoto souboru. Možná byl odstraněn nebo o něm hostitel ještě neví. Zkuste to znovu, nebo tuto kartu zavřete v liště karet."
+      "hostUnresolved": "Hostitel nemohl najít pracovní prostor tohoto souboru. Možná byl odstraněn nebo o něm hostitel ještě neví. Zkuste to znovu, nebo tuto kartu zavřete v liště karet.",
+      "remoteTooLarge": "Tento soubor je pro otevření z jeho hostitele příliš velký."
     },
     "markdownPreview": {
       "blockTooLarge": "Tento blok je pro vykreslení příliš velký. Chcete-li si jej přečíst, přepněte na zobrazení zdrojového kódu.",
@@ -20562,12 +20653,22 @@
       "permissionEachOwnDescription": "Orca nic nepřidává, každé CLI používá vlastní konfiguraci",
       "permissionFromArgs": "{{agent}} je nastaven na {{mode}} v terminálech a nových chatech.",
       "permissionFromArgsTerminals": "{{agent}} je nastaven na {{mode}} v terminálech.",
+      "permissionOverrideFollows": "{{agent}} nyní používá {{mode}}",
+      "permissionOverrideMore": "a ještě {{count}}",
+      "permissionOverrideMore_one": "a ještě {{count}}",
+      "permissionOverrideMore_other": "a ještě {{count}}",
+      "permissionOverridesFollow": "{{mode}} nyní používá agentů: {{count}}",
+      "permissionOverridesFollow_one": "{{count}} agent nyní používá {{mode}}",
+      "permissionOverridesFollow_other": "{{mode}} nyní používá agentů: {{count}}",
+      "permissionOverridesKept": "Stále s vlastním nastavením oprávnění ({{count}}):",
+      "permissionOverridesKept_one": "{{count}} agent si stále ponechává vlastní nastavení oprávnění:",
+      "permissionOverridesKept_other": "Stále s vlastním nastavením oprávnění ({{count}}):",
+      "permissionOverridesUse": "Použít {{mode}}",
       "permissionOwnAgent": "Použít vlastní nastavení agenta {{agent}}",
       "permissionOwnAll": "Vlastní nastavení agentů",
       "permissionOwnDescription": "Terminály a chaty se řídí vlastním nastavením oprávnění daného agenta.",
       "permissionOwnLegacyDescription": "Orca v terminálech nepřidává žádný přepínač oprávnění; chaty používají nastavení v části Nastavení → Chat.",
       "permissionOwnShort": "Vlastní nastavení",
-      "permissionResetsOwnChoices": "Volba režimu zde resetuje agenty označené jako nastavené samostatně.",
       "permissionSameAsAll": "Stejně jako všichni agenti",
       "permissionSurfaceDifference": "Terminály používají vlastní nastavení agenta; nové chaty používají {{mode}}.",
       "permissionWithoutAuto": "Agenti bez volby Schvalovat za mě",
@@ -20576,7 +20677,6 @@
       "permissionsDescription": "Jak moc mohou agenti dělat bez vašeho dotazu. Agenti s vlastními argumenty spuštění si je ponechají.",
       "permissionsMixed": "Většina agentů používá {{mode}}. Volba režimu resetuje označené výjimky, kromě vlastních argumentů.",
       "permissionsMixedNoMajority": "Agenti používají různá nastavení. Volba režimu se použije na všechny.",
-      "permissionsResetExplanation": "Volba režimu zde resetuje agenty, které jste nastavili samostatně.",
       "permissionsSearchDescription": "Spouštět agenty s oprávněními Manual, Auto nebo Yolo.",
       "permissionsTitle": "Oprávnění",
       "readFailed": "Nastavení agentů se nepodařilo načíst. Zkontrolujte připojení k hostiteli a zkuste to znovu.",
@@ -20598,6 +20698,8 @@
         "contrastDescription": "Jak jasný je text chatu vůči pozadí. Pravý konec škály odpovídá dřívějšímu, jasnějšímu vzhledu.",
         "fontFamily": "Rodina písem",
         "fontFamilyDescription": "Písmo použité pro zprávy, aktivitu a pole pro zprávu.",
+        "fontKeywordTypeface": "písmo",
+        "fontKeywordTypography": "typografie",
         "fontPreview": "Příliš žluťoučký kůň úpěl ďábelské ódy.",
         "fontPreviewLabel": "Náhled písma chatu",
         "full": "Plná",

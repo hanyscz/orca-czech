@@ -3,11 +3,11 @@
   "id": "czech",
   "publisher": "hanyscz",
   "name": "Čeština",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Česká lokalizace Orca IDE",
   "repository": "https://github.com/hanyscz/orca-czech",
   "engines": {
-    "orca": ">=1.4.240"
+    "orca": ">=1.4.242"
   },
   "pluginApi": 1,
   "contributes": {
