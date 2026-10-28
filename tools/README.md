@@ -26,6 +26,8 @@ python tools/prepare-update.py --release v1.4.237 # konkrétní vydání
 
 Výstup patří do nové složky `.i18n-work/update-…/`. Agentovi předejte tamní `PROMPT.txt`; po překladu zvolte v menu dokončení. Zdrojové bloky zůstávají v `source/`, hotové překlady se ukládají přímo do pracovní složky. Katalog `locales/cs-CZ.json` se při přípravě nemění. Podrobný postup je v hlavním [README](../README.md#postup-překladu-po-vydání-nové-orcy).
 
+Dokončení překladu (volba 4) nejprve ověří bloky **po jednotlivých klíčích**: stejnou sadu klíčů, neprázdné překlady, žádnou azbuku a přesně tytéž zástupné symboly `{{…}}` jako v anglické hodnotě téhož klíče. Rozdíl u jediného klíče sestavení zastaví — i u tvaru `_one`, kde sesterský `_other` `{{count}}` má; viz pravidla pro řetězce s počítadlem v [glosáři](../GLOSSARY.md#známá-omezení).
+
 ## Audit balíčku
 
 ```bash

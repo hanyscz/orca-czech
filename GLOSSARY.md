@@ -17,7 +17,7 @@ aktualizací upstreamu — viz „Známá omezení“.
 ## Obecná pravidla
 
 1. **Neosobní tvary a přirozený tón.** „Vyberte jazyk“, „Nepodařilo se připojit“, nikoli „Můžete vybrat…“ nebo „Můžeš…“.
-2. **Zástupné symboly (placeholders) se přenášejí doslovně:** `{{value0}}`, `{{path}}`, `{{hostName}}` — nepřekládat, neměnit velikost písmen, nepřemisťovat bez nutnosti. Týká se 1 013 řádků.
+2. **Zástupné symboly (placeholders) se přenášejí doslovně:** `{{value0}}`, `{{path}}`, `{{hostName}}` — nepřekládat, neměnit velikost písmen, nepřemisťovat bez nutnosti; sada tokenů musí odpovídat anglickému originálu **u každého klíče zvlášť** (viz „Známá omezení“). Týká se 1 013 řádků.
    Jednoduché složené závorky jsou také zástupné symboly enginu Orca, nikoli překlep: `{basePrompt}`, `{prompt}`, `{count}`.
 3. **Hybridní terminologie:** prvky rozhraní překládáme, příkazy gitu/CLI a názvy produktů ponecháváme v latince.
 4. **Pravopis a diakritika:** důsledné dodržování spisovné češtiny včetně všech háčků a čárek.
@@ -438,7 +438,8 @@ Nejde o `Expand / Collapse`: tam se sbaluje celý blok, zatímco zde viditelná 
 
   Pravidla pro nové řetězce s počítadlem:
   - Tvary vyžaduje řetězec, který stojí na obrazovce samostatně: věta, tlačítko, popisek. Část vkládaná do jiného řetězce zůstává nezávislá na počtu.
-  - Tvar `_one` musí obsahovat `{{count}}`, nikoli napevno „1“ nebo „jeden“: podle slovanských pravidel připadá i na 21, 101 atd.
+  - Tvar `_one` musí obsahovat `{{count}}`, nikoli napevno „1“ nebo „jeden“ — **pokud `{{count}}` obsahuje už anglický originál**: podle slovanských pravidel připadá i na 21, 101 atd. Kde má anglický `_one` napevno „1“ (`1 uncommitted or untracked change`, `Delete 1 Workspace`, `Hiding 1 discovered worktree`), `{{count}}` se **nepřidává** a tvar se překládá bez počítadla: „Nepotvrzená nebo nesledovaná změna“, „Smazat pracovní prostor“, „Skrývá se nalezený pracovní strom“.
+  - Zástupné symboly se porovnávají **po jednotlivých klíčích, nikoli po rodině tvarů**: `tools/translation-menu.py` (`validate_blocks`, volba 4) žádá u každého klíče přesně tytéž tokeny `{{…}}` jako v jeho anglické hodnotě a rozdíl u jediného klíče sestavení zastaví. `_one` proto nikdy nepřebírá `{{count}}` jen proto, že ho má sesterský `_other`. Ověřeno ve vydání Orca v1.4.243 u `DeleteWorktreeDirtyChangeHint.changeCount_one`, `SetupScriptPromptCard.savedWithSkippedFields_one` a `workspaceBatchActionLabels.*Count_one`.
   - `_few` a `_many` píšeme přirozenou větou s číslem na svém místě. Základní řetězec zůstává neutrální k počtu.
   - Bez parametru `count` ve volání jsou tvary neúčinné, ať se klíč jmenuje jakkoli.
   - Neskloňované výrazy neměníme („{{count}} PR“), stejně jako popisky bez podstatného jména („Vybráno: {{count}}“).
