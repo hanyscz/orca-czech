@@ -9,67 +9,41 @@ Vyžaduje python3 a přihlášené CLI `gh`: pravidla ochrany a originální kat
 se přebírají z nejnovějšího stabilního vydání stablyai/orca. Pracovní adresář
 s překladovými bloky je `.i18n-work/` (není sledován v gitu); jinou cestu
 lze nastavit proměnnou prostředí ORCA_CS_WORK. Bez bloků sestavení pouze
-překontroluje stávající katalog a zapíše jej beze změn.
+ověří stávající katalog a odstraní zaniklé či nově chráněné klíče.
 """
-import json, re, glob, sys, os, subprocess, base64
+import json, re, glob, sys, os
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8', errors='replace')
 
+if sys.argv[1:] in (['-h'], ['--help']):
+    print(__doc__.strip())
+    sys.exit(0)
+if len(sys.argv) > 1:
+    sys.exit('build.py se spouští bez argumentů; nápověda: --help')
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCRATCH = os.environ.get('ORCA_CS_WORK') or os.environ.get('ORCA_RU_WORK') or os.path.join(ROOT, '.i18n-work')
 TARGET = os.path.join(ROOT, 'locales', 'cs-CZ.json')
-REPO = 'stablyai/orca'
 EN_PATH = 'src/renderer/src/i18n/locales/en.json'
-PROT = 'auto.components.settings.'
 DANGEROUS = {'__proto__', 'prototype', 'constructor'}
-RAW = ['-H', 'Accept: application/vnd.github.raw+json']
 
-# Pravidlo ochrany bereme z NEJNOVĚJŠÍHO STABILNÍHO VYDÁNÍ Orca, nikoli z větve main.
-# Zkušenost z v5.1.4: allow-list z PR #12455 byl sice v main, ale ještě ne ve vydání,
-# a balíček s 34 povolenými klíči engine odmítl všem uživatelům na v1.4.168.
-# Balíček musí fungovat na tom, co mají uživatelé nainstalováno.
-CHROME = set()
-_stable = subprocess.run(['gh', 'release', 'view', '--repo', REPO, '--json', 'tagName', '--jq', '.tagName'],
-                         capture_output=True, text=True, encoding='utf-8', errors='replace').stdout.strip()
-if _stable:
-    _r = subprocess.run(['gh', 'api',
-        f'repos/{REPO}/contents/src/shared/plugins/plugin-translatable-chrome.ts?ref={_stable}',
-        '--jq', '.content'], capture_output=True, text=True, encoding='utf-8', errors='replace')
-    if _r.returncode == 0 and _r.stdout.strip():
-        src = base64.b64decode(_r.stdout).decode('utf-8')
-        CHROME = set(re.findall(r"'(auto\.components\.settings\.[^']+)'", src))
-    print(f'  pravidlo ochrany: vydání {_stable}, povolených výjimek: {len(CHROME)}')
-
-def protected(path):
-    if not path.startswith(PROT):
-        return False
-    if path in CHROME:
-        return False
-    return path[len(PROT):].lower().startswith('plugin')
-
-def fetch_catalog(ref):
-    # Přímý media type: pro soubor větší než 1 MiB vrací contents API prázdný obsah bez chyby.
-    rc = subprocess.run(['gh', 'api', *RAW, f'repos/{REPO}/contents/{EN_PATH}?ref={ref}'],
-                        capture_output=True, text=True, encoding='utf-8', errors='replace')
-    return json.loads(rc.stdout) if rc.returncode == 0 and rc.stdout and rc.stdout.strip() else {}
-
-# Katalog main: lokální snímek v pracovním adresáři, pokud existuje, jinak čerstvý z GitHubu.
-_en_snapshot = os.path.join(SCRATCH, 'en.json')
-if os.path.exists(_en_snapshot):
-    en = json.load(open(_en_snapshot, encoding='utf-8'))
-else:
-    en = fetch_catalog('main')
-    if not en:
-        print('  ℹ katalog main z GitHubu není dostupný (offline režim nebo gh nepřihlášeno)')
-
-# Katalog vydání — druhý zdroj pravdy. Balíček instalují lidé s vydáním, nikoli s main.
-en_release = fetch_catalog(_stable) if _stable else {}
-if not en and not en_release:
-    # Pokud nemáme gh ani snapshot, zkusíme pracovat lokálně s existujícím souborem
-    print('  ℹ běh v offline režimu bez validace proti vzdálenému en.json')
+# Zdrojová pravidla i katalogy jsou povinné; výpadek nesmí vyřadit platné překlady.
+from engine_rules import latest_release, load_rules, fetch_source
+try:
+    _stable = latest_release()
+    rules = load_rules(_stable)
+    en = json.loads(fetch_source(EN_PATH, 'main'))
+    en_release = json.loads(fetch_source(EN_PATH, _stable))
+    if not en or not en_release:
+        raise RuntimeError('Zdrojový katalog je prázdný.')
+except (RuntimeError, OSError, ValueError) as exc:
+    sys.exit(f'CHYBA: {exc}')
+protected = rules.protected
+print(f'  pravidla: {_stable}, výjimek {len(rules.allowed_chrome)}, '
+      f'chráněných komponent {len(rules.protected_components)}, limit {rules.max_entries} uzlů')
 
 def get(d, path):
     if not d:
@@ -84,13 +58,13 @@ def get(d, path):
 def placeholders(s):
     return sorted(re.findall(r'\{\{[^}]*\}\}', s))
 
-# Čeština vyžaduje tvary množného čísla, které v angličtině chybí (1, 2-4, 5+).
+# Čeština používá _one pro 1, _few pro 2–4, _other pro ostatní celá čísla a _many pro zlomky.
 # i18next je vyhledává pro každé volání s parametrem count: ke klíči připojí příponu tvaru:
 #   - `_few` a `_many` u rodiny, kde Orca má `<báze>_one` a `<báze>_other`;
 #   - `_one`, `_few` a `_many` u řetězce volaného s počtem, ale uloženého vcelku
 #     (`fileOther`, `connectedHostCount_other`, `transcriptsSkipped`).
-# V současném stavu enginu bez #12505 se vybírá pouze mezi _one a ostatním,
-# proto musí být základní řetězec či _other formulován neutrálně („uloženo větví: {{count}}“).
+# Od Orca v1.4.243 (#12505) se používají pravidla deklarovaného jazyka.
+# Neutrální základní text zůstává zálohou, pokud balíček potřebný tvar nemá.
 PLURAL_EXTRA = re.compile(r'_(one|few|many)$')
 
 def plural_family(k):
@@ -187,8 +161,8 @@ for k, v in flat.items():
         if dropped:
             warnings.append(f'{k}: vynechán {dropped} — ověřte, zda jde o plurálový sufix s, nikoli data')
 
-    if len(v) > 8192:
-        errors.append(f'{k} je delší než 8 192 znaků')
+    if len(v) > rules.max_value:
+        errors.append(f'{k} je delší než {rules.max_value} znaků')
     if protected(k):
         errors.append(f'{k} — chráněný klíč, balíček by byl kompletně odmítnut')
 
@@ -231,9 +205,9 @@ walk(tree)
 
 raw = json.dumps(tree, ensure_ascii=False, indent=2) + '\n'
 size = len(raw.encode('utf-8'))
-if nodes[0] > 20000: errors.append(f'počet uzlů {nodes[0]} > 20 000')
-if maxdepth[0] > 16: errors.append(f'hloubka {maxdepth[0]} > 16')
-if size > 5 * 1024 * 1024: errors.append('soubor je větší než 5 MB')
+if nodes[0] > rules.max_entries: errors.append(f'počet uzlů {nodes[0]} > {rules.max_entries}')
+if maxdepth[0] > rules.max_depth: errors.append(f'hloubka {maxdepth[0]} > {rules.max_depth}')
+if size > rules.max_bytes: errors.append('soubor je větší než 5 MB')
 
 print()
 for w in warnings[:15]: print('  ⚠', w)
@@ -244,7 +218,7 @@ if errors:
     print(f'\n❌ {len(errors)} chyb — soubor nebyl zapsán')
     sys.exit(1)
 
-open(TARGET, 'w', encoding='utf-8').write(raw)
+open(TARGET, 'w', encoding='utf-8', newline='\n').write(raw)
 print(f'\n✅ zapsán {TARGET}')
 print(f'   řádků: {len(flat) - len(extra_forms)} (+{len(extra_forms)} doplňkových tvarů), '
-      f'uzlů: {nodes[0]}/20000, hloubka: {maxdepth[0]}/16, velikost: {size} B / 5 MB')
+      f'uzlů: {nodes[0]}/{rules.max_entries}, hloubka: {maxdepth[0]}/{rules.max_depth}, velikost: {size} B / 5 MB')

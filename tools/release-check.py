@@ -30,6 +30,8 @@ VERSION_SITES = [
 
 COUNT_SITES = [
     (r'badge/(?:řetězců|strings|строк)-(\d{2}[,\s%]?(?:20)?\d{3})-', 'odznak řetězců'),
+    (r'!\[(\d{2}[,\s]\d{3}) přeložen\w+ řetězc\w*\]', 'alt odznaku řetězců'),
+    (r'obsahuje (\d{2}[,\s]\d{3}) překladatelných řádků', 'popis katalogu'),
     (r'alt="(\d{2}[,\s]\d{3}) (?:přeložených řetězců|přeložen\w+ řetězc\w*|translated strings)"', 'alt odznaku řetězců'),
     (r'\n\s*(\d{2}[,\s]\d{3}) (?:řetězců —|řetězc\w* —|strings —)', 'podnadpis'),
     (r'(?:katalog překladů|translation catalog), (\d{2}[,\s]\d{3})', 'strom souborů'),
@@ -37,9 +39,18 @@ COUNT_SITES = [
 ]
 
 DOCS = ['README.md', 'GLOSSARY.md']
+# Každé místo musí být skutečně nalezeno; změna formulace nesmí kontrolu obejít.
+REQUIRED = {
+    'README.md': {('verze', 'odznak verze'), ('verze', 'alt odznaku verze'),
+                  ('počet', 'odznak řetězců'), ('počet', 'alt odznaku řetězců'),
+                  ('počet', 'popis katalogu'), ('tvary', 'doplňkové tvary')},
+    'GLOSSARY.md': {('verze', 'záhlaví glosáře'), ('verze', 'rezerva limitů v glosáři'),
+                    ('počet', 'záhlaví glosáře'), ('tvary', 'doplňkové tvary')},
+}
+seen = set()
 
 EXTRA_SITES = [
-    (r'a (\d+) doplňkov\w+ tvar\w* množného čísla', 'doplňkové tvary'),
+    (r'a (\d+) (?:českých )?doplňkov\w+ tvar\w* množného čísla', 'doplňkové tvary'),
     (r'and (\d+) extra plural forms', 'doplňkové tvary'),
 ]
 
@@ -78,17 +89,20 @@ errors, checked, counts_checked = [], 0, 0
 for rel in DOCS:
     path = os.path.join(ROOT, rel)
     if not os.path.exists(path):
+        errors.append(f'{rel}: povinný dokument chybí')
         continue
     text = open(path, encoding='utf-8').read()
     for pattern, what in VERSION_SITES:
         for found in set(re.findall(pattern, text)):
             checked += 1
+            seen.add((rel, 'verze', what))
             if found != version:
                 errors.append(f'{rel} ({what}): nalezeno {found} namísto {version}')
     for pattern, what in COUNT_SITES:
         for found in set(re.findall(pattern, text)):
             checked += 1
             counts_checked += 1
+            seen.add((rel, 'počet', what))
             if norm(found) not in ok_counts:
                 errors.append(f'{rel} ({what}): nalezeno {found} namísto {lines}')
 
@@ -96,12 +110,14 @@ extra_checked = 0
 for rel in DOCS:
     path = os.path.join(ROOT, rel)
     if not os.path.exists(path):
+        errors.append(f'{rel}: povinný dokument chybí')
         continue
     text = open(path, encoding='utf-8').read()
     for pattern, what in EXTRA_SITES:
         for found in set(re.findall(pattern, text)):
             checked += 1
             extra_checked += 1
+            seen.add((rel, 'tvary', what))
             if int(found) != len(extra_forms):
                 errors.append(f'{rel} ({what}): nalezeno {found} namísto {len(extra_forms)}')
 
@@ -121,6 +137,7 @@ headlines = {}
 for rel, (head_re, item_re, stop) in REMAINDER.items():
     path = os.path.join(ROOT, rel)
     if not os.path.exists(path):
+        errors.append(f'{rel}: povinný dokument chybí')
         continue
     text = open(path, encoding='utf-8').read()
     m = re.search(head_re, text)
@@ -137,6 +154,10 @@ for rel, (head_re, item_re, stop) in REMAINDER.items():
 
 if not counts_checked:
     errors.append('nebylo nalezeno žádné počítadlo řádků — vzory COUNT_SITES neodpovídají')
+
+for rel, required in REQUIRED.items():
+    for kind, what in sorted(required - {(kind, what) for doc, kind, what in seen if doc == rel}):
+        errors.append(f'{rel}: nenalezeno povinné místo „{what}“ ({kind}) — aktualizujte vzor')
 
 for e in sorted(set(errors)):
     print('  ✗', e)

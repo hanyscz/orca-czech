@@ -16,7 +16,6 @@ zkompiluje a sloučí do výsledného `locales/cs-CZ.json`.
 """
 
 import argparse
-import base64
 import json
 import os
 import re
@@ -33,35 +32,12 @@ SCRATCH = os.environ.get('ORCA_CS_WORK') or os.path.join(ROOT, '.i18n-work')
 TARGET = os.path.join(ROOT, 'locales', 'cs-CZ.json')
 REPO = 'stablyai/orca'
 EN_PATH = 'src/renderer/src/i18n/locales/en.json'
-PROT = 'auto.components.settings.'
 DANGEROUS = {'__proto__', 'prototype', 'constructor'}
 RAW = ['-H', 'Accept: application/vnd.github.raw+json']
 CYRILLIC = re.compile(r'[\u0400-\u04FF]')
 
 
-def fetch_chrome_allowlist(stable_tag):
-    """Získá allow-list povolených klíčů pro plugin nastavení."""
-    if not stable_tag:
-        return set()
-    r = subprocess.run(
-        ['gh', 'api', f'repos/{REPO}/contents/src/shared/plugins/plugin-translatable-chrome.ts?ref={stable_tag}', '--jq', '.content'],
-        capture_output=True, text=True, encoding='utf-8', errors='replace'
-    )
-    if r.returncode == 0 and r.stdout.strip():
-        try:
-            src = base64.b64decode(r.stdout).decode('utf-8')
-            return set(re.findall(r"'(auto\.components\.settings\.[^']+)'", src))
-        except Exception:
-            return set()
-    return set()
-
-
-def fetch_stable_tag():
-    res = subprocess.run(
-        ['gh', 'release', 'view', '--repo', REPO, '--json', 'tagName', '--jq', '.tagName'],
-        capture_output=True, text=True, encoding='utf-8', errors='replace'
-    )
-    return res.stdout.strip() if res.returncode == 0 else ''
+from engine_rules import latest_release, load_rules
 
 
 def flatten(tree, prefix=''):
@@ -73,14 +49,6 @@ def flatten(tree, prefix=''):
         elif isinstance(v, str):
             out[path] = v
     return out
-
-
-def is_protected(path, chrome_set):
-    if not path.startswith(PROT):
-        return False
-    if path in chrome_set:
-        return False
-    return path[len(PROT):].lower().startswith('plugin')
 
 
 def assign_domain(key):
@@ -111,6 +79,7 @@ def main():
     parser.add_argument('--en', default=None, help='Cesta k en.json (výchozí: .i18n-work/en.json)')
     parser.add_argument('--release', help='Značka vydání pro katalog a pravidla ochrany (výchozí: nejnovější stabilní)')
     parser.add_argument('--chrome', help='Lokální plugin-translatable-chrome.ts daného vydání')
+    parser.add_argument('--artifact', help='Lokální modul plugin-language-pack-artifact.ts daného vydání')
     parser.add_argument('--chunk-size', type=int, default=500, help='Počet klíčů v jednom souboru (výchozí: 500)')
     parser.add_argument('--by-domain', action='store_true', help='Rozdělit do vln podle funkčních oblastí rozhraní')
     parser.add_argument('--untranslated', action='store_true', help='Generovat pouze klíče, které v cs-CZ.json obsahují azbuku nebo chybí')
@@ -119,11 +88,17 @@ def main():
     parser.add_argument('--direct', action='store_true', help='Uložit přímo do .i18n-work/ s názvy wave*-cs-part*.json pro okamžité použití v build.py')
     args = parser.parse_args()
 
+    # Jedna sada pravidel pro celý běh; bez úplných pravidel se bloky nevytvářejí.
+    try:
+        stable_tag = args.release or (None if args.en and args.chrome and args.artifact else latest_release())
+        rules = load_rules(stable_tag, args.chrome, args.artifact)
+    except (RuntimeError, OSError, ValueError) as exc:
+        sys.exit(f'CHYBA: {exc}')
+
     # 1. Načtení en.json
     en_file = args.en or os.path.join(SCRATCH, 'en.json')
     if not os.path.exists(en_file):
         print(f'Soubor {en_file} nebyl nalezen. Zkouším stáhnout z GitHubu...')
-        stable_tag = args.release or fetch_stable_tag() or 'main'
         r = subprocess.run(
             ['gh', 'api', *RAW, f'repos/{REPO}/contents/{EN_PATH}?ref={stable_tag}'],
             capture_output=True, text=True, encoding='utf-8', errors='replace'
@@ -147,14 +122,8 @@ def main():
             cs_flat = flatten(json.load(f))
         print(f'Načten referenční {os.path.basename(TARGET)}: {len(cs_flat)} klíčů')
 
-    # 3. Zjištění povolených výjimek z Orca release
-    stable_tag = args.release or (None if args.chrome else fetch_stable_tag())
-    if args.chrome:
-        with open(args.chrome, encoding='utf-8') as f:
-            chrome_set = set(re.findall(r"'(auto\.components\.settings\.[^']+)'", f.read()))
-    else:
-        chrome_set = fetch_chrome_allowlist(stable_tag)
-    print(f'Pravidlo ochrany pro {stable_tag or "neznámé vydání"}: {len(chrome_set)} povolených výjimek v allow-listu')
+    print(f'Pravidla pro {stable_tag or "lokální podklady"}: '
+          f'{len(rules.allowed_chrome)} výjimek, {len(rules.protected_components)} chráněných komponent')
 
     # 4. Filtrace translatabilních klíčů
     filtered_keys = []
@@ -163,10 +132,10 @@ def main():
     skipped_dangerous = 0
 
     for k, v in sorted(en_flat.items()):
-        if is_protected(k, chrome_set):
+        if rules.protected(k):
             skipped_protected += 1
             continue
-        if len(v) > 8192:
+        if len(v) > rules.max_value:
             skipped_length += 1
             continue
         if k in DANGEROUS or any(part in DANGEROUS for part in k.split('.')):

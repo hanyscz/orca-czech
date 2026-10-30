@@ -14,6 +14,7 @@ import tempfile
 
 ROOT = Path(__file__).resolve().parent.parent
 REPO = 'stablyai/orca'
+from engine_rules import load_rules
 
 
 def run(command, env=None):
@@ -50,12 +51,18 @@ def prepare(release=None):
     english = fetch('src/renderer/src/i18n/locales/en.json', release)
     json.loads(english)  # Nezapisujeme chybnou odpověď jako katalog.
     (folder / 'en.json').write_text(english, encoding='utf-8')
-    chrome = fetch('src/shared/plugins/plugin-translatable-chrome.ts', release)
-    (folder / 'plugin-translatable-chrome.ts').write_text(chrome, encoding='utf-8')
+    rules = load_rules(release)
+    (folder / 'plugin-translatable-chrome.ts').write_text(rules.chrome_source, encoding='utf-8')
+    (folder / 'plugin-language-pack-artifact.ts').write_text(rules.artifact_source, encoding='utf-8')
 
     common = ['--release', release, '--en', str(folder / 'en.json'),
-              '--chrome', str(folder / 'plugin-translatable-chrome.ts')]
-    audit = run([sys.executable, str(ROOT / 'tools/audit-pack.py'), *common, '--list'])
+              '--chrome', str(folder / 'plugin-translatable-chrome.ts'),
+              '--artifact', str(folder / 'plugin-language-pack-artifact.ts')]
+    audit_result = subprocess.run([sys.executable, str(ROOT / 'tools/audit-pack.py'), *common, '--list'],
+                                  cwd=ROOT, capture_output=True, encoding='utf-8', errors='replace')
+    audit = audit_result.stdout + audit_result.stderr
+    if audit_result.returncode and 'verdikt enginu:' not in audit_result.stdout:
+        raise RuntimeError(audit.strip() or 'Audit selhal bez výsledku.')
     (folder / 'audit.txt').write_text(audit, encoding='utf-8')
     # Úplný seznam ponecháme v audit.txt, terminál zůstane přehledný.
     print('\n'.join(line for line in audit.splitlines()

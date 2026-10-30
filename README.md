@@ -2,10 +2,10 @@
 
 Tento repozitář je jazykový balíček, který přidává české rozhraní do Orca IDE. Obsahuje hotový český katalog a metadata, podle kterých Orca balíček rozpozná a nabídne k instalaci. Překladové skripty slouží autorům balíčku; Orca je při běhu nespouští.
 
-![Verze balíčku 0.1.0](https://img.shields.io/badge/verze-0.1.0-blue)
-![16 296 přeložených řetězců](https://img.shields.io/badge/řetězců-16%20296-brightgreen)
+![Verze balíčku 0.5.0](https://img.shields.io/badge/verze-0.5.0-blue)
+![14 932 přeložených řetězců](https://img.shields.io/badge/řetězců-14%20932-brightgreen)
 
-Katalog vychází z Orca v1.4.232: obsahuje 16 296 překladatelných řádků a 159 českých doplňkových tvarů množného čísla. Audit této verze hlásí 100% pokrytí klíčů, které jazykový balíček smí překládat.
+Katalog je ověřen proti Orca v1.4.245: obsahuje 14 932 překladatelných řádků a 72 českých doplňkových tvarů množného čísla. Audit této verze hlásí 83,93% pokrytí povolených klíčů (2 859 překladů chybí), žádné zakázané ani zastaralé klíče a žádné nadbytečné zástupné symboly.
 
 ## Co je v repozitáři
 
@@ -69,7 +69,7 @@ Volba 4 nejprve ověří, že jsou přeloženy všechny připravené bloky, maj�
 Každá příprava vytvoří novou složku `.i18n-work/update-…/`, aby nepřepsala rozpracované překlady. Obsahuje:
 
 - `source/` — originální anglické bloky, nejvýše 500 položek v jednom souboru.
-- `en.json` a `plugin-translatable-chrome.ts` — katalog a pravidla konkrétního vydání Orca.
+- `en.json`, `plugin-translatable-chrome.ts` a `plugin-language-pack-artifact.ts` — katalog, povolené výjimky a pravidla ochrany i limity konkrétního vydání Orca.
 - `PROMPT.txt` — prompt pro agenta, který menu umí zkopírovat do schránky.
 - `POSTUP.txt` — stručný postup pro dokončení přes menu.
 - `audit.txt` a `prepare-log.txt` — audit před překladem a záznam přípravy.
@@ -84,9 +84,11 @@ Samostatná příprava bez menu zůstává dostupná přes `python tools/prepare
 
 ## Anglické texty a chráněné klíče
 
-180 klíčů katalogu Orca v1.4.232 zůstává v angličtině
+525 klíčů katalogu Orca v1.4.245 zůstává v angličtině
 
-- **180 klíčů** jsou chráněné texty pluginů pro souhlas a důvěryhodnost; Orca je jazykovým balíčkem nepovoluje překládat.
+- **525 klíčů** jsou chráněné texty pluginů a dalších komponent pro souhlas, oprávnění a důvěryhodnost; Orca je jazykovým balíčkem nepovoluje překládat. Seznam se čte z modulu enginu cílového vydání. Přepsání jediného chráněného klíče způsobí odmítnutí celého balíčku.
+
+Vedle chráněných klíčů zatím chybí 2 859 povolených překladů; ty rovněž používají anglickou zálohu.
 
 Seznam se zkracuje s tím, jak Orca zpřístupňuje další části katalogu k překladu. Některé hodnoty shodné s angličtinou jsou názvy, příkazy nebo jiné výrazy, u kterých je stejný zápis záměrný.
 

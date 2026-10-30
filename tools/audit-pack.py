@@ -4,7 +4,8 @@
     python3 tools/audit-pack.py                     # tento balíček, nejnovější stabilní vydání Orca
     python3 tools/audit-pack.py --release v1.4.224  # konkrétní vydání
     python3 tools/audit-pack.py cesta/k/balicku     # libovolný balíček s orca-plugin.json
-    python3 tools/audit-pack.py --en en.json --chrome plugin-translatable-chrome.ts   # offline režim
+    python3 tools/audit-pack.py --en en.json --chrome plugin-translatable-chrome.ts \
+        --artifact plugin-language-pack-artifact.ts  # offline režim
 
 Odpovídá na klíčové otázky po každém vydání aplikace Orca:
 
@@ -15,10 +16,10 @@ Odpovídá na klíčové otázky po každém vydání aplikace Orca:
 
 Pravidla se načítají ze značky vydání (release tag), nikoli z větve main: balíček se instaluje
 do vydání a pravidlo, které se dostalo teprve do main, zatím pro nikoho neplatí.
-Vyžaduje python3 a přihlášené `gh` (pokud nejsou zadány parametry --en/--chrome).
+Vyžaduje python3 a přihlášené `gh` (pokud nejsou zadány parametry --en/--chrome/--artifact).
 Návratový kód je 1, pokud by engine odmítl alespoň jeden auditovaný balíček.
 """
-import argparse, base64, json, os, re, subprocess, sys
+import argparse, json, os, re, sys
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
@@ -27,18 +28,9 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 REPO = 'stablyai/orca'
 EN_PATH = 'src/renderer/src/i18n/locales/en.json'
-CHROME_PATH = 'src/shared/plugins/plugin-translatable-chrome.ts'
-PROTECTED_ROOT = 'auto.components.settings.'
+from engine_rules import load_rules, gh
 DANGEROUS = {'__proto__', 'prototype', 'constructor'}
-MAX_ENTRIES, MAX_DEPTH, MAX_VALUE, MAX_BYTES = 20_000, 16, 8192, 5 * 1024 * 1024
 PLURAL = re.compile(r'_(zero|one|two|few|many|other)$')
-
-
-def gh(*args):
-    result = subprocess.run(['gh', *args], capture_output=True, text=True, encoding='utf-8', errors='replace')
-    if result.returncode != 0 or not result.stdout.strip():
-        sys.exit(f'Volání gh {" ".join(args[:2])} selhalo: {result.stderr.strip() or "prázdná odpověď"}')
-    return result.stdout
 
 
 def flatten(tree, prefix=''):
@@ -76,11 +68,12 @@ parser.add_argument('packs', nargs='*', help='adresáře balíčků (výchozí: 
 parser.add_argument('--release', help='značka vydání Orca (výchozí: nejnovější stabilní vydání)')
 parser.add_argument('--en', help='lokální soubor en.json daného vydání namísto stahování z GitHubu')
 parser.add_argument('--chrome', help='lokální soubor plugin-translatable-chrome.ts daného vydání')
+parser.add_argument('--artifact', help='lokální modul plugin-language-pack-artifact.ts daného vydání')
 parser.add_argument('--list', action='store_true', help='vypsat všechny chybějící a zastaralé klíče, nikoli jen ukázku')
 args = parser.parse_args()
 
 release = args.release
-if not release and not (args.en and args.chrome):
+if not release and not (args.en and args.chrome and args.artifact):
     release = gh('release', 'view', '--repo', REPO, '--json', 'tagName', '--jq', '.tagName').strip()
 if args.en:
     english = flatten(json.load(open(args.en, encoding='utf-8')))
@@ -88,26 +81,21 @@ else:
     # Přímý media type pro soubory nad 1 MiB
     english = flatten(json.loads(gh('api', '-H', 'Accept: application/vnd.github.raw+json',
                                     f'repos/{REPO}/contents/{EN_PATH}?ref={release}')))
-if args.chrome:
-    chrome_source = open(args.chrome, encoding='utf-8').read()
-else:
-    chrome_source = base64.b64decode(gh('api', f'repos/{REPO}/contents/{CHROME_PATH}?ref={release}',
-                                        '--jq', '.content')).decode('utf-8')
-allowed_chrome = set(re.findall(r"'(auto\.components\.settings\.[^']+)'", chrome_source))
-
-
-def protected(path):
-    """Pravidlo enginu: settings.plugin* jsou texty souhlasu a důvěry s výjimkou explicitního allow-listu."""
-    if not path.startswith(PROTECTED_ROOT) or path in allowed_chrome:
-        return False
-    return path[len(PROTECTED_ROOT):].lower().startswith('plugin')
+try:
+    rules = load_rules(release, args.chrome, args.artifact)
+except (RuntimeError, OSError, ValueError) as exc:
+    sys.exit(f'CHYBA: {exc}')
+allowed_chrome = rules.allowed_chrome
+protected = rules.protected
+MAX_ENTRIES, MAX_DEPTH = rules.max_entries, rules.max_depth
+MAX_VALUE, MAX_BYTES = rules.max_value, rules.max_bytes
 
 
 translatable = {k for k, v in english.items() if not protected(k) and len(v) <= MAX_VALUE}
 print(f'Orca {release or "(lokální katalog)"}: {len(english)} klíčů v katalogu, {len(translatable)} lze přeložit '
       f'({sum(1 for k in english if protected(k))} chráněných, '
       f'{sum(1 for v in english.values() if len(v) > MAX_VALUE)} delších než {MAX_VALUE} znaků, '
-      f'{len(allowed_chrome)} povolených výjimek v allow-listu).\n')
+      f'{len(allowed_chrome)} povolených výjimek, {len(rules.protected_components)} chráněných komponent).\n')
 
 rejected = False
 default_pack = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -160,8 +148,7 @@ for root in args.packs or [default_pack]:
         print(f'  pokrytí: {len(covered)}/{len(translatable)} = {100 * len(covered) / len(translatable):.2f} % '
               f'toho, co může balíček přeložit; {len(missing)} chybí')
         print(f'  zastaralé klíče nedefinované ve vydání: {len(stale)}')
-        print(f'  doplňkové tvary množného čísla: {len(extra_plural)}'
-              + (' — tvary `_few` a `_many` zůstávají neaktivní do stablyai/orca#12505' if extra_plural else ''))
+        print(f'  doplňkové tvary množného čísla: {len(extra_plural)}')
         print(f'  shodné s angličtinou: {len(same)}')
         print(f'  zástupné symboly, které anglický originál nemá: {len(surplus)}')
         for label, keys in (('chybějící', missing), ('zastaralé', stale), ('nadbytečný zástupný symbol', surplus)):

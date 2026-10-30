@@ -9,6 +9,7 @@ Skripty, které sestavují a kontrolují tento balíček. Orca je nenačítá: m
 | [`audit-pack.py`](audit-pack.py) | Audituje libovolný jazykový balíček Orca vůči konkrétnímu vydání Orca: zda engine katalog přijme, pokrytí, nepřeložené a zastaralé klíče, posun zástupných symbolů (placeholders). |
 | [`prepare-waves.py`](prepare-waves.py) | Převede anglický katalog `en.json` na dílčí ploché překladové bloky (podle vln či po dávkách), odfiltruje chráněné klíče a připraví podklady pro překlad. |
 | [`build.py`](build.py) | Sestavuje `locales/cs-CZ.json` z bloků překladu a ověřuje jej podle pravidel nejnovějšího stabilního vydání Orca. |
+| [`engine_rules.py`](engine_rules.py) | Sdílené načítání pravidel vydání: nové i původní cesty, chráněné komponenty, allow-list a limity. |
 | [`release-check.py`](release-check.py) | Kontroluje shodu verze a všech počtů mezi manifestem, oběma soubory README a glosářem. Spouští se před vytvořením tagu. |
 
 Vyžadují `python3` verze 3.8 nebo novější a autentizované CLI [`gh`](https://cli.github.com/). Spouštějte je z kořenového adresáře repozitáře.
@@ -38,24 +39,24 @@ python3 tools/audit-pack.py --list               # všechny chybějící a zasta
 ```
 
 ```
-Orca v1.4.232: 16476 catalog keys, 16296 a pack may translate (180 protected, 0 over 8192 characters, 34 allow-listed).
+Orca v1.4.245: 18316 klíčů v katalogu, 17791 lze přeložit (525 chráněných, 34 povolených výjimek, 8 chráněných komponent).
 
-hanys.czech v0.1.0 — cs-CZ, locales/cs-CZ.json, engines >=1.4.169
-  engine verdict: ACCEPTED
-  size: 18485/20000 entries, depth 12/16, 1191198 bytes
-  coverage: 16296/16296 = 100.00 % of what a pack may translate; 0 missing
-  stale keys the release does not define: 0
-  extra plural forms: 159 — `_few` and `_many` stay unreachable until stablyai/orca#12505
-  identical to English: 1320
-  placeholders the English source does not have: 0
+hanyscz.czech v0.5.0 — cs-CZ, locales/cs-CZ.json, enginy >=1.4.243
+  verdikt enginu: PŘIJAT (ACCEPTED)
+  velikost: 17047/50000 položek, hloubka 12/16, přibližně 1,1 MB
+  pokrytí: 14932/17791 = 83.93 %; 2859 chybí
+  zastaralé klíče nedefinované ve vydání: 0
+  doplňkové tvary množného čísla: 72
+  zástupné symboly, které anglický originál nemá: 0
 ```
 
 Návratový kód (exit status) je 1, pokud by engine balíček odmítl, takže skript může sloužit jako kontrolní brána (gate) před vydáním.
 
 Verdikt zrcadlí kontroly, které Orca provádí nad jazykovým balíčkem při instalaci:
 
+- **Chráněné komponenty.** `PROTECTED_TRANSLATION_COMPONENTS` v modulu enginu chrání celé oblasti bez výjimek; v1.4.245 jich má osm. Neznámá ochranná pravidla nebo chybějící modul kontrolu zastaví.
 - **Chráněné cesty (Protected paths).** Vše pod `auto.components.settings.plugin*` jsou texty souhlasu a důvěryhodnosti, s výjimkou cest uvedených v `plugin-translatable-chrome.ts`. Stačí jeden chráněný klíč a Orca bez jakékoliv zprávy odmítne celý katalog; rozhraní pak jednoduše zůstane v angličtině.
-- **Limity.** 20 000 položek, hloubka zanoření 16, 8 192 znaků na hodnotu, 5 MB na soubor.
+- **Limity.** Počet položek a hloubka se čtou z modulu enginu cílového vydání. Orca v1.4.245 povoluje 50 000 položek, starší podporovaná vydání 20 000. Hloubka je 16, délka hodnoty 8 192 znaků, velikost souboru 5 MB. Před překročením staršího limitu je nutné zvýšit `engines.orca` a ověřit balíček také vůči jeho minimálnímu vydání.
 - **Nebezpečné klíče (Unsafe keys).** Prázdné klíče, klíče s tečkou nebo řídicím znakem, `__proto__`, `prototype`, `constructor`.
 
 ### Proč se pravidla načítají z vydání (release), nikoli z větve `main`
@@ -86,7 +87,7 @@ Skript provede:
 python3 tools/build.py
 ```
 
-Základem je verzovaný katalog. Na něj se aplikují překladové bloky: ploché soubory JSON pojmenované `wave*-cs-part*.json` v pracovním adresáři `.i18n-work/` (není sledován gitem; jinou cestu lze nastavit proměnnou `ORCA_CS_WORK`), kde každý mapuje tečkový klíč na svůj překlad. Bez bloků sestavení pouze znovu zvaliduje katalog a zapíše jej beze změn zpět.
+Základem je verzovaný katalog. Na něj se aplikují překladové bloky: ploché soubory JSON pojmenované `wave*-cs-part*.json` v pracovním adresáři `.i18n-work/` (není sledován gitem; jinou cestu lze nastavit proměnnou `ORCA_CS_WORK`), kde každý mapuje tečkový klíč na svůj překlad. I bez bloků sestavení znovu ověří katalog a odstraní zaniklé či nově chráněné klíče.
 
 Sestavení následně:
 
@@ -104,3 +105,20 @@ python3 tools/release-check.py
 ```
 
 Publikovaný tag se již nikdy nemění, proto jedinou ochranou proti zastaralým údajům je kontrola před otagováním. Skript porovná verzi z manifestu a počet řetězců v katalogu se všemi místy v dokumentaci, kde jsou uvedeny, a zkontroluje, zda celkový součet „ponechaných v angličtině“ odpovídá součtu jednotlivých položek svého rozpisu.
+
+## Zdrojová pravidla a offline kontrola
+
+Všechny nástroje používají `engine_rules.py`. Allow-list hledá nejprve v `src/shared/plugins/languages/plugin-translatable-chrome.ts`, poté na původní cestě `src/shared/plugins/plugin-translatable-chrome.ts`. Modul enginu hledá v `src/shared/plugins/artifacts/plugin-language-pack-artifact.ts` a `src/shared/plugins/plugin-language-pack-artifact.ts`. Na další cestu přejde pouze při 404; chyby přihlášení nebo připojení se nesmějí vydávat za prázdná pravidla.
+
+`prepare-update.py` ukládá oba moduly do pracovní složky a předává je auditu i přípravě vln. Audit odmítnutého starého balíčku se uloží a příprava opravy pokračuje; chyba samotného auditu ji zastaví.
+
+```bash
+python tools/audit-pack.py --en en.json --chrome plugin-translatable-chrome.ts --artifact plugin-language-pack-artifact.ts
+python tools/prepare-waves.py --en en.json --chrome plugin-translatable-chrome.ts --artifact plugin-language-pack-artifact.ts
+```
+
+Offline kontrola vyžaduje všechny tři soubory ze stejného vydání. Sestavení vždy stahuje čerstvý `main` i aktuální stabilní vydání a při neúplných podkladech nic nezapíše. `python tools/build.py --help` pouze vypíše nápovědu; neznámé argumenty jsou chyba.
+
+Od Orca v1.4.243 fungují tvary podle českého locale: `_one` pro 1, `_few` pro celá čísla 2–4, `_other` pro ostatní celá čísla a `_many` pro necelá čísla. Kontrola před tagem vyžaduje každé jednotlivé očekávané místo s verzí i počtem; změna formulace tedy nesmí údaj tiše vyřadit z kontroly.
+
+Regresní kontroly: `python tools/test-engine-rules.py` a `python tools/test-translation-menu.py`.
