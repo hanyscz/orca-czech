@@ -3608,6 +3608,7 @@
           "noPython": "Python nebyl na tomto počítači nalezen. Nainstalujte jej z [python.org](https://www.python.org/downloads/) a poté buňku spusťte znovu.",
           "notPython": "Tento soubor není interpret Pythonu.",
           "notResponding": "Neodpovídá. Restartovat jádro",
+          "outputTruncated": "Výstup zkrácen: Orca ponechala začátek výstupu této buňky a zbytek zahodila. Chcete-li zachovat celý výstup, zapište jej do souboru.",
           "ownerUnresolved": "Orca zatím nemůže zjistit, na kterém počítači se tento notebook nachází, proto jeho buňky nelze spustit.",
           "pythonOnPath": "Python v PATH",
           "pythonOnly": "V Orca lze spouštět pouze notebooky Python.",
@@ -6695,6 +6696,8 @@
             }
           },
           "activityBar": {
+            "disableFailed": "Plugin se nepodařilo zakázat.",
+            "disablePlugin": "Zakázat plugin",
             "error": "Chyba"
           },
           "aiVaultSessionLogOpen": {
@@ -7441,6 +7444,11 @@
         }
       },
       "rightSidebar": {
+        "FolderWorkspaceEmptyState": {
+          "createFailed": "V repozitáři {{repo}} se nepodařilo vytvořit pracovní strom.",
+          "createWorktree": "Vytvořit pracovní strom",
+          "created": "Pracovní strom {{name}} byl vytvořen v repozitáři {{repo}}"
+        },
         "FolderWorkspacePrChecksPanel": {
           "allChecksPassing": "všechny kontroly procházejí",
           "emptyCopy": "Kontroly PR se zde zobrazí poté, co k tomuto složkovému pracovnímu prostoru připojíte pracovní stromy.",
@@ -7785,6 +7793,7 @@
         },
         "AppearanceInterfaceSection": {
           "darkTheme": "Tmavý motiv",
+          "languageUnavailable": "{{value0}} (nedostupný)",
           "lightTheme": "Světlý motiv",
           "pluginIconTheme": {
             "builtIn": "Vestavěné",
@@ -8293,11 +8302,15 @@
           "copyCleanup": "Kopírovat příkaz",
           "copyCleanupFailed": "Nepodařilo se zkopírovat příkaz pro vyčištění.",
           "failed": "Selhalo",
+          "provisioning": "Zřizování",
+          "removeFromList": "Odebrat ze seznamu",
+          "removeFromListFailed": "Běhové prostředí cloudového virtuálního stroje se nepodařilo odebrat ze seznamu.",
           "retry": "Opakovat vyčištění",
           "running": "Spuštěno",
           "stopCleanup": "Zastavit čištění",
           "stopCleanupFailed": "Nepodařilo se zastavit čištění cloudového virtuálního stroje.",
-          "stoppingCleanup": "Zastavování…"
+          "stoppingCleanup": "Zastavování…",
+          "untrackedRuntimeHint": "Orca nikdy neobdržela podrobnosti tohoto virtuálního stroje. Vyčištění provádí zničení pouze s ID instance {{instanceId}}; pokud selže, smažte virtuální stroj u svého poskytovatele a poté jej odeberte z tohoto seznamu."
         },
         "EphemeralVmsPane": {
           "checking": "Kontrola předpisů…",
@@ -9642,22 +9655,14 @@
         },
         "SettingsFormControls": {
           "42a4d15a30": "Žádná odpovídající písma.",
-          "4e11f87ca6": "Zobrazeno",
           "74bcecd5ec": "Vymazat",
-          "9119fb2268": "Aktuální",
           "a4ff6143f8": "Vymazat výběr písma",
           "b55371ea18": "Písma",
           "b661b034ec": "· Výchozí:",
           "builtin_themes": "Vestavěné",
           "c766f8ac75": "Přepnout návrhy písem",
-          "c822571b2e": " odpovídající „{{value0}}“",
-          "cb330ef7f8": " z {{value0}}",
           "ceefb9d7f1": "Nebyly nalezeny žádné motivy.",
           "delete_imported_theme": "Smazat {{value0}}",
-          "delete_theme": "Smazat motiv",
-          "fbb428db98": "Vybráno:",
-          "from_plugin": "Z {{value0}}",
-          "imported_from": "Importováno z {{value0}}",
           "imported_themes": "Importované",
           "plugin_themes": "Pluginy",
           "search_terminal_themes": "Hledat motivy terminálu"
@@ -9665,11 +9670,14 @@
         "SettingsHostScopePicker": {
           "description": "Účty, zjištění agenti a možnosti terminálu níže se týkají tohoto hostitele.",
           "label": "Hostitel",
+          "loading": "Načítání hostitelů…",
           "unavailable": "{{value0}} (nedostupný)",
           "unavailableNotice": "Tento server již není uložen, takže k němu nelze nic zobrazit. Vyberte jiného hostitele v horní části nastavení."
         },
         "SettingsSearchableSelect": {
-          "noMatches": "Žádné shody."
+          "noMatches": "Žádné shody.",
+          "searchHosts": "Hledat hostitele…",
+          "searchLanguages": "Hledat jazyky…"
         },
         "SettingsSidebar": {
           "3e483e256b": "Žádná odpovídající nastavení projektu.",
@@ -10952,6 +10960,12 @@
               "modeBasic": "E-mail a token API",
               "modeToken": "Přístupový token",
               "remoteRuntime": "Zde uložené přihlašovací údaje Bitbucket se ukládají pouze na tomto místním počítači. Místo toho nastavte proměnné prostředí ORCA_BITBUCKET_* ve vzdáleném běhovém prostředí.",
+              "scopeReadPullRequest": "Čtení pull requestů",
+              "scopeRepository": "Čtení stavů sestavení",
+              "scopeUser": "Ověření účtu",
+              "scopeWritePullRequest": "Vytváření pull requestů",
+              "scopesTitle": "Vyberte tyto rozsahy tokenu API Bitbucket:",
+              "scopesWriteNote": "Pokud chcete jen číst, rozsah pro zápis nevybírejte. Zápis nezahrnuje čtení; každý rozsah vyberte zvlášť.",
               "storageNote": "Uloženo na tomto počítači v šifrovaném úložišti, pokud je k dispozici klíčenka operačního systému. Proměnné prostředí ORCA_BITBUCKET_* mají vždy přednost před tím, co zde uložíte.",
               "title": "Připojit Bitbucket",
               "tokenHint": "Přístupové tokeny repozitáře, projektu a pracovního prostoru se vytvářejí na odpovídající stránce nastavení Bitbucket a vyžadují přístup pro čtení pull requestů.",
@@ -13428,6 +13442,9 @@
           "a93ef169b5": "Procházet souborový systém hostitele",
           "b698a4a29d": "https://github.com/user/repo.git",
           "c05f88a31f": "Klonovat z URL",
+          "cloneFolderName": "Název složky",
+          "cloneFolderNotEmpty": "„{{value0}}“ v této složce již existuje, proto tento klon potřebuje vlastní složku.",
+          "cloneFolderTakenByRepo": "„{{value0}}“ v této složce je již jiný repozitář, proto tento klon potřebuje vlastní složku.",
           "cloneOnHostDescription": "Zadejte URL repozitáře Git a zvolte, kam jej na {{value0}} klonovat.",
           "cloneParentFolder": "Nadřazená složka",
           "df8b0e6c22": "Projekt přidán na SSH hostiteli",
@@ -13492,6 +13509,7 @@
           "5cc1a6701c": "Otevřít nastavení",
           "86f0ae1257": "Smazat pracovní prostory",
           "dd3a45bbbd": "Toto potvrzení příště přeskočíme.",
+          "deleteSingleWorktreeAndBranch": "Smaže pracovní strom a jeho větev (nezloučená větev zůstane zachována).",
           "fc23c4cbdf": "Smazat pracovní prostor",
           "gitBlocksMainWorktree": "Git neumožňuje odebrat hlavní pracovní strom.",
           "removeBatchFolder_one": "Odebrat <target>{{count}} pracovní prostor</target> z Orca. Složky projektu na disku nebudou smazány.",
@@ -13501,8 +13519,7 @@
           "removeBatchMixed_one": "Odebrat <target>{{count}} pracovní prostor</target> z Orca. Pracovní stromy gitu budou odebrány také z gitu a disku; u složkových pracovních prostorů se odebere pouze záznam v Orca.",
           "removeBatchMixed_other": "Odebrat <target>pracovní prostory: {{count}}</target> z Orca. Pracovní stromy gitu budou odebrány také z gitu a disku; u složkových pracovních prostorů se odebere pouze záznam v Orca.",
           "removeFolderProjectInstead": "Místo smazání tohoto pracovního prostoru odeberte složkový projekt.",
-          "removeSingleFolder": "Odebrat <target/> z Orca. Složka projektu na disku nebude smazána.",
-          "removeSingleGit": "Odebrat <target/> z gitu a smazat jeho složku pracovního prostoru.",
+          "removeSingleFolderFromOrca": "Odebere jej z Orca. Složka na disku nebude smazána.",
           "removeWithChildrenFolder_one": "Odebrat <target/> a <descendants>{{count}} podřízený pracovní prostor</descendants> z Orca. Složky projektů na disku nebudou smazány.",
           "removeWithChildrenFolder_other": "Odebrat <target/> a <descendants>podřízené pracovní prostory: {{count}}</descendants> z Orca. Složky projektů na disku nebudou smazány.",
           "removeWithChildrenGit_one": "Odebrat <target/> a <descendants>{{count}} podřízený pracovní prostor</descendants> z gitu a smazat jejich složky pracovního prostoru.",
@@ -13519,14 +13536,14 @@
           "forceDeleting": "Vynuceně se maže…"
         },
         "DeleteWorktreeDirtyChangeHint": {
-          "changeCount_one": "{{count}} nepotvrzená nebo nesledovaná změna",
-          "changeCount_other": "Nepotvrzených nebo nesledovaných změn: {{count}}",
-          "changes": "Nepotvrzené nebo nesledované změny",
+          "changesLost_one": "Ztratí se {{count}} nepotvrzená změna",
+          "changesLost_other": "Nepotvrzené změny budou ztraceny ({{count}})",
           "loadedChangedPaths": "Načtené změněné cesty",
           "loadedPathsNotice": "Načtené cesty mohou být neúplné nebo zastaralé.",
           "moreLoadedPaths_one": "a ještě {{count}} načtená cesta",
           "moreLoadedPaths_other": "a ještě načtené cesty: {{count}}",
           "showLoadedPaths": "Zobrazit načtené cesty",
+          "uncountedChangesLost": "Nepotvrzené změny budou ztraceny",
           "unresolvedConflict": "Nevyřešený konflikt"
         },
         "DeleteWorktreeLineageNotice": {
@@ -13535,9 +13552,6 @@
           "alsoDeletesChildren_other": "Smazáním tohoto pracovního prostoru se smaže také podřízených pracovních prostorů: {{count}}.",
           "moreChildren_one": "a ještě {{count}}",
           "moreChildren_other": "a ještě {{count}}"
-        },
-        "DeleteWorktreeSkipConfirmOption": {
-          "29aefb7e52": "Znovu se neptat"
         },
         "DeleteWorktreeWarningPanels": {
           "mainWorktreeNotice": "Toto je <strong>hlavní pracovní strom</strong> (původní adresář klonu)."
@@ -16551,6 +16565,10 @@
             "c337c9d75c": "Zavřít",
             "dont_ask_again": "Znovu se neptat u připnutých karet"
           },
+          "RemoteViewportHeldChip": {
+            "fitHere": "Přizpůsobit zde",
+            "sizedElsewhere": "Velikost pro jiné okno"
+          },
           "TerminalAgentSessionForkDialog": {
             "0c8a8629b1": "Větev se zobrazí jako samostatný pracovní prostor, nikoli jako vnořené podřízené. Nový agent obdrží omezený přepis jako upravitelný koncept.",
             "17fc841e59": "Kopírovat kontext",
@@ -18606,6 +18624,10 @@
         "splitChat": {
           "body": "Stiskněte {terminal.splitRight} nebo klikněte na tlačítko rozdělení v horní části chatu. Každá strana bude mít vlastní karty.",
           "bodyWithoutShortcut": "Klikněte na tlačítko rozdělení v horní části chatu. Každá strana bude mít vlastní karty."
+        },
+        "splitChatPane": {
+          "action": "Rozdělit panel",
+          "title": "Otevřít panel vedle chatu"
         }
       },
       "badgeNew": "Nové",
@@ -18839,6 +18861,7 @@
         "attachmentOwnerChanged": "Pracovní prostor během připojování změnil hostitele — přetáhněte soubory znovu.",
         "attachmentUnreadable": "Přetažené soubory se nepodařilo přečíst.",
         "availableAfterSessionStarts": "Dostupné po spuštění relace.",
+        "checkingSkills": "Kontrola nových dovedností…",
         "chooseInAgentPicker": "Vybrat v seznamu agentů…",
         "clearDescription": "Vymazat kontext konverzace",
         "commandAttachmentsUnsupported": "Před použitím příkazu relace chatu odeberte přílohy.",
@@ -18967,6 +18990,7 @@
         "copyIdentity": "Kopírovat {{value0}}",
         "folder": "Složka",
         "mainCheckout": "Hlavní checkout",
+        "turnWorking": "Agent tohoto chatu pracuje. Větev přepněte po dokončení jeho tahu.",
         "worktree": "Pracovní strom"
       },
       "context": {
@@ -19064,6 +19088,12 @@
         "couldNotStopTheAgent": "Agenta se nepodařilo zastavit.",
         "editSavedArguments": "Upravte je v části Nastavení → Agenti → Argumenty.",
         "emptyMessage": "Tato zpráva je prázdná, proto nebyla odeslána.",
+        "forkOriginalLatestOnly": "{{agent}} umí vytvořit fork pouze z poslední odpovědi v původním chatu. Otevřete tento chat a po dokončení odpovědi z ní vytvořte fork.",
+        "forkOriginalLatestOnlyNamed": "{{agent}} umí vytvořit fork pouze z poslední odpovědi v chatu „{{detail}}“. Otevřete tento chat a po dokončení odpovědi z ní vytvořte fork.",
+        "forkOriginalMissing": "{{agent}} tuto odpověď v původním chatu nenašel. Otevřete jej a vytvořte fork tam.",
+        "forkOriginalMissingNamed": "{{agent}} tuto odpověď v chatu „{{detail}}“ nenašel. Otevřete jej a vytvořte fork tam.",
+        "forkOriginalUnavailable": "{{agent}} z této odpovědi v původním chatu nemůže vytvořit fork. Otevřete jej a vytvořte fork tam.",
+        "forkOriginalUnavailableNamed": "{{agent}} z této odpovědi v chatu „{{detail}}“ nemůže vytvořit fork. Otevřete jej a vytvořte fork tam.",
         "fullAccessAsRoot": "{{agent}} nepoužije Úplný přístup, když běží jako root. V části Nastavení → Agenti zvolte pro {{agent}} jiné oprávnění na počítači, kde tento chat běží, a poté spusťte nový chat.",
         "historyInOtherAccount": "Historie tohoto chatu je v jiném účtu Claude. Chcete-li v tomto chatu pokračovat, přepněte zpět na onen účet.",
         "historyTooLarge": "Historie této konverzace je příliš velká, než aby zde mohla být obnovena.",
@@ -19350,8 +19380,7 @@
         "notSavedYet": "{{agent}} tuto konverzaci ještě neuložil. Zkuste to znovu po jeho odpovědi.",
         "resumeFailed": "{{agent}} nemohl v chatu pokračovat. Zkontrolujte tento terminál a připojení k hostiteli a zkuste to znovu.",
         "terminalChanged": "Terminál spouštějící {{agent}} se před zavřením změnil, proto jej Orca ponechala otevřený. Zkuste to znovu.",
-        "terminalExitUnproven": "Orca zavřela terminál {{agent}}, ale nemohla potvrdit, že se zastavil, proto se chat neotevřel. Zkontrolujte připojení k hostiteli a poté konverzaci otevřete z historie relací.",
-        "terminalExitUnprovenInChat": "Orca zavřela terminál {{agent}}, ale nemohla potvrdit, že se {{agent}} zastavil. Ověřte, že je zastavený, a zkuste to znovu."
+        "terminalExitUnproven": "Orca zavřela terminál {{agent}}, ale nemohla potvrdit, že se zastavil, proto se chat neotevřel. Zkontrolujte připojení k hostiteli a poté konverzaci otevřete z historie relací."
       },
       "rewind": {
         "action": "Přetočit sem",
@@ -19485,6 +19514,8 @@
         "usageProvider": "Zobrazit využití a limity poskytovatele",
         "vim": "Přepnout režim Vim"
       },
+      "splitDown": "Rozdělit dolů",
+      "splitRight": "Rozdělit vpravo",
       "state": {
         "empty": {
           "subtitle": "Požádejte {{value0}}, aby prozkoumal kód, vysvětlil výstup nebo provedl změnu.",
@@ -20151,6 +20182,20 @@
         }
       }
     },
+    "tabGroup": {
+      "splitPaneLanding": {
+        "browser": "Prohlížeč",
+        "chooseAgent": "Vybrat agenta",
+        "closePane": "Zavřít panel",
+        "goToFile": "Přejít na soubor",
+        "heading": "Otevřít v tomto panelu",
+        "markdown": "Markdown",
+        "mobileEmulator": "Mobilní emulátor",
+        "newAgent": "Nový agent",
+        "reopenClosedTab": "Znovu otevřít zavřenou kartu",
+        "terminal": "Terminál"
+      }
+    },
     "terminalPane": {
       "TerminalContextMenu": {
         "copySessionId": "Kopírovat ID relace",
@@ -20425,7 +20470,7 @@
         "changes": {
           "checking": "Kontrola změn…",
           "checkingDetails": "Kontroluje se…",
-          "clean": "Žádné nepotvrzené ani nesledované změny",
+          "none": "Žádné nepotvrzené změny",
           "permanentLoss": "Všechny nepotvrzené a nesledované změny v pracovních prostorech Gitu budou trvale odstraněny.",
           "unavailable": "Změny se nepodařilo zkontrolovat",
           "unavailableDetails": "Podrobnosti nejsou k dispozici"
@@ -20721,6 +20766,7 @@
       "destroyExitedWithoutCode": "Zničení skončilo s neznámým kódem.",
       "destroyFailed": "Zničení selhalo.",
       "provisionCancelled": "Zřizování bylo zrušeno.",
+      "provisionInterrupted": "Orca se zastavila během vytváření tohoto virtuálního stroje. Zničte jej, aby se uvolnily prostředky poskytovatele.",
       "provisionedRootNotConfigured": "Výsledek receptu požaduje checkout provisioned-root, ale recept k tomu není nakonfigurován.",
       "provisionedRootResultRequired": "Recepty provisioned-root musí vracet schemaVersion 2 s checkoutMode „provisioned-root“.",
       "recipeExited": "Recept skončil s kódem {{exitCode}}.",
@@ -20730,12 +20776,17 @@
       "recipeResultNotJsonObject": "Standardní výstup receptu musí obsahovat jeden objekt JSON.",
       "recipeResultPairingCodeInvalid": "pairingCode ve výsledku receptu není platný párovací kód Orca.",
       "recipeResultProjectRootNotAbsolute": "projectRoot ve výsledku receptu musí být absolutní cesta v běhovém prostředí.",
+      "recipeTimedOut": "Krok receptu {{mode}} neskončil do {{timeout}}, proto jej Orca zastavila. Zkontrolujte výstup receptu, nebo v orca.yaml zvyšte timeoutSeconds, pokud potřebuje více času.",
       "remoteRepoUnsupported": "Recepty dočasných VM se ve verzi 1 spouštějí na místním počítači.",
       "repoNotFound": "Repozitář nebyl nalezen: {{repoId}}",
+      "resumeExited": "Probuzení skončilo s kódem {{exitCode}}.",
+      "resumeExitedWithoutCode": "Probuzení skončilo s neznámým kódem.",
       "runtimeNotFound": "Neznámé běhové prostředí dočasné VM: {{runtimeId}}",
       "runtimeRepoMissing": "Běhové prostředí dočasné VM nemá ID repozitáře: {{runtimeId}}",
       "sshTargetRemoveFailed": "Skrytý cíl SSH se nepodařilo odebrat.",
-      "startRefUnresolved": "Startovní referenci provisioned-root se nepodařilo určit: {{ref}}"
+      "startRefUnresolved": "Startovní referenci provisioned-root se nepodařilo určit: {{ref}}",
+      "suspendExited": "Uspání skončilo s kódem {{exitCode}}.",
+      "suspendExitedWithoutCode": "Uspání skončilo s neznámým kódem."
     }
   },
   "featureTips": {
@@ -20972,28 +21023,63 @@
     "noResults": "Žádné výsledky. Zkuste jiné hledání nebo upravte filtry."
   },
   "gitGraph": {
+    "abortOperation": "Zrušit {{operation}}",
+    "abortOperationDescription": "Zruší probíhající operaci a může zahodit vyřešení konfliktů provedená během ní.",
+    "abortOperationTitle": "Zrušit {{operation}}?",
+    "actionConflicted": "Vyřešte konflikty ve správě verzí a poté pokračujte v operaci, nebo ji zrušte.",
+    "actionDirty": "Potvrďte (commit) nebo odložte (stash) své změny a poté to zkuste znovu.",
+    "actionFailed": "Git nevytvořil commit. Zkontrolujte checkout a zkuste to znovu.",
+    "actionLanded": "Nyní na commitu {{commit}} ve větvi {{branch}}",
+    "actionRefused": "Akce se nedokončila.",
+    "actionUnavailable": "Tento pracovní prostor již pro tuto akci není dostupný. Znovu otevřete graf Git a akci opakujte.",
+    "actionWarning": "Akce se dokončila, ale Git ohlásil problém.",
     "allBranches": "Všechny větve",
+    "alreadyApplied": "Již aplikováno, není co přenést pomocí cherry-pick",
     "author": "Autor",
+    "branchCreated": "Větev {{branch}} vytvořena na commitu {{commit}}",
+    "branchName": "Název větve",
     "branchTag": "Větev / značka",
+    "cancelAction": "Zrušit",
+    "cannotApplyMerge": "Odtud nelze provést cherry-pick ani vrátit slučovací commit",
+    "checkoutBranch": "Přepnout na větev",
+    "checkoutCommit": "Přepnout na commit",
+    "cherryPick": "Cherry-pick",
     "chosenBranches": "Vybrané větve",
+    "confirmCommitAction": "{{action}} {{commit}}?",
+    "continueOperation": "Pokračovat v operaci {{operation}}",
     "copyBranch": "Kopírovat název větve",
     "copyHash": "Kopírovat hash commitu",
+    "createBranch": "Vytvořit větev zde",
+    "createBranchFailed": "Orca nemohla větev vytvořit. Zkontrolujte tento repozitář v terminálu a poté to zkuste znovu.",
     "currentBranch": "Aktuální větev",
     "date": "Datum",
+    "detachedHead": "detached HEAD",
     "files": "Soubory",
     "graph": "Graf",
     "historyChanged": "Historie se znovu změnila. Zkuste to znovu obnovením grafu Git.",
+    "invalidBranchName": "Tento název větve je neplatný. Zvolte jiný název.",
     "loadFailed": "Historii Gitu se nepodařilo načíst",
     "loadMore": "Načíst další",
     "message": "Zpráva",
     "noCommits": "Zatím žádné commity",
+    "nothingToRevert": "Není co vracet; změny jsou již vráceny.",
     "oldServer": "Tato verze Orca na serveru zobrazuje pouze aktuální větev",
+    "operationInProgress": "Než to zkusíte znovu, dokončete nebo zrušte probíhající {{operation}}.",
+    "ownerChanged": "Hostitel pracovního prostoru se změnil. Znovu otevřete graf Git a akci opakujte.",
     "parents": "Rodiče",
+    "recoveryFailed": "Operaci se nepodařilo dokončit. Obnovte správu verzí a zkuste to znovu.",
     "refresh": "Obnovit commity",
     "resizeColumn": "Změnit šířku sloupce grafu",
+    "revert": "Vrátit",
+    "revertConflicts": "Konflikty při vrácení",
+    "revertInProgress": "Probíhá vrácení",
+    "reverting": "Vracení",
     "searchRefs": "Hledat větve a značky",
+    "showAllBranches": "Zobrazit všechny větve",
     "switchWorkspace": "Přepnout do pracovního prostoru",
+    "thisHost": "tento hostitel",
     "title": "Graf Git",
+    "updateActionsHost": "Chcete-li s commity pracovat, aktualizujte Orca na hostiteli {{host}}",
     "updateHost": "Chcete-li otevřít graf Git, aktualizujte Orca na hostiteli {{host}}",
     "workspaceCheckFailed": "Tento pracovní prostor se nepodařilo zkontrolovat. Zkuste to znovu po připojení.",
     "workspaceClosed": "Tato větev už není otevřená v jiném pracovním prostoru."
@@ -22765,6 +22851,7 @@
     "branchPicker": {
       "agentWorking": "V tomto pracovním prostoru pracuje agent. Přepněte větev po dokončení jeho práce, nebo zavřete jeho kartu, pokud se zastavil.",
       "conflict": "Před přepnutím větve dokončete nebo zrušte {{operation}}.",
+      "copy": "Kopírovat název větve",
       "create": "Vytvořit větev {{name}} z větve {{branch}}",
       "dirty_one": "Před přepnutím větve potvrďte nebo zahoďte {{count}} změněný soubor.",
       "dirty_other": "Před přepnutím větve potvrďte nebo zahoďte změněné soubory: {{count}}.",
@@ -23521,12 +23608,15 @@
     }
   },
   "workspaceDeletion": {
+    "alwaysDelete": "Vždy mazat",
+    "alwaysDeleteTooltip": "Při budoucích mazáních se toto potvrzení přeskočí.",
     "alwaysForceDelete": "Vždy mazat vynuceně",
     "alwaysForceDeleteBranches": "Vždy mazat zachované větve",
     "alwaysForceDeleteBranchesTooltip": "Platí pro větve ponechané po budoucích smazáních pracovních prostorů.",
     "alwaysForceDeleteTooltip": "Platí pro všechna budoucí smazání pracovního prostoru.",
     "moreActions": "Další možnosti vynuceného smazání",
     "moreBranchActions": "Další možnosti smazání větví",
+    "moreDeleteOptions": "Další možnosti mazání",
     "preferenceSaveFailed": "Předvolbu smazání se nepodařilo uložit"
   },
   "workspaceSpace": {
@@ -23590,6 +23680,17 @@
     }
   },
   "worktree": {
+    "delete": {
+      "childrenCannotBeKeptTitle": "Podřízené pracovní prostory nelze zachovat",
+      "childrenChanged": "Podřízené pracovní prostory se změnily. Zkontrolujte seznam pracovních prostorů a zkuste to znovu.",
+      "childrenChangedClearPreserve": "Podřízené pracovní prostory se změnily. Chcete-li mazání zkontrolovat, zrušte tuto volbu.",
+      "childrenPreservedDescription": "Přímé podřízené pracovní prostory se stanou pracovními prostory nejvyšší úrovně. Jejich soubory, terminály a vnořené podřízené pracovní prostory zůstanou zachovány.",
+      "childrenPreservedTitle": "Podřízené pracovní prostory zůstanou zachovány",
+      "detachChildren": "Odpojit a zachovat podřízené pracovní prostory",
+      "detachFailed": "Nepodařilo se odpojit všechny podřízené pracovní prostory. Nadřazený pracovní prostor nebyl smazán. {{error}}",
+      "detachingChildren": "Odpojování podřízených pracovních prostorů…",
+      "nestedChildrenCannotBeKept": "Složky podřízených pracovních prostorů uvnitř tohoto pracovního prostoru je nutné přesunout mimo něj, aby je bylo možné zachovat."
+    },
     "nestedRemoval": {
       "cancel": "Zrušit",
       "confirm": "Smazat všechny uvedené pracovní stromy",
