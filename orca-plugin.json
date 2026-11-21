@@ -10,7 +10,7 @@
   "engines": {
     "orca": ">=1.4.268"
   },
-  "pluginApi": 1,
+  "execution": "data",
   "contributes": {
     "languagePacks": [
       {
