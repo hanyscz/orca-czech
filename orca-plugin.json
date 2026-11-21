@@ -3,18 +3,20 @@
   "id": "czech",
   "publisher": "hanyscz",
   "name": "Čeština",
-  "version": "0.14.0",
+  "version": "0.15.0",
+  "license": "MIT",
   "description": "Česká lokalizace Orca IDE",
   "repository": "https://github.com/hanyscz/orca-czech",
   "engines": {
-    "orca": ">=1.4.265"
+    "orca": ">=1.4.268"
   },
   "pluginApi": 1,
   "contributes": {
     "languagePacks": [
       {
         "locale": "cs-CZ",
-        "path": "locales/cs-CZ.json"
+        "path": "locales/cs-CZ.json",
+        "displayName": "Čeština (Hanys)"
       }
     ]
   },
