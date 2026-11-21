@@ -3,7 +3,21 @@
     "antigravity": {
       "account": "Účet",
       "active": "Aktivní",
+      "adcHint": "Volitelné. Orca používá váš projekt gcloud a globální umístění. Nejprve jednou spusťte příkaz gcloud auth application-default login.",
       "addAccountHelp": "Chcete-li přidat účet, spusťte v agy příkaz /logout, znovu se přihlaste a poté jej zde uložte.",
+      "agentPlatform": "Google Agent Platform",
+      "agentPlatformOption": "Vaše přihlášení gcloud (ADC)",
+      "apiKey": "Klíč API Gemini",
+      "apiKeyFromEnvironment": "Používá se GEMINI_API_KEY z vašeho prostředí. Vložením klíče použijete jiný.",
+      "apiKeyGet": "Získat klíč API",
+      "apiKeyLabel": "Klíč API Gemini",
+      "apiKeyOption": "Klíč z Google AI Studio",
+      "apiKeyPlaceholder": "Vložte svůj klíč API",
+      "apiKeyRemove": "Odebrat",
+      "apiKeyReplace": "Nahradit klíč",
+      "apiKeySave": "Uložit",
+      "apiKeySaveFailed": "Orca nemohla klíč uložit. Zkuste to znovu.",
+      "apiKeySaved": "Klíč je na tomto hostiteli uložen a zašifrován.",
       "authMethod": "Přihlásit se pomocí",
       "changed": "Účet v agy se změnil. Před spuštěním agy znovu vyberte uložený účet.",
       "chatBadgeSignedIn": "Přihlášeno",
@@ -16,6 +30,15 @@
       "chatCopyFailed": "Odkaz se nepodařilo zkopírovat.",
       "chatCopyLink": "Zkopírovat odkaz pro přihlášení",
       "chatDescription": "Přihlašuje se přes prohlížeč, takže Chat funguje i bez nainstalovaného agy.",
+      "chatDescriptionAgy": "agy je zde přihlášen, takže nové chaty používají níže uvedený účet agy. Toto přihlášení se použije, když agy přihlášen není.",
+      "chatDescriptionAgyOwnSignIn": "Chaty běží na agy a používají vlastní přihlášení agy.",
+      "chatDescriptionAgyOwnSignInVersion": "Chaty běží na vašem agy (v{{version}}) a používají vlastní přihlášení agy.",
+      "chatDescriptionAgySignedOut": "Nové chaty používají agy, který zatím není přihlášen. Chcete-li se přihlásit, spusťte agy na tomto hostiteli.",
+      "chatDescriptionAgyVersion": "Nové chaty běží na vašem agy (v{{version}}) s níže uvedeným účtem. Toto přihlášení se použije, když agy přihlášen není.",
+      "chatDescriptionInstallAgy": "Chcete-li používat Chat, nainstalujte níže agy. Přihlašuje se vlastním účtem.",
+      "chatDescriptionManagedVersion": "Nové chaty běží na kopii agy v Orca (v{{version}}), takže Chat funguje i bez nainstalovaného agy.",
+      "chatDescriptionOrcaAgy": "Chaty běží na kopii agy v Orca a používají vlastní přihlášení agy.",
+      "chatDescriptionOrcaAgyVersion": "Chaty běží na agy v Orca (v{{version}}) a používají vlastní přihlášení agy.",
       "chatExpired": "Časový limit přihlášení vypršel. Zkuste to znovu.",
       "chatFailed": "Přihlášení se nezdařilo. Zkuste to znovu.",
       "chatOpenFailed": "Zkopírujte odkaz a otevřete jej v prohlížeči.",
@@ -51,12 +74,14 @@
       "loadFailed": "Nepodařilo se načíst účty agy",
       "loading": "Načítání účtů…",
       "location": "Umístění",
+      "locationGlobal": "global",
       "locationPlaceholder": "us-central1",
       "noEmailNotSaved": "agy nevrátil e-mail · neuloženo",
       "noReading": "Využití neznámé: zatím nenačteno",
       "notSignedIn": "Nepřihlášeno",
       "personal": "Účet Google",
       "personalOption": "Váš osobní tarif Google AI",
+      "projectFromGcloud": "Z gcloud",
       "projectPlaceholder": "my-project-id",
       "readAt": "Načteno {{time}}",
       "refresh": "Obnovit účty",
@@ -73,6 +98,8 @@
       "signInEllipsis": "Přihlásit se…",
       "signInHelp": "Nápověda k přihlášení",
       "terminalDescription": "Používá vlastní uložené účty nástroje agy. Přepnutí se použije pro nové relace agy.",
+      "terminalDescriptionChats": "Používá vlastní uložené účty agy. Přepnutí se použije pro nové relace agy a pro chaty Antigravity.",
+      "terminalDescriptionNoChats": "Používá vlastní uložené účty agy. Přepnutí se použije pro nové relace agy, nikoli pro chaty Antigravity.",
       "terminalDescriptionWindows": "Používá vlastní uložené účty nástroje agy. Přepnutí se použije pro výchozí přihlašovací údaje agy na hostiteli.",
       "terminalTitle": "agy v terminálu",
       "title": "Antigravity",
@@ -106,6 +133,10 @@
         "groupCantMove": "Nelze přesunout",
         "groupElsewhere": "Není na účtu {{account}}",
         "groupOnAccount": "Běží na účtu {{account}}",
+        "hostAskDescription": "Restartováním se zastaví probíhající práce.",
+        "hostAskOne": "Na {{previous}} stále běží 1 relace Claude.",
+        "hostAskOther": "Na {{previous}} stále běží relace Claude: {{count}}.",
+        "hostAskRestart": "Restartovat",
         "idle": "Nečinný",
         "keep": "Ponechat beze změny",
         "keyword": {
@@ -209,7 +240,10 @@
     "codexProduct": "Codex CLI",
     "commandCopied": "Příkaz byl zkopírován",
     "commandNotCopied": "Příkaz se nepodařilo zkopírovat",
+    "copilotProduct": "GitHub Copilot CLI",
+    "copilotShortProduct": "Copilot CLI",
     "copyCommand": "Kopírovat",
+    "cursorProduct": "Cursor CLI",
     "failedButton": "Aktualizace selhala",
     "failedChip": "aktualizace selhala",
     "failedChipLabel": "Aktualizace selhala: zobrazit chybu",
@@ -217,12 +251,19 @@
     "failedDescription": "Orca spustila <code>{{command}}</code> na <strong>{{host}}</strong> za účelem aktualizace {{product}} z <strong>{{installedVersion}}</strong> na <strong>{{latestVersion}}</strong> a operace selhala.",
     "failedDescriptionNoCommand": "Aplikaci Orca se nepodařilo aktualizovat {{product}} na <strong>{{host}}</strong>.",
     "failedTitle": "Nepodařilo se aktualizovat {{product}}",
+    "grokProduct": "Grok Build",
     "heading_one": "K dispozici je {{count}} aktualizace CLI",
     "heading_other": "K dispozici je {{count}} aktualizací CLI",
+    "hermesProduct": "Hermes Agent",
+    "kimiProduct": "Kimi Code",
     "manualHint": "Spusťte v terminálu:",
+    "modelRequires": "Vyžaduje {{product}} {{version}}",
     "modelRequiresClaude": "Vyžaduje Claude Code CLI {{version}}",
     "modelRequiresCodex": "Vyžaduje Codex CLI {{version}}",
     "noOutput": "Příkaz nevypsal žádný výstup.",
+    "ompProduct": "OMP",
+    "opencode2Product": "OpenCode 2",
+    "opencodeProduct": "OpenCode",
     "statusCount_one": "{{count}} aktualizace CLI",
     "statusCount_other": "{{count}} aktualizací CLI",
     "statusFailed": "Aktualizace CLI selhala",
@@ -361,6 +402,12 @@
       "delayedDescription": "Dokud se tato operace nedokončí, další ukládání může mít zpoždění.",
       "delayedTitle": "Ukládání profilu trvá déle než obvykle"
     }
+  },
+  "appRail": {
+    "more": "Další",
+    "navigationLabel": "Navigace aplikace",
+    "toolsLabel": "Nástroje aplikace",
+    "workspaces": "Pracovní prostory"
   },
   "auto": {
     "App": {
@@ -895,20 +942,15 @@
         "c732bcbf8f": "Kontrola balíčku…",
         "e3de29c86a": "Zobrazit balíček"
       },
-      "NativeChatResumeAutoNote": {
-        "changeInSettings": "Změnit v nastavení",
-        "resumed": "Obnoveno automaticky po restartu.",
-        "resuming": "Obnovuje se automaticky po restartu."
-      },
       "NativeChatResumeFailureGuidance": {
-        "conflict": "Tento chat je otevřen v jiném okně Orca nebo v terminálu. Zavřete jej tam a zkuste to znovu.",
-        "dispatchRejected": "Agent odmítl zprávu „pokračovat“. Otevřete chat a pošlete ji sami.",
-        "fallback": "Orca tento chat nedokázala obnovit. Otevřete jej a pokračujte ručně.",
-        "notAttached": "Chat se znovu nepřipojil. Zkuste to znovu, nebo jej otevřete a začněte nové kolo.",
-        "ownershipUnknown": "Tento chat zatím není připraven k obnovení. Chvíli počkejte a zkuste to znovu.",
-        "superseded": "Otevřete chat a odpovězte. Hned po restartu v něm přibyla nová práce, takže Orca neodeslala zprávu „pokračovat“.",
-        "unconfirmed": "Orca nedokázala potvrdit doručení zprávy „pokračovat“. Otevřete chat a zkontrolujte jej, než pošlete další.",
-        "unsupported": "Orca tento chat nedokáže obnovit. Otevřete jej a podívejte se, kde se zastavil."
+        "conflictShort": "Otevřete v jiném okně nebo terminálu.",
+        "dispatchRejectedShort": "Agent odmítl pokračovat.",
+        "fallbackShort": "Obnovení se nezdařilo.",
+        "notAttachedShort": "Nepřipojilo se.",
+        "ownershipUnknownShort": "Zatím není připraveno k obnovení.",
+        "supersededShort": "Po restartu přišla nová práce.",
+        "unconfirmedShort": "Nepodařilo se potvrdit pokračování.",
+        "unsupportedShort": "Orca tento chat nedokáže obnovit."
       },
       "NativeChatResumeOnRestartModal": {
         "activityApproval": "Čeká na vaše schválení: {{value0}}",
@@ -921,86 +963,47 @@
         "activitySubagentCount_other": "Běží dílčích agentů: {{count}}",
         "activitySubagentOne": "Běží dílčí agent: {{value0}}",
         "activityUnnamed": "bez názvu",
-        "body": "Tyto chaty pracovaly, když se Orca zavřela. Obnovení vrátí každý z nich tam, kde se zastavil, s celým kontextem, a požádá agenta, aby před pokračováním zkontroloval, co dělal. Váš vlastní prompt se znovu neodesílá.",
         "collapseNode": "Sbalit {{value0}}",
-        "continuedCount_one": "Obnoven {{count}} chat",
-        "continuedCount_other": "Obnoveno chatů: {{count}}",
-        "dismissAll": "Skrýt vše",
-        "done": "Hotovo",
-        "dontAskAgain": "Znovu se neptat (obnovovat automaticky)",
-        "dontAskAgainHint": "Vypnout to můžete v části Nastavení → Experimentální → Rozhraní chatu.",
         "expandNode": "Rozbalit {{value0}}",
-        "listLabel": "Chaty, které by se obnovily",
-        "notConfirmedCount_one": "Nepodařilo se potvrdit obnovení {{count}} chatu",
-        "notConfirmedCount_other": "Nepodařilo se potvrdit obnovení chatů: {{count}}",
-        "notConfirmedOtherCount_one": "Nepodařilo se potvrdit obnovení {{count}} dalšího chatu",
-        "notConfirmedOtherCount_other": "Nepodařilo se potvrdit obnovení dalších chatů: {{count}}",
-        "notContinuedCount_one": "{{count}} chat se nepodařilo obnovit",
-        "notContinuedCount_other": "Chatů, které se nepodařilo obnovit: {{count}}",
-        "resultListLabel": "Chaty v tomto obnovení",
-        "resumeChats_one": "Obnovit {{count}} chat",
-        "resumeChats_other": "Obnovit chaty: {{count}}",
-        "resuming": "Obnovování…",
-        "review": "Zkontrolovat",
-        "selectAgent": "Obnovit chat {{value0}} „{{value1}}“ v {{value2}}",
-        "selectAll": "Vybrat všechny chaty",
-        "selectAllLabel": "Vybrat vše",
-        "selectMachine": "Vybrat všechny chaty na {{value0}}",
-        "selectProject": "Vybrat všechny chaty v {{value0}}",
-        "selectWorkspace": "Vybrat všechny chaty v {{value0}}",
-        "selectedCount": "Vybráno: {{value0}} z {{value1}}",
-        "serverBody": "Tyto chaty pracovaly v okamžiku, kdy se Orca na {{machine}} restartovala. Obnovením se každý vrátí tam, kde skončil, a agent dostane pokyn pokračovat. Váš vlastní prompt se znovu neodesílá.",
-        "serverDismiss": "Skrýt",
-        "serverResumeAll": "Obnovit všechny chaty na {{machine}} ({{count}})",
-        "serverResumeHereCount_one": "Obnovit {{count}} chat spuštěný zde",
-        "serverResumeHereCount_other": "Obnovit chaty spuštěné zde: {{count}}",
-        "serverTitle": "Restart hostitele {{machine}}",
-        "sshHost": "SSH",
-        "title": "Obnovit přerušené chaty?",
-        "untitled": "Chat bez názvu",
-        "updateBody": "Tyto chaty pracovaly, když Orca instalovala aktualizaci. Obnovení vrátí každý z nich tam, kde se zastavil, s celým kontextem, a požádá agenta, aby před pokračováním zkontroloval, co dělal. Váš vlastní prompt se znovu neodesílá.",
-        "viewChats": "Zobrazit chaty",
         "workspaceSelectedCount": "{{value0}} z {{value1}}"
       },
-      "NativeChatResumeOutcomeRow": {
+      "NativeChatResumeToast": {
+        "asked": "Orca požádala chaty o pokračování. Zprávy ve frontě mohou být odeslány.",
+        "changeInSettings": "Změnit v nastavení",
+        "close": "Zavřít",
+        "details": "Podrobnosti",
         "dismiss": "Skrýt",
-        "dismissChat": "Skrýt chat „{{value0}}“ v {{value1}}",
-        "failed": "Nepodařilo se obnovit",
-        "openChat": "Otevřít chat",
+        "dismissAll": "Skrýt vše",
+        "listLabel": "Chaty",
+        "open": "Otevřít",
+        "partial_one": "Obnoveno chatů: {{resumed}} z {{total}}. {{count}} vás vyžaduje.",
+        "partial_other": "Obnoveno chatů: {{resumed}} z {{total}}. Vyžaduje vás: {{count}}.",
+        "promptsNotResent": "Obnovení znovu neodešle vaše prompty.",
+        "resume": "Obnovit",
+        "resumedAutomatically": "Obnoveno automaticky.",
+        "resumedOn_one": "Obnoven {{count}} chat na {{machine}}.",
+        "resumedOn_other": "Obnoveno chatů na {{machine}}: {{count}}.",
+        "resumedRestart_one": "Obnoven {{count}} chat po restartu.",
+        "resumedRestart_other": "Obnoveno chatů po restartu: {{count}}.",
+        "resumedUpdate_one": "Obnoven {{count}} chat po aktualizaci.",
+        "resumedUpdate_other": "Obnoveno chatů po aktualizaci: {{count}}.",
+        "resumingOn_one": "Obnovování {{count}} chatu na {{machine}}…",
+        "resumingOn_other": "Obnovování chatů na {{machine}}: {{count}}…",
+        "resuming_one": "Obnovování {{count}} chatu…",
+        "resuming_other": "Obnovování chatů: {{count}}…",
         "retry": "Zkusit znovu",
-        "statusFor": "{{value0}}: {{value1}}",
-        "toResume": "Pro obnovení:",
-        "unconfirmed": "Nepodařilo se potvrdit obnovení chatu"
-      },
-      "NativeChatResumeRunPanel": {
-        "description": "Každý chat se obnoví s celým kontextem a agent je požádán, aby zkontroloval, kde se zastavil. Toto okno můžete zavřít; průběh obnovení sleduje stavový řádek.",
-        "finished": "Tyto chaty pracovaly, když se Orca zavřela. Orca obnovila každý z nich tam, kde se zastavil, s celým kontextem, a požádala agenta, aby před pokračováním zkontroloval, co dělal. Vaše vlastní prompty se znovu neodesílaly.",
-        "finishedPartial": "Tyto chaty pracovaly, když se Orca zavřela. Ty, které Orca obnovila, byly vráceny tam, kde se zastavily, s celým kontextem, a jejich agenti byli požádáni, aby před pokračováním zkontrolovali, co dělali. Vaše vlastní prompty se znovu neodesílaly. V seznamu zkontrolujte, které chaty ještě vyžadují pozornost nebo je lze obnovit.",
-        "finishedPartialUpdate": "Tyto chaty pracovaly, když Orca instalovala aktualizaci. Ty, které Orca obnovila, byly vráceny tam, kde se zastavily, s celým kontextem, a jejich agenti byli požádáni, aby před pokračováním zkontrolovali, co dělali. Vaše vlastní prompty se znovu neodesílaly. V seznamu zkontrolujte, které chaty ještě vyžadují pozornost nebo je lze obnovit.",
-        "finishedUpdate": "Tyto chaty pracovaly, když Orca instalovala aktualizaci. Orca obnovila každý z nich tam, kde se zastavil, s celým kontextem, a požádala agenta, aby před pokračováním zkontroloval, co dělal. Vaše vlastní prompty se znovu neodesílaly.",
-        "resumedOfTotal_one": "Obnoveno {{resumed}} z {{count}} chatu",
-        "resumedOfTotal_other": "Obnoveno chatů: {{resumed}} z {{count}}",
-        "resumingCount_one": "Obnovování {{count}} chatu",
-        "resumingCount_other": "Obnovování chatů: {{count}}"
-      },
-      "NativeChatResumeRunStatusIcon": {
-        "inFlight": "{{value0}} · {{value1}}",
-        "resumed": "Obnoveno",
-        "starting": "Spouštění",
-        "waitingForReply": "Čekání na odpověď",
-        "waitingToStart": "Čeká na spuštění"
-      },
-      "NativeChatResumeRunSummary": {
-        "all": "Vše",
-        "attention": "Vyžadují vás",
-        "done": "Hotovo {{value0}} z {{value1}}",
-        "filter": "Zobrazit chaty",
-        "inProgress": "Probíhá",
-        "resumed": "Obnoveno",
-        "running": "Běží {{value0}}",
-        "starting": "Spouští se: {{value0}}",
-        "waitingForReply": "Čeká na odpověď: {{value0}}",
-        "waitingToStart": "Čeká na spuštění: {{value0}}"
+        "stateNeedsYou": "Vyžaduje vás",
+        "stateResumed": "Obnoveno",
+        "stateResuming": "Obnovování",
+        "stateStopped": "Zastaveno",
+        "stoppedOn_one": "{{count}} chat se na {{machine}} zastavil.",
+        "stoppedOn_other": "Zastavených chatů na {{machine}}: {{count}}.",
+        "stoppedRestart_one": "{{count}} chat se zastavil při zavření aplikace Orca.",
+        "stoppedRestart_other": "Zastavených chatů při zavření aplikace Orca: {{count}}.",
+        "stoppedUpdate_one": "{{count}} chat se zastavil při aktualizaci aplikace Orca.",
+        "stoppedUpdate_other": "Zastavených chatů při aktualizaci aplikace Orca: {{count}}.",
+        "untitled": "Chat bez názvu",
+        "willAsk": "Orca požádá chaty o pokračování. Zprávy ve frontě mohou být odeslány."
       },
       "NewWorkspaceComposerCard": {
         "090cfedeb4": "Napsat poznámku",
@@ -1877,11 +1880,7 @@
           "open": "Otevřít"
         },
         "ActivityThreadHoverCard": {
-          "copyPath": "Kopírovat cestu",
-          "copyPathFailed": "Cestu se nepodařilo zkopírovat",
-          "jumpToWorkspace": "Přejít do pracovního prostoru",
-          "pathCopied": "Cesta byla zkopírována do schránky",
-          "workspace": "Pracovní prostor"
+          "jumpToWorkspace": "Přejít do pracovního prostoru"
         },
         "ActivityThreadRow": {
           "clearNotification": "Vymazat oznámení"
@@ -2747,7 +2746,6 @@
             "777b5bc4ec": "Kliknutím na prvek přidáte zpětnou vazbu pro agenta.",
             "781d6459ad": "Opakovat",
             "87eb75f7d2": "Zadejte platnou URL http(s) nebo localhost.",
-            "8b7e6d1f5a": "Anotace prohlížeče jsou dostupné pouze v místních kartách prohlížeče.",
             "8ce4f6b12e": "Otevřít odkaz ve výchozím prohlížeči",
             "90d021f2ad": "Přidat",
             "95af781091": "Odeslat zpětnou vazbu agentovi",
@@ -2772,7 +2770,6 @@
             "cut": "Vyjmout",
             "d2a7092e6e": "Komentář anotace",
             "d51ef37351": "Kopírovat",
-            "deb5293610": "Anotace prohlížeče nejsou ve vzdáleném běhovém prostředí dostupné",
             "devToolsClose": "Zavřít DevTools",
             "devToolsDockBottom": "Ukotvit dolů",
             "devToolsDockRight": "Ukotvit doprava",
@@ -3843,6 +3840,8 @@
           "copyPng": "Kopírovat jako PNG",
           "copyPngFailed": "Obrázek se nepodařilo zkopírovat",
           "fit": "Přizpůsobit obrazovce",
+          "next": "Další obrázek",
+          "previous": "Předchozí obrázek",
           "zoomIn": "Přiblížit",
           "zoomOut": "Oddálit"
         },
@@ -4341,8 +4340,7 @@
           },
           "useEmulatorScreenKeyboard": {
             "pasteTargetUnavailable": "Vložení z klávesnice emulátoru selhalo, protože zařízení není připraveno.",
-            "pasteTooLarge": "Vložený obsah je pro vstup z klávesnice emulátoru příliš velký.",
-            "unsupportedPasteText": "Vložení z klávesnice emulátoru podporuje pouze text z americké klávesnice."
+            "pasteTooLarge": "Vložený obsah je pro vstup z klávesnice emulátoru příliš velký."
           }
         }
       },
@@ -4403,11 +4401,9 @@
             "tip": {
               "copy": {
                 "0080bc86eb": "Nainstalovat CLI a dovednosti",
-                "1fcdfc5fe8": "Nové",
                 "24aaad376f": "Nastavit hlasové diktování",
                 "3eacedec93": "Nechte agenty ovládat Orca pomocí Orca CLI",
                 "5221facada": "Diktujte do libovolného panelu",
-                "52e9e84809": "Tip",
                 "5d69275490": "Spusťte hlasové diktování v libovolném aktivním panelu a dalším stiskem zkratky jej zastavte.",
                 "655fc3cb5a": "Prohledávejte pracovní stromy, přepínejte karty, upravujte nastavení nebo vytvořte nový pracovní strom — to vše bez opuštění klávesnice.",
                 "8d54d0ff53": "Umožněte agentům koordinovat podřízené pracovní stromy a komunikovat mezi pracovními stromy.",
@@ -8300,7 +8296,8 @@
           "source": {
             "cli": "soubor autentizace Cursor CLI",
             "desktop": "Cursor IDE",
-            "keychain": "Klíčenka macOS (cursor-agent)"
+            "keychain": "Klíčenka macOS (cursor-agent)",
+            "keyring": "Klíčenka Linuxu (cursor-agent)"
           },
           "staleUsage": "Poslední známé využití — poslední obnovení selhalo: {{reason}}",
           "subtitle": "Zobrazuje měsíční využití vašeho tarifu Cursor podle přihlášení, které je již v tomto počítači. Orca tato data pouze čte — vaše přihlášení k aplikaci Cursor nikdy nemění.",
@@ -8511,6 +8508,12 @@
             "idleMinutesSuffix": "minut",
             "title": "Uspávání agentů",
             "toggleLabel": "Přepnout uspávání agentů"
+          },
+          "appRail": {
+            "copy": "Přidá lištu ikon vlevo od seznamu pracovních prostorů. Přesunou se na ni pracovní prostory, Nastavení a Nápověda; zůstane viditelná i při sbaleném seznamu.",
+            "description": "Lišta ikon na levém okraji pro přepínání mezi pracovními prostory a dalšími stránkami.",
+            "title": "Lišta aplikace",
+            "toggleLabel": "Přepnout lištu aplikace"
           },
           "ca2219fe5e": "Zobrazí malého animovaného mazlíčka připnutého v pravém dolním rohu. Vyberte si postavičku (Claudino, OpenCode, Gremlin) nebo nahrajte vlastní PNG, APNG, GIF, WebP, JPG či SVG z nabídky mazlíčka ve stavovém řádku. Ze stejné nabídky jej můžete kdykoli skrýt, aniž byste toto nastavení zakázali.",
           "dd6f0a1d45": "Mazlíček",
@@ -11592,6 +11595,14 @@
               "terminal": "terminál",
               "title": "Uspávání agentů"
             },
+            "appRail": {
+              "description": "Lišta ikon na levém okraji pro přepínání mezi pracovními prostory a dalšími stránkami.",
+              "icons": "ikony",
+              "navigation": "navigace",
+              "rail": "lišta",
+              "sidebar": "postranní panel",
+              "title": "Lišta aplikace"
+            },
             "b54cea709b": "sidekick",
             "edc49480a1": "panel",
             "f10d307468": "dokončení",
@@ -12646,6 +12657,7 @@
           "installHostPlaceholder": "Vyberte SSH hostitele bez Orca",
           "installNamePlaceholder": "Stejný jako SSH hostitel",
           "installNoHosts": "Žádní SSH hostitelé bez serveru Orca.",
+          "installViaSsh": "Nainstalovat přes SSH",
           "lastSeen": "Naposledy viděno {{when}}",
           "loopbackTip": "Adresa 127.0.0.1 funguje pouze přes SSH tunel.",
           "makeDefault": "Otevírat zde nové projekty",
@@ -16254,13 +16266,8 @@
             },
             "memory": {
               "metric": {
-                "footprintDescription": "Součet paměťové stopy (footprint): stejný údaj, jaký ukazuje Sledování aktivity — paměť, kterou každý proces vlastní, včetně grafické paměti. Stránky sdílené mezi procesy se nezapočítávají dvakrát.",
                 "memColumn": "Paměť",
-                "memorySummary": "Σ Paměť",
-                "privateBytesDescription": "Součet privátních bajtů: paměť, kterou tyto procesy vyhradily, započítává se bez ohledu na to, zda je v operační paměti, nebo odložena do stránkovacího souboru. Právě to hostitel započítává do limitu vyhrazené paměti, proto tato hodnota dál roste, zatímco se pracovní sada výše kvůli stránkování zmenšuje.",
-                "privateSummary": "Σ Privátní",
-                "rssDescription": "Součet rezidentní paměti (RSS). Sdílené nebo aliasované stránky se mohou objevovat ve více procesech.",
-                "workingSetDescription": "Součet pracovní sady (WS): stránky právě přítomné v operační paměti. Sdílené stránky se mohou objevovat ve více procesech a paměť, kterou Windows odložil do stránkovacího souboru, se zde nezapočítává."
+                "memorySummary": "Σ Paměť"
               }
             }
           },
@@ -16448,6 +16455,7 @@
             "8dea9b5cdf": "Nejsou povoleni žádní agenti",
             "agentsLoading": "Načítání agentů",
             "chatCheckFailed": "Dostupnost chatu se nepodařilo zkontrolovat",
+            "chatInstallRequired": "Vyžaduje instalaci",
             "chatNotInSubfolder": "V podsložce není žádný chat",
             "chatNotInWsl": "V WSL není chat k dispozici",
             "chatNotInstalled": "Není nainstalováno",
@@ -18622,6 +18630,7 @@
       "deletedBot": "Smazaný bot",
       "fieldLabel": "Bot nebo projekt",
       "fieldPlaceholder": "Vyberte bota nebo projekt",
+      "hostNeedsUpdate": "Aktualizujte server Orca na hostiteli {host}, aby jeho boti mohli mít automatizace.",
       "hostUnavailable": "Tento počítač zatím nemůže pojmout novou automatizaci. Zkuste to za chvíli znovu.",
       "letBotReact": "Povolit botovi {{name}} reagovat",
       "letBotReactHelp": "Každý výsledek zahájí tah, aby na něj mohl {{name}} reagovat.",
@@ -18646,6 +18655,8 @@
       "runsIn": "Běží v",
       "runsInNew": "Pokaždé v nové konverzaci",
       "runsInUntitledChat": "Chat bez názvu",
+      "search": "Hledat boty a projekty…",
+      "searchEmpty": "Žádní boti ani projekty neodpovídají hledání.",
       "when": "Kdy"
     },
     "eventsWontFire": "Spouští se pouze podle plánu: vyžaduje konektor {{connectors}}",
@@ -18745,6 +18756,10 @@
       "confirmMaySkipApprovals": "Může jednat bez předchozího dotazu",
       "confirmNoApprovals": "Jedná bez předchozího dotazu",
       "confirmWarning": "Budou jednat vaším jménem na počítači {{computer}}.",
+      "controlBrief": "Mohou zde jednat vaším jménem.",
+      "controlBriefIfAdded": "Kdokoli, koho přidáte, může zde jednat vaším jménem.",
+      "controlBriefIfAddedOnHost": "Kdokoli, koho přidáte, může na počítači {{computer}} jednat vaším jménem.",
+      "controlBriefOnHost": "Mohou na počítači {{computer}} jednat vaším jménem.",
       "controlMany": "Mohou používat bota {{name}} k práci na počítači {{computer}} vaším jménem: spouštět příkazy, otevírat a upravovat soubory a používat vaše připojené účty.",
       "controlNone": "Kdokoli, koho přidáte, může používat bota {{name}} k práci na počítači {{computer}} vaším jménem: spouštět příkazy, otevírat a upravovat soubory a používat vaše připojené účty.",
       "controlOne": "{{person}} může používat bota {{name}} k práci na počítači {{computer}} vaším jménem: spouštět příkazy, otevírat a upravovat soubory a používat vaše připojené účty.",
@@ -18888,7 +18903,29 @@
         "slack": "Zprávy a zmínky"
       },
       "mcp": {
-        "adding": "Přidávání aplikace {{app}}…"
+        "addTitle": "Přidat {{app}}",
+        "adding": "Přidávání aplikace {{app}}…",
+        "advanced": "Pokročilé",
+        "datadog": {
+          "siteLabel": "Lokalita Datadog"
+        },
+        "elsewhereLine": "Je přidán v lokalitě {{place}}. Chcete-li přidat další, odeberte jej ve Správě.",
+        "elsewhereOther": "Chcete-li přidat další, odeberte jej ve Správě.",
+        "elsewhereTitle": "{{app}} je již přidán u bota {{bot}}",
+        "gitlab": {
+          "hostHint": "Pro vlastní instalaci nebo Dedicated. V případě GitLab.com ponechte prázdné.",
+          "hostLabel": "Adresa GitLabu (volitelně)"
+        },
+        "hostInvalid": "Zadejte název hostitele, například {{example}}.",
+        "place": {
+          "australia": "Austrálie",
+          "europe": "Evropa",
+          "japan": "Japonsko",
+          "unitedKingdom": "Spojené království",
+          "usCentral": "USA – střed",
+          "usEast": "USA – východ",
+          "usWest": "USA – západ"
+        }
       },
       "noMatch": "Žádná aplikace neodpovídá výrazu „{{query}}“.",
       "noMatchCategory": "V kategorii {{category}} nic neodpovídá výrazu „{{query}}“.",
@@ -18897,6 +18934,7 @@
       "openPageAgain": "Znovu otevřít stránku",
       "paste": {
         "line": "Přihlaste se tam k aplikaci {{app}} a poté zkopírujte adresu stránky, která se nenačetla.",
+        "remoteSignIn": "Vzdálené přihlášení",
         "title": "Přihlašujete se na jiném počítači?"
       },
       "search": "Hledat aplikace",
@@ -18975,6 +19013,24 @@
       "title": "Automatizace"
     },
     "avatar": {
+      "generate": {
+        "agent": "Vygenerovat pomocí {{agent}}",
+        "button": "Vygenerovat",
+        "cancel": "Zrušit",
+        "cancelRunning": "Zrušit generování",
+        "describe": "Popis obrázku",
+        "edit": "Upravit popis",
+        "face": "Vygenerovat obrázek",
+        "failed": "{{agent}} nedokázal(a) vytvořit obrázek. Zkuste to znovu.",
+        "generating": "Generování…",
+        "noImage": "{{agent}} nevytvořil(a) obrázek. Zkuste popis přeformulovat.",
+        "placeholder": "Popište, jak má váš bot vypadat…",
+        "realPerson": "Avatary nemohou zobrazovat skutečné lidi. Popište místo toho postavu.",
+        "signedOut": "{{agent}} není přihlášen(a). Přihlaste se k němu a zkuste to znovu.",
+        "timedOut": "{{agent}} trval příliš dlouho. Zkuste to znovu.",
+        "unavailable": "Žádný nainstalovaný agent neumí vytvářet obrázky.",
+        "usageLimit": "{{agent}} dosáhl(a) limitu využití. Zkuste to později."
+      },
       "intake": {
         "drop": "Přetažením sem použijete",
         "dropLine": "Přetažením sem použijete tento obrázek",
@@ -19069,6 +19125,7 @@
       "cancel": "Zrušit",
       "continue": "Pokračovat",
       "eventsChat": "Události ze služby {{source}} vyžadují přihlášení k aplikaci Orca. Jakmile se přihlásíte, toto pravidlo uložím.",
+      "eventsHostChat": "Události ze služby {{source}} vyžadují, aby byl hostitel {{host}} přihlášen k Orca Cloud. Jakmile se přihlásí, pravidlo uložím.",
       "github": "GitHub se připojuje přes Orca Cloud. Pro pokračování se přihlaste k aplikaci Orca.",
       "linear": "Linear se připojuje přes Orca Cloud. Pro pokračování se přihlaste k aplikaci Orca.",
       "needsSignIn": "Vyžaduje přihlášení",
@@ -19077,7 +19134,9 @@
       "signedIn": "Přihlášen k aplikaci Orca",
       "slack": "Slack se připojuje přes Orca Cloud. Pro pokračování se přihlaste k aplikaci Orca.",
       "toldBot": "Nyní jsem přihlášen k aplikaci Orca.",
-      "webhooksChat": "Webhooky vyžadují přihlášení k aplikaci Orca. Jakmile se přihlásíte, vytvořím je."
+      "webhooksChat": "Webhooky vyžadují přihlášení k aplikaci Orca. Jakmile se přihlásíte, vytvořím je.",
+      "webhooksHostChat": "Webhooky vyžadují, aby byl hostitel {{host}} přihlášen k Orca Cloud. Jakmile se přihlásí, vytvořím je.",
+      "webhooksNotReaching": "Orca Cloud se nemůže spojit s botem {{name}}, takže zatím nemůže vytvářet webhooky."
     },
     "composio": {
       "addTool": "Přidat",
@@ -19624,12 +19683,13 @@
         "share": "Sdílet nastavení s kolegy z týmu"
       },
       "continue": "Pokračovat",
-      "dismiss": "Zavřít",
       "ended": "Toto nastavení Google bylo ukončeno.",
       "heading": "Připojit Google",
+      "importSetupFile": "Importovat konfigurační soubor",
       "keyMissed": "Stáhli jste klíč a Orca jej nerozpoznala?",
       "letMe": "Tento krok provedu sám",
       "movedDown": "Pokračování níže.",
+      "notNow": "Teď ne",
       "otherAccount": "Použít jiný účet",
       "ownerStep": "Krok {{step}} ze 3",
       "path": {
@@ -19676,10 +19736,12 @@
     "groups": {
       "allBots": "Všichni boti",
       "allBotsCount": "Všichni boti · {{count}}",
+      "attachmentsHostTooOld": "Hostitel {{host}} vyžaduje aktualizaci, aby bylo možné ve skupinových chatech přikládat soubory.",
       "cancel": "Zrušit",
       "composerPlaceholder": "Napište zprávu skupině, zadejte @ pro zmínku bota",
       "correctMention": "Správná zmínka",
       "create": "Vytvořit",
+      "createdNotOpened": "Skupina „{{name}}“ byla vytvořena, ale nepodařilo se ji otevřít.",
       "deleteConfirm": "Smazat skupinu",
       "deleteDescription": "Boti v této skupině nebudou smazáni.",
       "deleteGroup": "Smazat skupinu",
@@ -19687,6 +19749,7 @@
       "deleteTitle": "Smazat skupinu {{name}}?",
       "dialogDescription": "Boti ve skupině sdílejí jednu místnost.",
       "filter": "Filtrovat boty",
+      "homeUnavailable": "Domovský pracovní prostor skupiny „{{name}}“ na hostiteli {{host}} není dostupný.",
       "items": {
         "all": "Veškerá jejich práce",
         "emptyBody": "Jakmile {{names}} v této skupině převezmou úkol, zobrazí se zde.",
@@ -19741,6 +19804,8 @@
       "repliesPrefix": "Odpovědi:",
       "repliesValue": "Odpovědi: {{value0}}",
       "replyToValue": "Odpovědět na {{value0}}",
+      "retryOpen": "Opakovat",
+      "sameComputer": "Boti ve skupině musí být na stejném počítači.",
       "save": "Uložit",
       "saving": "Ukládání…",
       "startAConversationWithThisGroupMentionBots": "Zahajte konverzaci s touto skupinou. Zmiňte boty pomocí @Jméno nebo @everyone.",
@@ -19779,8 +19844,7 @@
       "title": "Předat {{name}} botovi"
     },
     "header": {
-      "newBot": "Váš nový bot",
-      "runs": "spouští vašeho agenta {{agent}}"
+      "open": "Otevřít nastavení {{name}}"
     },
     "host": {
       "errors": {
@@ -19809,12 +19873,30 @@
         "cancel": "Zrušit",
         "copied": "Odkaz zkopírován.",
         "copyLink": "Kopírovat odkaz",
+        "readAgain": "Zkusit znovu",
         "start": "Přihlásit {{host}} k aplikaci Orca",
         "trust": "Kdokoli spárovaný s hostitelem {{host}} může používat konektory jeho účtu.",
+        "unconfigured": "Orca na hostiteli {{host}} byla sestavena bez přihlášení k Orca Cloud. Chcete-li ji přihlásit, nainstalujte tam vydané sestavení Orca.",
+        "unread": "Nepodařilo se načíst přihlášení Orca na hostiteli {{host}}.",
+        "updateFirst": "Aktualizujte Orca na hostiteli {{host}} a poté ji odsud přihlaste.",
         "waiting": "Schvalte v prohlížeči Orca pro {{host}}. Zkontrolujte, zda stránka zobrazuje {{code}}.",
         "waitingFirst": "Přihlaste se účtem Orca, který má {{host}} používat, v prohlížeči Orca pro {{host}}. Zkontrolujte, zda stránka zobrazuje {{code}}."
       },
       "thisComputer": "tento počítač"
+    },
+    "hover": {
+      "access": "Požádal(a) o přístup",
+      "asksQuestion": "Čeká na vaši odpověď",
+      "itemsNeedYou_one": "{{count}} položka označená pro vás",
+      "itemsNeedYou_other": "Položek označených pro vás: {{count}}",
+      "moreAsks_one": "a ještě {{count}} dotaz",
+      "moreAsks_other": "a ještě {{count}} dotazů",
+      "needsYouHeading_one": "1 věc vás vyžaduje",
+      "needsYouHeading_other": "Věcí, které vás vyžadují: {{count}}",
+      "openHome": "Otevřít domovskou stránku {{name}}",
+      "review": "Zkontrolovat",
+      "signIn": "Vyžaduje vaše přihlášení",
+      "wantsApproval": "Čeká na vaše schválení"
     },
     "import": {
       "addFolder": "Přidat jeho složku",
@@ -19869,7 +19951,6 @@
         "closed": "označil(a) tuto položku jako hotovou",
         "commentLabel": "{{name}}, {{time}}",
         "discard": "Zahodit",
-        "goToAnswer": "Zodpovězeno v {{time}}. Přejít k odpovědi",
         "linked": "propojil(a) {{links}}",
         "made": "přidal(a) tuto položku",
         "madeNeedsYou": "přidal(a) tuto položku se stavem Vyžaduje vás",
@@ -19883,32 +19964,18 @@
         "snoozed": "odložil(a) tuto položku do {{when}}",
         "snoozedBare": "odložil(a) tuto položku",
         "unsnoozed": "zrušil(a) odložení této položky",
-        "waitingOnYou": "Čeká na vás",
         "workerFailed": "Vykonavatel se zastavil:",
         "workerFinished": "Vykonavatel dokončen:",
         "workerStarted": "Vykonavatel spuštěn:",
         "you": "Vy"
       },
       "ask": {
-        "answeredEarlier": "Odpověděli jste na dřívější otázku",
-        "answeredElsewhere": "Zodpovězeno jinde před odesláním vaší odpovědi. Vaše odpověď je zachována zde.",
-        "answeredInComment": "Zodpovězeno v komentáři",
-        "asks": "{{name}} se ptá",
-        "asksAt": "{{name}} se ptá · {{time}}",
-        "changed": "Tato otázka se změnila dříve, než byla vaše odpověď odeslána. Vaše odpověď je zachována zde.",
-        "closed": "Tato otázka byla uzavřena dříve, než byla vaše odpověď odeslána. Vaše odpověď je zachována u dané položky.",
-        "commentNotAnswer": "Komentář (včetně případných souborů) se odešle botovi a přesune tuto položku do stavu „Probíhá“, ale nezaznamená se jako vaše odpověď. Chcete-li na otázku odpovědět, rozbalte ji.",
-        "copied": "Zkopírováno",
-        "copy": "Kopírovat",
-        "dismiss": "Zavřít",
-        "hostCannotRecord": "Tento hostitel Orca zatím neumí zaznamenávat odpovědi, takže nebylo nic odesláno. Aktualizujte aplikaci Orca na počítači bota; vaše odpověď je zachována zde.",
-        "notAnswered": "Nezodpovězeno",
-        "oursEditedAfter": "Vaše odpověď byla zaznamenána. Vaše slova, která nezahrnovala, jsou zachována zde.",
-        "skipped": "Přeskočeno",
-        "toComment": "Vložit do pole pro komentář",
-        "uncertain": "Tato otázka byla uzavřena během odesílání vaší odpovědi a nepřišla žádná reakce, takže odpověď možná nebyla doručena. Zkontrolujte Aktivitu; vaše odpověď je zachována zde.",
-        "withdrawn": "Tato otázka byla uzavřena dříve, než byla vaše odpověď odeslána. Vaše odpověď je zachována zde.",
-        "youAnswered": "Odpověděli jste:"
+        "next": "Další otázka",
+        "notSentYet": "zatím neodesláno",
+        "previous": "Předchozí otázka",
+        "recommended": "Doporučeno",
+        "step": "{{n}} z {{total}}",
+        "typeAnswer": "Napište odpověď"
       },
       "cancel": {
         "confirmMany": "Zrušit {{count}}",
@@ -19962,8 +20029,12 @@
       "comment": {
         "add": "Přidat komentář…",
         "chatDeleted": "Chat {{chat}} byl smazán, takže zde nelze přikládat soubory.",
+        "hideReplyingTo": "Skrýt",
         "hostTooOld": "Hostitel {{host}} vyžaduje aktualizaci, aby bylo možné ke komentářům přikládat soubory.",
         "label": "Komentář",
+        "replyOrPick": "Odpovězte vlastními slovy nebo vyberte možnost",
+        "replyTo": "Odpovědět {{name}}…",
+        "replyingTo": "Odpovídáte:",
         "showLess": "Zobrazit méně",
         "submit": "Komentovat",
         "thisServer": "Tento server"
@@ -20067,14 +20138,20 @@
         "canceledNote": "Zrušeno:",
         "deleted": "Tato položka byla smazána.",
         "doneNote": "Hotovo:",
+        "firstItem": "První položka",
+        "lastItem": "Poslední položka",
         "links": "Odkazy",
+        "loadingNext": "Načítání další položky",
         "moreLinks": "{{count}} dalších odkazů",
+        "navigation": "Položka {{index}} z {{total}}",
         "next": "Další položka",
         "place": "{{index}} / {{total}}",
+        "placeOf": "{{index}} z {{total}}",
         "previous": "Předchozí položka",
         "showEarlier": "Zobrazit dřívější",
         "showLess": "Zobrazit méně",
         "showMore": "Zobrazit více",
+        "shown": "Položka {{index}} z {{total}}: {{title}}",
         "sub": "Položka {{number}} · {{chat}} · {{when}}"
       }
     },
@@ -20187,6 +20264,7 @@
       "agentsKeepRunning": "Jejich agenti poběží dál.",
       "cancel": "Zrušit",
       "change": "Změnit",
+      "changePicture": "Změnit obrázek",
       "colorButter": "Máslová",
       "colorGraphite": "Grafitová",
       "colorInk": "Inkoustová",
@@ -20202,9 +20280,7 @@
       "computerAccountHint": "Kde bot běží, přihlášen k aplikaci Orca jako {{account}}.",
       "computerHint": "Kde bot běží.",
       "create": "Vytvořit",
-      "createBot": "Vytvořit bota",
       "creating": "Vytváření…",
-      "description": "Váš AI týmový kolega se jménem, pamětí a automatizacemi. Sídlí ve složce na jednom počítači.",
       "does": "Činnost",
       "folder": "Složka: {{path}}",
       "fromTemplate": "Začít ze šablony",
@@ -20222,6 +20298,21 @@
       "nextPicture": "Další obrázek",
       "noChatAgents": "Na tomto počítači nejsou k dispozici žádní chatovací agenti.",
       "openFailed": "Bot {{name}} byl vytvořen, ale zatím se jej nepodařilo otevřít.",
+      "parts": {
+        "automations_one": "{{count}} automatizace",
+        "automations_other": "Automatizace: {{count}}",
+        "needsApp": "Vyžaduje {{app}}",
+        "needsApps_one": "{{count}} aplikace",
+        "needsApps_other": "Aplikace: {{count}}",
+        "olderHost": "Hostitel {{host}} vyžaduje aktualizaci aplikace Orca, aby bylo možné přidat dovednosti a plány.",
+        "schedules_one": "{{count}} plán",
+        "schedules_other": "Plány: {{count}}",
+        "setUpInFirstChat": "Nastavit v prvním chatu",
+        "skillsKept_one": "{{kept}}/{{count}} dovednost",
+        "skillsKept_other": "Dovednosti: {{kept}}/{{count}}",
+        "skills_one": "{{count}} dovednost",
+        "skills_other": "Dovednosti: {{count}}"
+      },
       "pasteHint": "Vložte obrázek pomocí {{shortcut}}",
       "picture": "Obrázek",
       "pictureColor": "Barva pozadí",
@@ -20289,7 +20380,6 @@
       "scopedPlaceholder": "Hledat boty…",
       "scopedStatus_one": "Zobrazují se pouze boti. Nalezen {{count}} výsledek.",
       "scopedStatus_other": "Zobrazují se pouze boti. Nalezeno {{count}} výsledků.",
-      "searchBotsFor": "Hledat v botech „{{text}}“",
       "searchEverything": "Hledat ve všem „{{text}}“",
       "section": "Boti",
       "showEverything": "Zobrazit vše",
@@ -20338,6 +20428,7 @@
       "replyingIn": "Odpovídá v {{place}}",
       "replyingOn": "Odpovídá na {{place}}",
       "resume": "Obnovit bota",
+      "runsOn": "Běží na hostiteli {{host}}",
       "settings": "Nastavení bota…",
       "waitingCount": "Čeká na {{count}} událostí",
       "waitingFor": "Čeká na {{label}}",
@@ -20358,11 +20449,8 @@
     "section": {
       "collapse": "Sbalit boty",
       "collapseAll": "Sbalit všechny boty",
-      "emptyBody": "Ptejte se odkudkoli. Spouští flotilu agentů a pamatuje si, co se naučí.",
-      "emptyCreate": "Vytvořit bota",
-      "emptySeeHow": "Podívejte se, jak to funguje",
+      "emptyCardTitle": "Váš AI spolupracovník",
       "emptyTemplates": "Šablony",
-      "emptyTitle": "Seznamte se se svým AI spolupracovníkem",
       "expand": "Rozbalit boty",
       "expandAll": "Rozbalit všechny boty",
       "new": "Nový bot nebo skupina",
@@ -20439,6 +20527,7 @@
     },
     "share": {
       "add": "Přidat",
+      "all": "Vše",
       "automations": "Automatizace",
       "binaryFile": "Nejedná se o text, proto se nezobrazuje.",
       "cancel": "Zrušit",
@@ -20486,6 +20575,7 @@
       "manageLinks": "Spravovat odkazy",
       "manageSharing": "Spravovat sdílení…",
       "memory": "Paměť",
+      "memoryLimit": "Až {{count}} souborů",
       "moreActions": "Další akce pro {{name}}",
       "movedHere": "Tento odkaz byl aktualizován jinde.",
       "nextUpdate": "Další aktualizace",
@@ -20500,6 +20590,7 @@
       "openFailed": "Aplikaci Orca se nepodařilo tento soubor otevřít.",
       "openLink": "Otevřít odkaz bota {{name}}",
       "previewChanged": "Náhled se změnil. Před publikováním jej zkontrolujte.",
+      "previewFile": "Náhled: {{name}}",
       "publishLink": "Publikovat odkaz",
       "publishedJustNow": "Právě publikováno",
       "publishing": "Publikování…",
@@ -20596,6 +20687,7 @@
         "signIn": "Přihlásit se",
         "unfinished": "Nastavení Slacku nebylo dokončeno.",
         "update": "Aktualizovat ve Slacku",
+        "updatePermissions": "Aktualizovat oprávnění Slacku…",
         "waiting": "Čeká se na instalaci ve Slacku."
       },
       "errors": {
@@ -20653,6 +20745,7 @@
         "linkOnce": "(funguje jednou).",
         "linkUntil": "(funguje jednou, do {{time}}).",
         "newLink": "Získat nový odkaz",
+        "openInSlack": "Napsat mu na Slacku",
         "otherBrowser": "Schvalujete v jiném prohlížeči?",
         "otherUser": "Schválil to jiný účet Slacku. Získejte nový odkaz a schvalte jej jako vy sami.",
         "pick": "Vyberte pracovní prostor Slacku.",
@@ -20669,6 +20762,7 @@
         "waitingDetail": "Dokončete ve Slacku. Pokud váš pracovní prostor vyžaduje, aby nové aplikace schvaloval správce, {{name}} se připojí, jakmile to udělá. Pokud odmítne, Instalovat znovu použije stejnou aplikaci."
       },
       "token": {
+        "accessPasted": "To je přístupový token. Zkopírujte Refresh Token, ten vedle.",
         "kept": "Orca Cloud uchovává tento token zašifrovaný, takže vaši další boti v tomto pracovním prostoru budou vyžadovat jedno kliknutí.",
         "label": "Token pro obnovení konfigurace",
         "open": "Získat konfigurační token",
@@ -20691,6 +20785,7 @@
       }
     },
     "tabs": {
+      "homeBanner": "Otevřít stránku {{name}}",
       "homeDetail": "Domů: hlavní chat bota. Zde končí jeho paměť, automatizace i požadavky od ostatních.",
       "sideDetail": "Vedlejší chat: samostatné téma s tímto botem."
     },
@@ -20724,8 +20819,6 @@
       "noMatch": "Žádné šablony neodpovídají „{{query}}“",
       "noMatchLine": "Začněte s prázdným botem a v prvním chatu mu řekněte, k čemu slouží.",
       "official": "Oficiální šablona Orca",
-      "olderHost": "Na hostiteli {{host}} běží starší verze aplikace Orca, takže dovednosti a rozvrhy této šablony nebudou přidány. Aktualizujte na něm aplikaci Orca, nebo vytvořte bota pouze s jeho instrukcemi.",
-      "originTemplateNamed": "Ze šablony {{template}}",
       "paletteLine": "Šablona bota",
       "publisher": "od Orca",
       "search": "Hledat šablony",
@@ -21183,6 +21276,9 @@
       "waitingForHost": "Znovu se načte, až se SSH hostitel znovu připojí",
       "waitingForNetwork": "Znovu se načte, až budete znovu online",
       "waitingForServer": "Znovu se načte, až se server spustí"
+    },
+    "loadStall": {
+      "waitingForHost": "Čekání na {{host}}…"
     },
     "managedProfile": {
       "createFailed": "Profil prohlížeče tohoto pracovního prostoru se nepodařilo vytvořit. Zavřete tuto kartu a otevřete novou, abyste to zkusili znovu."
@@ -21668,7 +21764,6 @@
       "installManaged": "Nainstalovat kopii od Orca",
       "installShort": "Nainstalovat",
       "installTitle": "Nainstalujte {{agent}}, abyste mohli zahájit chat",
-      "installed": "Nainstalováno.",
       "installedByOrca": "Nainstalováno aplikací Orca · {{version}}",
       "moreActions": "Další akce pro {{agent}}",
       "notInstalled": "Nenainstalováno.",
@@ -21723,6 +21818,50 @@
         "senderReplaced": "{{name}} již v tomto terminálu neběží; nyní tam běží jiný agent. Pokud jej potřebujete, otevřete tento terminál z postranního panelu.",
         "unnamedSender": "agenta",
         "unnamedSenderSubject": "Agent"
+      },
+      "antigravityAuth": {
+        "agyHint": "Tento chat spouští na tomto hostiteli Antigravity CLI. Jiná metoda se použije pro nové chaty.",
+        "agyItem": "Vlastní přihlášení agy",
+        "apiKeyFromEnvironment": "Nalezen GEMINI_API_KEY v prostředí",
+        "apiKeySaved": "Uloženo v Orca",
+        "askApiKeyEnvironment": "Použít místo toho klíč API Gemini nalezený v prostředí?",
+        "askApiKeySaved": "Použít místo toho klíč API Gemini uložený v Orca?",
+        "askGcloud": "Použít místo toho vaše přihlášení gcloud (projekt {{project}})?",
+        "askGoogle": "Použít místo toho vaše přihlášení Google?",
+        "cancel": "Zrušit",
+        "chipLabel": "Antigravity se přihlašuje pomocí {{method}}. Změnit",
+        "chipTitle": "Antigravity se přihlašuje pomocí {{method}}",
+        "confirm": "Přepnout",
+        "confirmBody": "Chaty Antigravity spuštěné na tomto hostiteli se restartují. Probíhající odpověď se zastaví; konverzace zůstanou zachovány.",
+        "confirmSignIn": "Přihlásit se pomocí Google?",
+        "confirmTitle": "Přepnout na {{method}}?",
+        "detected": "Zjištěno",
+        "foundLead": "Orca na tomto hostiteli našla přihlašovací údaje, které můžete místo toho použít:",
+        "gcloudFound": "Nalezeno vaše přihlášení gcloud (Application Default Credentials)",
+        "googleFound": "Na tomto hostiteli jste se již dříve přihlásili pomocí Google",
+        "ineligible": "Tento účet Google nemůže používat Antigravity.",
+        "menuTitle": "Antigravity se přihlašuje pomocí",
+        "moreOptions": "Další možnosti…",
+        "noSubscription": "Tento účet Google nemá předplatné Antigravity.",
+        "orcaCopy": "Kopie v Orca",
+        "orcaCopyVersion": "Kopie v Orca · v{{version}}",
+        "orcasAgy": "agy v Orca",
+        "orcasAgyVersion": "agy v Orca · v{{version}}",
+        "otherWays": "Místo toho se můžete přihlásit klíčem API nebo pomocí gcloud.",
+        "refused": "Google odmítl přihlašovací údaje tohoto chatu.",
+        "runsOn": "Běží na: {{program}}",
+        "settings": "Nastavení přihlášení…",
+        "signInGoogle": "Přihlásit se pomocí Google",
+        "signedOut": "Antigravity není přihlášeno.",
+        "switchFailed": "Orca nemohla změnit způsob přihlašování k Antigravity. Zkuste to znovu.",
+        "switched": "Antigravity nyní používá {{method}}.",
+        "usageLimit": "Toto přihlášení dosáhlo limitu využití.",
+        "useApiKey": "Použít klíč API Gemini",
+        "useGcloud": "Použít gcloud ({{project}})",
+        "useGoogle": "Použít přihlášení Google",
+        "useKeyOrGcloud": "Klíč API nebo gcloud",
+        "yourAgy": "Vaše agy",
+        "yourAgyVersion": "Vaše agy · v{{version}}"
       },
       "approval": {
         "allow": "Povolit",
@@ -21955,6 +22094,9 @@
         "headerTotal_other": "Úkolů na pozadí: {{count}}",
         "monitor": "Monitor na pozadí",
         "monitoring": "Sledování úkolů na pozadí",
+        "nameInMessage": "Přidat {{name}} do zprávy",
+        "needsAttention_one": "{{count}} vyžaduje pozornost",
+        "needsAttention_other": "Vyžaduje pozornost: {{count}}",
         "openAgent": "Otevřít {{value0}}",
         "outputFile": "Výstup: {{value0}}",
         "reasonBlocked": "chyba",
@@ -21990,7 +22132,9 @@
         "stop": "Zastavit",
         "stopAll": "Zastavit úkoly na pozadí",
         "stopTask": "Zastavit {{value0}}",
+        "subagentBadge": "Dílčí agent",
         "task": "Úkol na pozadí",
+        "workerBadge": "Vykonavatel",
         "workflow": "Workflow na pozadí"
       },
       "botContext": {
@@ -21998,6 +22142,8 @@
         "soul": "Použita aktualizovaná duše"
       },
       "botCreateOffer": {
+        "askedMany": "Požádáno o převzetí {{count}} pracovních prostorů",
+        "askedOne": "Požádáno o převzetí 1 pracovního prostoru",
         "create": "Vytvořit bota",
         "created": "Vytvořeno",
         "createdAskedMany": "Vytvořeno · požádáno o převzetí {{count}} pracovních prostorů",
@@ -22006,8 +22152,10 @@
         "createdTookOverOne": "Vytvořeno · převzat 1 pracovní prostor",
         "createdTookOverSome": "Vytvořeno · převzato {{taken}} z {{count}} pracovních prostorů",
         "deleted": "Vytvořeno, poté smazáno",
+        "details": "Podrobnosti o {{name}}",
         "does": "Dělá",
         "edit": "Upravit",
+        "heading": "Nový bot",
         "nameTaken": "Bota se jménem {{name}} již máte.",
         "open": "Otevřít",
         "origin": "Navrhl(a) {{bot}}",
@@ -22018,6 +22166,9 @@
         "takesOverMany": "Převezme {{count}} pracovních prostorů",
         "takesOverOne": "Převezme 1 pracovní prostor",
         "template": "Šablona",
+        "tookOverMany": "Převzato {{count}} pracovních prostorů",
+        "tookOverOne": "Převzat 1 pracovní prostor",
+        "tookOverSome": "Převzato {{taken}} z {{count}} pracovních prostorů",
         "watches": "Sleduje",
         "willPropose": "Navrhne"
       },
@@ -22053,6 +22204,7 @@
       },
       "composer": {
         "agentPillLabel": "Agent: {{name}}",
+        "agents": "Agenti",
         "alternateQueueHint": "{{shortcut}} pro zařazení do fronty",
         "alternateSteerHint": "{{shortcut}} pro řízení",
         "attach": "Připojit soubor",
@@ -22230,11 +22382,13 @@
       "connectorOffer": {
         "addOrg": "Přidat organizaci",
         "addWorkspace": "Přidat pracovní prostor",
-        "connect": "Připojit",
+        "connectService": "Připojit {{service}}",
         "connected": "Připojeno",
         "connectedIn": "Připojeno v {{places}}",
         "githubAsYou": "Může také pracovat na GitHubu vaším jménem prostřednictvím vašeho přihlášení gh.",
-        "linearAsYou": "Může také pracovat v aplikaci Linear vaším jménem prostřednictvím vašeho přihlášení k Linear v aplikaci Orca."
+        "heading": "Připojit službu",
+        "linearAsYou": "Může také pracovat v aplikaci Linear vaším jménem prostřednictvím vašeho přihlášení k Linear v aplikaci Orca.",
+        "pausedStatus": "Pozastaveno"
       },
       "context": {
         "summary": "Kontext: {{used}} / {{window}} tokenů ({{percent}} %), odhad podle poslední odpovědi.",
@@ -22284,6 +22438,7 @@
       "explicitChatWslRunAsHost": "Spustit {{distro}} jako hostitele",
       "failureWords": {
         "accountSwitchInProgress": "Nastavení {{agent}} se na tomto hostiteli mění. Zkuste to znovu po dokončení změny.",
+        "agentCommandFailed": "Příkaz agenta {{agent}} v části Nastavení → Agenti nespustil {{agent}}: {{detail}}. Změňte jej nebo obnovte výchozí hodnotu.",
         "agentCommandNotRunnable": "Pole „Příkaz“ pro {{agent}} v části Nastavení → Agenti musí obsahovat cestu k programu nebo jeho název, který Orca dokáže najít, bez argumentů a proměnných. Změňte jej nebo obnovte výchozí hodnotu.",
         "agentCommandNotSignedIn": "Přihlaste se k {{agent}} příkazem `{{loginCommand}}` na počítači, kde tento chat běží.",
         "agentNotSignedIn": "Přihlaste se k {{agent}}.",
@@ -22455,11 +22610,14 @@
       "goal": {
         "attachmentsUnsupported": "Před nastavením cíle odeberte přílohy.",
         "blocked": "Cíl zablokován",
+        "checks_one": "{{count}} kontrola",
+        "checks_other": "Kontroly: {{count}}",
         "chip": "Cíl",
         "clear": "Vymazat cíl",
         "collapse": "Skrýt celý cíl",
         "exitMode": "Ukončit režim cíle",
         "expand": "Zobrazit celý cíl",
+        "last-check": "Poslední kontrola cíle",
         "limited": "Cíl omezen",
         "pause": "Pozastavit cíl",
         "paused": "Cíl pozastaven",
@@ -22515,7 +22673,6 @@
         "comes": "Převede se",
         "from": "Z aplikace {{app}}",
         "fromAgain": "Znovu z aplikace {{app}}",
-        "heading": "Plán importu",
         "importMany": "Importovat {{count}} položek",
         "importOne": "Importovat 1 položku",
         "selected": "Vybráno {{chosen}} z {{total}} · klíče a přihlašovací údaje se nikdy nekopírují",
@@ -22525,7 +22682,8 @@
         "checking": "Kontrola, zda je {{agent}} na tomto hostiteli připraven…",
         "cliInstall": "Instalovat",
         "cliRecheck": "Zkontrolovat znovu",
-        "cliRecheckFailed": "Nepodařilo se zkontrolovat nainstalované agenty na tomto hostiteli. Zkuste to znovu."
+        "cliRecheckFailed": "Nepodařilo se zkontrolovat nainstalované agenty na tomto hostiteli. Zkuste to znovu.",
+        "openAgentSettings": "Otevřít Nastavení"
       },
       "interruptedContinue": {
         "continue": "Pokračovat",
@@ -22577,6 +22735,7 @@
           "failedReason": "Selhalo: {{error}}",
           "needsAuth": "Vyžaduje přihlášení",
           "needsAuthAfterSend": "Vyžaduje přihlášení. Odešlete zprávu pro přihlášení zde.",
+          "notStarted": "Nespuštěno",
           "pending": "Připojování…",
           "tools_one": "{{count}} nástroj",
           "tools_other": "Nástrojů: {{count}}"
@@ -22651,6 +22810,7 @@
       },
       "offerCard": {
         "dismiss": "Zavřít",
+        "notNow": "Teď ne",
         "notSent": "To se botovi nepodařilo odeslat. Zkuste to znovu."
       },
       "openedPullRequests": {
@@ -23521,40 +23681,42 @@
       }
     },
     "orchestrationCrew": {
-      "asksYou": "Ptá se vás",
       "cannotLocate": "Tento hostitel nemůže tohoto agenta najít. Zkuste to znovu.",
       "chatUnavailable": "Tento hostitel nemůže otevřít chat. Zkuste to znovu.",
       "collapse": "Sbalit panel orchestrace",
+      "composerUnavailable": "Do pole zprávy nyní nelze vložit zmínku",
       "copiedAddress": "Adresa {{name}} zkopírována",
       "copyAddress": "Kopírovat adresu",
-      "from": "Od",
-      "latest": "Nejnovější",
       "managedBy": "Spravováno",
       "managing": "Spravuje",
       "mentionAgent": "Zmínit {{name}}:",
       "mentionAll": "Zmínit všechny",
       "mentionInMessage": "Zmínit ve zprávě",
       "mentionRejected": "Terminál nepřijal odkaz na agenta. Zkuste to znovu.",
+      "mentionTip": "Zmínit {{name}}",
       "more": "Další možnosti pro {{name}}",
       "needsYou_one": "{{count}} na vás čeká",
       "needsYou_other": "Čeká na vás: {{count}}",
+      "noReply": "Zatím žádná odpověď",
       "noTask": "Žádný společný úkol",
       "open": "Otevřít {{name}}",
       "openChat": "Otevřít jeho chat",
       "openFailed": "{{name}}: {{detail}}",
       "openOnHost": "Otevřít tohoto agenta na hostiteli {{host}}.",
+      "reply": "Odpovědět",
       "sendingUnavailable": "Odesílání není dostupné",
       "show": "Zobrazit orchestraci: {{counts}}",
       "showDetails": "Zobrazit úkol a nejnovější zprávu agenta {{name}}",
       "summary": "Orchestrace: {{counts}}",
       "talkingWith": "Konverzace s",
       "task": "Úkol",
+      "taskFailed": "Selhalo",
       "terminalExited": "Tento terminál byl ukončen.",
       "title": "Orchestrace",
-      "to": "Komu",
       "waitingPrefix": "Čeká na vás · ",
       "workers_one": "{{count}} vykonavatel",
-      "workers_other": "Vykonavatelů: {{count}}"
+      "workers_other": "Vykonavatelů: {{count}}",
+      "youPreview": "Vy: {{preview}}"
     },
     "settings": {
       "RepositoryHooksSection": {
@@ -23609,6 +23771,13 @@
             "verifyingEllipsis": "Ověřování…"
           }
         }
+      },
+      "git": {
+        "branchPrefixHostGitUsername": "Uživatelské jméno Gitu na hostiteli {{host}}"
+      },
+      "hostScope": {
+        "updateFailed": "Nastavení se na hostiteli {{host}} nepodařilo aktualizovat.",
+        "updateHostToChange": "Chcete-li toto nastavení na hostiteli {{host}} změnit, aktualizujte tam Orca."
       },
       "nativeChat": {
         "behaviorTitle": "Chování",
@@ -23669,6 +23838,22 @@
         "usageLimitContinueToggleLabel": "Přepnout pokračování chatů po obnovení limitu využití",
         "usageLimitContinueUnsupported": "Chcete-li toto nastavení změnit na hostiteli {{host}}, aktualizujte na něm Orca.",
         "usageLimitContinueUpdateFailed": "Nastavení se na hostiteli {{host}} nepodařilo aktualizovat."
+      },
+      "notifications": {
+        "server": {
+          "enabledDescription": "Upozornění, která hostitel {{host}} odesílá pro své agenty a terminály, včetně oznámení do vašich telefonů.",
+          "fallbackHost": "tento server",
+          "sectionDescription": "Upozornění, která hostitel {{host}} odesílá pro své agenty a terminály.",
+          "unsupported": "Chcete-li zde měnit oznámení hostitele {{host}}, aktualizujte na něm Orca.",
+          "updateFailed": "Oznámení na hostiteli {{host}} se nepodařilo aktualizovat."
+        }
+      },
+      "orcaAccount": {
+        "server": {
+          "sectionDescription": "Účet Orca, pod kterým hostitel {{host}} běží, pro Slack, GitHub, Linear a webhooky jeho botů.",
+          "signInThere": "Chcete-li jej přihlásit, spusťte na hostiteli {{host}} příkaz `orca auth login`.",
+          "unread": "Účet Orca hostitele {{host}} nelze načíst. Aktualizujte {{host}} nebo se k němu znovu připojte."
+        }
       },
       "recoverServer": {
         "clearing": "Mazání…",
@@ -23989,6 +24174,7 @@
           "agentRunning": "Agent běží",
           "archiveScript": "Má archivační skript",
           "archiveUnavailable": "Archivace není dostupná",
+          "folderWorkspaceSibling": "Jiný repozitář v tomto pracovním prostoru se stále používá",
           "gitUnknown": "Stav Gitu se nepodařilo přečíst",
           "ignoredFiles": "Ignorované soubory",
           "noRuleMatched": "Žádné pravidlo neodpovídá",
@@ -25066,14 +25252,15 @@
       "title": "Prohledávejte všechny relace agentů"
     },
     "voice": {
-      "agentPromptTitle": "Prompt agenta",
       "changeInSettings": "Model, režim diktování nebo zkratku můžete kdykoli změnit v části <link>Nastavení → Hlas</link>.",
       "cta": "Nastavit hlasové diktování",
-      "demoPrompt": "Projdi tento diff z hlediska okrajových případů a přidej testy pro všechno, co najdeš.",
+      "demoFirstPhrase": "Tlačítko pokladny překrývá zápatí na malých obrazovkách.",
+      "demoReply": "Přidána platební označení do zápatí pokladny.",
+      "demoSecondPhrase": "Můžeš přidat test?",
+      "demoTabTitle": "Zápatí pokladny",
+      "demoUserPrompt": "Přidej platební označení",
       "description": "Spusťte hlasové diktování v libovolném aktivním panelu a dalším stiskem zkratky jej zastavte.",
-      "listening": "Poslouchám…",
       "shortcutInstruction": "Přepněte se do terminálu, editoru nebo do promptu agenta a stisknutím <shortcut/> spusťte hlasové diktování. Dalším stisknutím <shortcut/> je zastavte.",
-      "startDictation": "Spustit diktování",
       "title": "Diktujte do libovolného panelu",
       "unassignedInstruction": "Před zahájením hlasového diktování v aktivním panelu přiřaďte zkratku pro diktování."
     }
@@ -25465,6 +25652,8 @@
       "9cb1023d40": "Přidat poznámku k revizi",
       "bb3beaeef6": "Obnovit velikost",
       "botItemBack": "Zpět k položkám",
+      "botItemNext": "Další položka",
+      "botItemPrevious": "Předchozí položka",
       "cb816639bd": "Zobrazit porty",
       "chatFind": "Hledat v chatu",
       "d286d1ab85": "Vymazat název panelu",
@@ -25769,6 +25958,22 @@
   "osDocumentOpen": {
     "failed": "Soubor se nepodařilo otevřít."
   },
+  "perfNotices": {
+    "disk": {
+      "description": "Pracovní prostory, které už nepotřebujete, najdete v části Nastavení → Vyčištění pracovních prostorů.",
+      "reviewOld": "Zkontrolovat staré pracovní prostory",
+      "title": "Disk je téměř plný"
+    },
+    "dontShowAgain": "Znovu nezobrazovat",
+    "hiddenTabs": {
+      "descriptionOneHour_one": "Máte {{count}} kartu, která není zobrazená více než hodinu. Zapnutím Spořiče paměti uvolníte její paměť.",
+      "descriptionOneHour_other": "Karet, které nejsou zobrazené více než hodinu, máte: {{count}}. Zapnutím Spořiče paměti uvolníte jejich paměť.",
+      "description_one": "Máte {{count}} kartu, která není zobrazená {{hours}} hod. nebo déle. Zapnutím Spořiče paměti uvolníte její paměť.",
+      "description_other": "Karet, které nejsou zobrazené {{hours}} hod. nebo déle, máte: {{count}}. Zapnutím Spořiče paměti uvolníte jejich paměť.",
+      "title": "Uvolněte paměť z neaktivních karet",
+      "turnOnMemorySaver": "Zapnout Spořič paměti"
+    }
+  },
   "pet": {
     "defaultLabels": {
       "bundle": "Balíček mazlíčka",
@@ -26065,11 +26270,9 @@
     "countUnavailable": "počet terminálů není dostupný",
     "killAllLocal": "Ukončit všechny místní relace",
     "killFailed": "Terminál se nepodařilo ukončit. Naposledy zjištěné relace jsou zachovány.",
-    "metricDetails": "Podrobnosti metriky",
     "openToObserve": "Otevřete Prostředky a sledujte relace terminálů.",
     "owner": {
       "agents": "Agenti",
-      "description": "Orca je samotná aplikace. Agenti jsou terminály, ve kterých běží agent; Ostatní terminály jsou zbývající terminály spuštěné v aplikaci Orca. Pruh ukazuje podíl každého z nich na jejich společné paměti.",
       "orca": "Orca",
       "otherTerminals": "Ostatní terminály",
       "privateBytes": "Vyhrazeno aplikací Orca a terminály"
@@ -26323,6 +26526,7 @@
       "defaultSurfaceNowChat": "Agenti se nyní otevírají jako chaty",
       "defaultSurfaceNowTerminal": "Agenti se nyní otevírají v terminálu",
       "defaultSurfacePerAgent": "Zvolit pro každého agenta",
+      "defaultSurfaceServerDescription": "Výchozí nastavení pro agenty, které hostitel {{host}} spouští sám, například prostřednictvím svého CLI nebo vykonavatelů orchestrace. Agenti otevření z tohoto počítače se řídí volbou „Tento počítač“.",
       "defaultSurfaceSetAllChat": "Nastavit všechny na Chat",
       "defaultSurfaceSetAllTerminal": "Nastavit všechny na Terminál",
       "defaultSurfaceTerminal": "Terminál",
@@ -26507,6 +26711,10 @@
         "sshToggleDescription": "Zobrazovat nakonfigurované SSH hostitele a vzdálené hostitele Orca, když jsou k dispozici.",
         "zcodeToggleDescription": "Zobrazovat využití kvóty plánu ZCode Coding Plan."
       },
+      "tilingWindowMode": {
+        "description": "Skryje tlačítka minimalizace a maximalizace a přesune karty pracovních prostorů k hornímu okraji. Okno přesouvejte a měňte jeho velikost pomocí správce oken.",
+        "title": "Režim dlaždicového správce oken"
+      },
       "uiZoom": {
         "zoomIn": "Přiblížit",
         "zoomOut": "Oddálit"
@@ -26524,6 +26732,7 @@
       "activeDescription": "Odpovídá na zprávy a spouští automatizace.",
       "addConnector": "Přidat konektor",
       "addMemory": "Přidat paměť",
+      "addMemoryPlaceholder": "Zapamatovat si něco nového…",
       "agent": "Agent",
       "agentModelDescription": "Používá se pro konverzace bota a automatizace. Nový model se použije pro nové konverzace; Domovský chat si ponechá svůj stávající.",
       "askNewHomeChat": "Zeptat se před novým domovským chatem",
@@ -26546,6 +26755,7 @@
       "connectorsOnHost": "Kde mohou lidé zastihnout boty na hostiteli {{host}}.",
       "description": "Váš AI kolega se jménem, pamětí a automatizacemi.",
       "edit": "Upravit",
+      "editMemory": "Upravit",
       "editPicture": "Upravit obrázek bota",
       "enable": "Povolit boty",
       "enableDescription": "Zobrazí boty na tomto počítači včetně botů na vašich serverech a umožní botům tohoto počítače přijímat zprávy a spouštět automatizace. Vypnutím této funkce je skryjete; jejich složky, paměť a chaty zůstanou zachovány.",
@@ -26595,6 +26805,7 @@
         "whileRunning": "Orca musí na tomto počítači běžet."
       },
       "memory": "Paměť",
+      "memoryEmpty": "Zatím nejsou uloženy žádné poznatky.",
       "memoryFact": "Paměť",
       "memoryHistory": {
         "aChat": "Chat",
@@ -26623,7 +26834,6 @@
       },
       "memoryLines": "{{count}} / {{cap}} řádků",
       "memorySource": "Ze zdroje {{source}}",
-      "memorySourceLink": "odkaz",
       "memoryTabs": {
         "facts": "Co ví",
         "history": "Historie"
@@ -26647,6 +26857,8 @@
       "pictureCurrent": "Aktuální obrázek",
       "retry": "Zkusit znovu",
       "save": "Uložit",
+      "saved": "Uloženo",
+      "saving": "Ukládání…",
       "serverEnableFailed": "Boty se na hostiteli {{host}} nepodařilo změnit.",
       "skills": {
         "count_one": "{{count}} dovednost",
@@ -26676,6 +26888,12 @@
         "waiting": "Čeká na instalaci"
       },
       "soul": "Duše",
+      "soulDoubleClickHint": "Dvojkliknutím upravíte",
+      "soulEdit": "Upravit",
+      "soulEmpty": "Zatím žádné pokyny. Dvojkliknutím nebo volbou Upravit můžete začít psát.",
+      "soulRead": "Číst",
+      "soulStats": "Řádků: {{lines}} · slov: {{words}}",
+      "soulView": "Zobrazení Duše",
       "tidyUp": {
         "changes": "{{count}} změn",
         "done": "Hotovo",
@@ -26782,6 +27000,7 @@
         "title": "Nástroje",
         "wontStart": "Nespustí se"
       },
+      "unsaved": "Neuloženo",
       "useTheirs": "Použít jejich",
       "whoCanAsk": "Kdo se může ptát bota {{bot}}"
     },
@@ -27217,6 +27436,24 @@
         "missingHost": "URL proxy musí obsahovat hostitele.",
         "tooLong": "URL proxy je příliš dlouhá.",
         "unsupportedProtocol": "Použijte URL proxy http, https, socks, socks4 nebo socks5."
+      }
+    },
+    "notifications": {
+      "perfNotices": {
+        "disk": {
+          "description": "Navrhovat vyčištění pracovních prostorů, když je disk téměř plný.",
+          "label": "Disk téměř plný"
+        },
+        "hiddenTabs": {
+          "description": "Navrhovat Spořič paměti, když zůstává načteno mnoho skrytých karet prohlížeče.",
+          "label": "Skryté karty prohlížeče"
+        },
+        "search": {
+          "disk": "disk",
+          "memory": "paměť",
+          "tabs": "karty",
+          "warning": "varování"
+        }
       }
     },
     "openInApp": {
@@ -28368,6 +28605,13 @@
       "learnMore": "Další informace",
       "openNewTerminal": "Otevřít nový terminál"
     },
+    "recentImages": {
+      "copyPath": "Kopírovat cestu",
+      "open": "Otevřít náhled",
+      "pasted": "Vložený obrázek",
+      "setting": "Náhledy vložených a přetažených obrázků",
+      "settingDescription": "Zobrazovat nedávné místní obrázky v záhlaví panelu po vložení nebo přetažení."
+    },
     "restartedInputNotSent": "Terminál se během psaní restartoval, takže část vstupu nemusela dorazit. Než text zadáte znovu, zkontrolujte nový shell.",
     "sessionSaveFailure": {
       "capacity": "Zařízení, na které se tento terminál ukládá, hlásí plné úložiště nebo překročení kvóty. Uvolněte místo na daném zařízení a zkuste to znovu.",
@@ -28710,7 +28954,6 @@
       "allVerb": "Smazat vše",
       "alwaysForceDelete": "Vždy vynutit smazání",
       "batchTitle": "Smazat {{count}} pracovních prostorů?",
-      "batchVerb": "Smazat {{count}} pracovních prostorů",
       "changesIncomplete": "Některé změny se nepodařilo úplně zkontrolovat.",
       "childrenCannotBeKeptTitle": "Podřízené pracovní prostory nelze zachovat",
       "childrenChanged": "Podřízené pracovní prostory se změnily. Zkontrolujte seznam pracovních prostorů a zkuste to znovu.",
@@ -28741,7 +28984,6 @@
       "onHost": "Na hostiteli {{host}}",
       "showChanges": "Zobrazit změny",
       "singleTitle": "Smazat {{name}}?",
-      "singleVerb": "Smazat pracovní prostor",
       "unsavedSuffix": "(neuloženo)",
       "withChildrenTitle_one": "Smazat {{name}} a {{count}} podřízený pracovní prostor?",
       "withChildrenTitle_other": "Smazat {{name}} a {{count}} podřízených pracovních prostorů?"
@@ -28752,11 +28994,9 @@
       "description": "Tímto trvale smažete „{{name}}“, všechny vnořené pracovní stromy uvedené níže a veškeré soubory v nich včetně nezakommitovaných změn. Jejich terminály a agenti budou ukončeni.",
       "detached": "Odpojená HEAD (detached)",
       "loading": "Kontrola vnořených pracovních stromů…",
-      "order": "Vnořené pracovní stromy se mažou jako první. Pokud smazání některého z nich selže, proces se zastaví a nadřazený pracovní prostor zůstane zachován. Větve se řídí vaším stávajícím nastavením mazání.",
       "preservedBranches": "Některé větve vnořených pracovních stromů byly zachovány",
       "refreshFailed": "Seznam pracovních prostorů se nepodařilo obnovit",
-      "retry": "Zkontrolovat znovu",
-      "review": "Smazat včetně vnořených pracovních stromů…"
+      "retry": "Zkontrolovat znovu"
     },
     "setupTerminalTitle": "Nastavení",
     "setupTrust": {
