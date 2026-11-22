@@ -64,6 +64,12 @@
       "enterpriseOption": "Licence vaší organizace",
       "fd47b5a5dd": "Účty Antigravity",
       "gcpProject": "Projekt Google Cloud",
+      "googleSignIn": "Přihlášení k účtu Google",
+      "googleSignInAgy": "Vlastní přihlášení agy",
+      "googleSignInAgyOption": "Přihlaste se spuštěním agy",
+      "googleSignInOrca": "Vestavěné přihlášení Orca",
+      "googleSignInOrcaOption": "Přihlaste se zde přes prohlížeč; agy není potřeba",
+      "googleSignInUpdateFailed": "Nepodařilo se změnit způsob přihlašování Antigravity k účtu Google.",
       "keyword": {
         "accounts": "účty",
         "agy": "agy",
@@ -236,6 +242,7 @@
     }
   },
   "agentCliUpdate": {
+    "auggieProduct": "Auggie",
     "claudeProduct": "Claude Code",
     "codexProduct": "Codex CLI",
     "commandCopied": "Příkaz byl zkopírován",
@@ -251,12 +258,15 @@
     "failedDescription": "Orca spustila <code>{{command}}</code> na <strong>{{host}}</strong> za účelem aktualizace {{product}} z <strong>{{installedVersion}}</strong> na <strong>{{latestVersion}}</strong> a operace selhala.",
     "failedDescriptionNoCommand": "Aplikaci Orca se nepodařilo aktualizovat {{product}} na <strong>{{host}}</strong>.",
     "failedTitle": "Nepodařilo se aktualizovat {{product}}",
+    "gooseProduct": "Goose CLI",
     "grokProduct": "Grok Build",
     "heading_one": "K dispozici je {{count}} aktualizace CLI",
     "heading_other": "K dispozici je {{count}} aktualizací CLI",
     "hermesProduct": "Hermes Agent",
+    "kiloProduct": "Kilo CLI",
     "kimiProduct": "Kimi Code",
     "manualHint": "Spusťte v terminálu:",
+    "mimoCodeProduct": "MiMo Code",
     "modelRequires": "Vyžaduje {{product}} {{version}}",
     "modelRequiresClaude": "Vyžaduje Claude Code CLI {{version}}",
     "modelRequiresCodex": "Vyžaduje Codex CLI {{version}}",
@@ -18692,6 +18702,7 @@
         "trustWorkspaceNamed": "{{agent}} čeká, až udělíte důvěru této složce.",
         "update": "Agent čeká na vaši odpověď na výzvu k aktualizaci."
       },
+      "botProviderErrorNotSaved": "Tah bota selhal, ale toto spuštění neuložilo chybu poskytovatele. Původní Chat může obsahovat další podrobnosti.",
       "destinationChanged": "Cíl automatizace se změnil dříve, než se toto spuštění mohlo zahájit.",
       "hooksReviewBlocked": "Agent čeká, až někdo zkontroluje nové nebo změněné hooky („Hooky vyžadují revizi“). Otevřete toto spuštění a důvěřujte jim, nebo je odeberte. Naplánovaná spuštění pokračují a uspějí, jakmile nic nevyžaduje revizi.",
       "legacyTwinHosts": "Tato automatizace byla uložena dříve, než Orca sledovala, na kterém hostiteli běží, a její projekt je na více než jednom hostiteli. Otevřete automatizaci a vyberte hostitele, na kterém má běžet.",
@@ -18798,6 +18809,7 @@
       "reachPermission": "Nové konverzace začínají v režimu {{mode}}",
       "reachPermissionUnknown": "Nové konverzace začínají podle vašeho nastavení oprávnění chatu",
       "reachSlack": "Přispívat na Slacku jako @{{name}}",
+      "reject": "Odmítnout",
       "separateBot": "Samostatný bot pro tým získá vlastní oprávnění, přepínač Google a nástroje. Stále však běží na počítači {{computer}} vaším jménem.",
       "summaryMany": "Vy a {{count}} dalších lidí můžete pokládat dotazy botovi {{name}}.",
       "summaryOne": "Vy a {{person}} můžete pokládat dotazy botovi {{name}}.",
@@ -18851,7 +18863,7 @@
       "description": "Domovský chat bota {{name}} začne znovu na {{agent}}. Aktuální konverzace zůstane v historii.",
       "kept": "Zachováno: osobnost, paměť, automatizace, konektory",
       "notKept": "Nezachováno: aktuální konverzace",
-      "threads": "Již běžící vlákna na Slacku zůstanou na agentovi {{agent}}, dokud neskončí",
+      "threads": "Vlákna na Slacku s existujícím chatem Orca si ponechají agenta daného chatu",
       "title": "Přepnout bota {{name}} na {{agent}}?"
     },
     "apps": {
@@ -19702,6 +19714,8 @@
         "title": "Jak to máme nastavit?",
         "why": "Vytvoříte si vlastní aplikaci Google, takže vaše přihlášení zůstane ve vašem počítači."
       },
+      "pickHostKey": "Vyberte soubor s klíčem k importu:",
+      "pickKeyHere": "Vybrat soubor na tomto počítači",
       "progress": {
         "done": "Hotovo",
         "heading": "Nastavení Google",
@@ -19749,6 +19763,7 @@
       "deleteTitle": "Smazat skupinu {{name}}?",
       "dialogDescription": "Boti ve skupině sdílejí jednu místnost.",
       "filter": "Filtrovat boty",
+      "handoffsPaused": "Pozastaveno po {{count}} předáních práce. Pro pokračování odpovězte.",
       "homeUnavailable": "Domovský pracovní prostor skupiny „{{name}}“ na hostiteli {{host}} není dostupný.",
       "items": {
         "all": "Veškerá jejich práce",
@@ -19843,10 +19858,8 @@
       "putBack": "{{reason}} {{name}} zůstal tam, kde byl.",
       "title": "Předat {{name}} botovi"
     },
-    "header": {
-      "open": "Otevřít nastavení {{name}}"
-    },
     "host": {
+      "botWorkspaceUnavailable": "Pracovní prostor tohoto agenta zde nyní není dostupný, takže v něm stránku nelze otevřít.",
       "errors": {
         "accountChanged": "Přihlášení k aplikaci Orca na hostiteli {{host}} se změnilo. Začněte znovu.",
         "accountChangedHere": "Přihlášení k aplikaci Orca na tomto počítači se změnilo. Začněte znovu.",
@@ -19974,6 +19987,7 @@
         "notSentYet": "zatím neodesláno",
         "previous": "Předchozí otázka",
         "recommended": "Doporučeno",
+        "replaced": "Agent položil novou otázku. Přečtěte si ji a poté odpovězte.",
         "step": "{{n}} z {{total}}",
         "typeAnswer": "Napište odpověď"
       },
@@ -20152,7 +20166,7 @@
         "showLess": "Zobrazit méně",
         "showMore": "Zobrazit více",
         "shown": "Položka {{index}} z {{total}}: {{title}}",
-        "sub": "Položka {{number}} · {{chat}} · {{when}}"
+        "subWhere": "Položka {{number}} · {{chat}}"
       }
     },
     "linear": {
@@ -20388,6 +20402,7 @@
       "upNext_other": "{{count}} nových návrhů"
     },
     "panel": {
+      "disconnected": "Odpojeno",
       "idle": "Nečinný",
       "idleNext": "Nečinný · další: {{when}} · {{name}}",
       "more": "Další",
@@ -20395,6 +20410,7 @@
       "needYou_other": "{{count}} vyžaduje vás",
       "nextAt": "Další: {{when}}",
       "runningNamed": "Běží {{name}}",
+      "runsOn": "Běží na hostiteli {{host}}",
       "settings": {
         "title": "Nastavení"
       },
@@ -20465,8 +20481,6 @@
       "active": "Aktivní",
       "lastLooked": "poslední kontrola {{when}}",
       "lastTidied": "poslední úklid {{when}}",
-      "memoryFiles_one": "MEMORY.md a {{count}} tematický soubor",
-      "memoryFiles_other": "MEMORY.md a {{count}} tematických souborů",
       "none": "Žádné",
       "off": "Vypnuto",
       "onlyYou": "Pouze vy",
@@ -20474,7 +20488,6 @@
       "today": "dnes",
       "toolsFrom": "{{count}} od {{agent}}",
       "toolsMore": "{{count}} dalších od {{agent}}",
-      "withAccess": "{{service}} {{people}} s přístupem",
       "yesterday": "včera",
       "yesterdayAt": "včera v {{time}}"
     },
@@ -20482,11 +20495,9 @@
       "access": "Přístup",
       "accountChecking": "Kontrola…",
       "agent": "Agent a model",
-      "automationsFoot": "Automatizace najdete v Domů → Automatizace.",
       "backToBots": "Zpět na Boty",
       "backToItems": "Zpět na Domů",
       "backToSettings": "Zpět do Nastavení",
-      "chatDefault": "váš výchozí pro chat",
       "computer": "Počítač",
       "computerFoot": "Jeho konektory, nástroje a soubory se nacházejí na tomto počítači.",
       "computerOnHostFoot": "Jeho konektory, nástroje a soubory se nacházejí na hostiteli {{host}}. Nastavení všech botů na hostiteli {{host}} najdete v Nastavení → Boti.",
@@ -20497,10 +20508,18 @@
       "items": "Položky",
       "itemsStale": {
         "days": "{{days}} dní",
-        "detail": "Bez aktivity po tuto dobu. Plánované položky mají 3krát delší lhůtu.",
         "never": "Nikdy",
+        "shortTitle": "Zastaralé po",
         "title": "Označit položky jako zastaralé po"
       },
+      "lookAroundShort": {
+        "every2h": "2 h",
+        "every4h": "4 h",
+        "mornings": "Ráno",
+        "twiceDaily": "Dvakrát denně"
+      },
+      "memoryFiles_one": "{{count}} soubor",
+      "memoryFiles_other": "{{count}} souborů",
       "name": "Název bota",
       "noHome": "Zde nelze otevřít duši a paměť bota {{name}}. Zůstávají v jeho složce na adrese {{path}}.",
       "openAsFile": "Otevřít jako soubor",
@@ -20511,14 +20530,21 @@
       "reading": "Čtení {{file}}…",
       "rename": "Přejmenovat {{name}}",
       "schedule": "Rozvrh",
-      "share": "Sdílet…",
+      "shareAction": "Sdílet",
       "sharing": "Sdílení",
+      "sharingOn": "Zapnuto",
       "soulAndMemory": "Duše a paměť",
       "soulLeaveDescription": "Před odchodem zachovejte své úpravy nebo použijte soubor v aktuálním stavu.",
       "thisComputerDetail": "Tento počítač",
+      "tidyUpShort": {
+        "night": "Každou noc",
+        "week": "Týdně"
+      },
       "topicFiles": "Tematické soubory",
       "unreadOffline": "{{file}} se otevře, jakmile bude hostitel {{host}} opět dostupný.",
-      "whoCanAsk": "Kdo se může ptát"
+      "whoCanAsk": "Kdo se může ptát",
+      "youAndOthers_one": "Vy a {{count}} další",
+      "youAndOthers_other": "Vy a {{count}} dalších"
     },
     "setup": {
       "copyHowToAsk": "Zkopírovat {{text}}",
@@ -20544,6 +20570,7 @@
       "countOf": "{{picked}} z {{all}}",
       "description": "Kdokoli s odkazem si může vytvořit kopii.",
       "done": "Hotovo",
+      "duplicateSkill": "Stejný název, ve složce {{folder}} · nesdíleno",
       "error": {
         "avatarRefused": "Orca Cloud odmítl obrázek bota. Vyberte jiný obrázek a zkuste to znovu.",
         "blocked": "Ve sdíleném obsahu byl nalezen tajný klíč. Odstraňte jej a zkuste to znovu.",
@@ -20595,20 +20622,11 @@
       "publishedJustNow": "Právě publikováno",
       "publishing": "Publikování…",
       "receive": {
-        "ask": "Požádat o schválení",
-        "askDetail": "Vybráno pro boty vytvořené z odkazu",
-        "askLine": "Před spuštěním příkazů se zeptá. Vaše vlastní pravidla povolení stále platí.",
         "back": "Zpět",
-        "change": "(Změnit)",
-        "chatsDetail": "Vychází z vašeho nastavení oprávnění pro chat",
-        "chatsLine": "Ptá se stejně jako vaše chaty.",
         "close": "Zavřít",
         "continue": "Pokračovat",
         "fromLink": "Z odkazu",
         "fromLinkMenu": "Z odkazu…",
-        "full": "Úplný přístup",
-        "fullDetail": "Spouští příkazy bez ptaní",
-        "fullLine": "Spouští příkazy bez ptaní.",
         "have": "Tohoto bota již máte",
         "haveDetail": "{{name}} — vytvořeno {{date}}",
         "link": "Odkaz",
@@ -20653,7 +20671,6 @@
       "secretsFound": "Nalezeno {{count}} tajných klíčů",
       "setupNote": "Poznámka k nastavení",
       "shareBot": "Sdílet bota…",
-      "sharedUpdated": "Sdíleno — aktualizováno {{date}}",
       "signIn": "Chcete-li sdílet, přihlaste se k aplikaci Orca.",
       "signInToPublish": "Přihlaste se pro publikování",
       "skills": "Dovednosti",
@@ -20973,7 +20990,12 @@
         "done": "Webhook smazán",
         "note": "Jeho URL přestane fungovat a čekající volání budou zrušena. Nový webhook získá novou URL.",
         "open": "Smazat hook…",
-        "title": "Smazat webhook pro „{{automation}}“?"
+        "title": "Smazat webhook pro „{{automation}}“?",
+        "withAutomation": {
+          "confirm": "Smazat obojí",
+          "note": "Tuto automatizaci nespouští nic jiného, proto bude smazána i s historií spuštění. URL webhooku přestane fungovat a čekající volání budou zrušena.",
+          "title": "Smazat „{{automation}}“ a její webhook?"
+        }
       },
       "editDraft": "Změnit, kdy se spustí „{{automation}}“: ",
       "editInChat": "Upravit v chatu",
@@ -22272,6 +22294,7 @@
           "medium": "Střední",
           "minimal": "Minimální",
           "none": "Žádné",
+          "off": "Vypnuto",
           "standard": "Standardní",
           "ultra": "Ultra",
           "ultracode": "Ultracode",
@@ -25899,6 +25922,9 @@
     "linkedMessageMissing": "Tuto zprávu se nepodařilo najít.",
     "math": {
       "scrollDisplayEquation": "Posunout zobrazenou rovnici"
+    },
+    "messageTime": {
+      "yesterday": "Včera v {{time}}"
     }
   },
   "nestedImport": {
@@ -26729,7 +26755,6 @@
     },
     "bots": {
       "active": "Aktivní",
-      "activeDescription": "Odpovídá na zprávy a spouští automatizace.",
       "addConnector": "Přidat konektor",
       "addMemory": "Přidat paměť",
       "addMemoryPlaceholder": "Zapamatovat si něco nového…",
@@ -26861,23 +26886,29 @@
       "saving": "Ukládání…",
       "serverEnableFailed": "Boty se na hostiteli {{host}} nepodařilo změnit.",
       "skills": {
+        "claudeOnly": "Pouze pro Claude",
         "count_one": "{{count}} dovednost",
         "count_other": "{{count}} dovedností",
         "link": "Propojit projekt",
         "listedBody": "{{bot}} obdrží jejich seznam ve svých instrukcích a přečte si vhodnou dovednost, když se to hodí. V jeho nabídce / se neobjeví.",
         "listedTitle": "{{agent}} nemůže tyto dovednosti načíst přímo.",
         "missing": "Tento projekt již v aplikaci Orca není.",
-        "more": "a dalších {{count}}",
         "noMatch": "Hledání neodpovídají žádné projekty.",
         "none": "V tomto projektu zatím nejsou žádné dovednosti. Spusťte nastavení projektu pro přidání dovedností; načtou se v příštím chatu bota {{bot}}.",
         "noneShort": "Žádné dovednosti",
+        "notClaude": "Není pro Claude",
+        "notLoaded": "Žádný agent ji nenačítá",
         "notYet": "Zatím není k dispozici",
         "openFolder": "Otevřít složku",
+        "own": "Vlastní dovednosti bota {{bot}}",
+        "ownNone": "Zatím nemá žádné vlastní dovednosti.",
+        "ownShort": "Vlastní dovednosti",
         "reading": "Načítání dovedností…",
         "remote": "Na jiném hostiteli. {{bot}} běží na tomto počítači, takže tyto dovednosti zatím nemůže načíst.",
         "remoteSsh": "Na hostiteli {{host}} přes SSH. {{bot}} běží na tomto počítači, takže tyto dovednosti zatím nemůže načíst.",
         "remove": "Odebrat",
         "search": "Hledat projekty",
+        "showMore": "Zobrazit dalších {{count}}",
         "title": "Dovednosti"
       },
       "slackConnected": "Připojeno",
