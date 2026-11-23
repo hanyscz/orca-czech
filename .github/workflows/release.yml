@@ -1,0 +1,43 @@
+name: Release
+
+# Při pushi do main, který změní orca-plugin.json, vytvoří tag a GitHub release,
+# pokud pro aktuální verzi ještě neexistuje.
+on:
+  push:
+    branches: [main]
+    paths: [orca-plugin.json]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Přečti verzi
+        id: ver
+        run: echo "version=$(jq -r .version orca-plugin.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Zjisti, jestli release už existuje
+        id: exists
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "${{ steps.ver.outputs.version }}" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Vytvoř release
+        if: steps.exists.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ steps.ver.outputs.version }}" \
+            --target "${{ github.sha }}" \
+            --title "${{ steps.ver.outputs.version }}" \
+            --generate-notes
