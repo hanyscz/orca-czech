@@ -3,7 +3,7 @@
   "id": "czech",
   "publisher": "hanyscz",
   "name": "Čeština",
-  "version": "0.18.0",
+  "version": "0.19.0",
   "license": "MIT",
   "description": "Kompletní česká lokalizace Orca IDE: menu, nastavení, dialogy i chybové hlášky.",
   "author": { "name": "Hanys", "url": "https://github.com/hanyscz" },
@@ -12,7 +12,7 @@
   "cover": { "path": "assets/cover.png", "alt": "Čeština pro Orca – česká lokalizace Orca IDE, autor Hanys" },
   "repository": "https://github.com/hanyscz/orca-czech",
   "engines": {
-    "orca": ">=1.4.271"
+    "orca": ">=1.4.272"
   },
   "execution": "data",
   "contributes": {
